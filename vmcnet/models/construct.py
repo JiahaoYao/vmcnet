@@ -22,8 +22,9 @@ from .equivariance import (
     FermiNetOrbitalLayer,
     FermiNetResidualBlock,
     FermiNetTwoElectronLayer,
+    compute_electron_electron,
 )
-from .jastrow import IsotropicAtomicExpDecay
+from .jastrow import make_molecular_decay
 from .sign_covariance import make_array_list_fn_sign_covariant
 from .weights import (
     WeightInitializer,
@@ -54,6 +55,7 @@ def get_model_from_config(
     model_config: ConfigDict,
     nelec: jnp.ndarray,
     ion_pos: jnp.ndarray,
+    ion_charges: jnp.ndarray,
     dtype=jnp.float32,
 ) -> flax.linen.Module:
     """Get a model from a hyperparameter config."""
@@ -150,10 +152,14 @@ def get_model_from_config(
 
         return AntiequivarianceNet(backflow, antieq_layer, array_list_equivariance)
     elif model_config.type == "brute_force_antisym":
+        _, ii_distances = compute_electron_electron(ion_pos)
+        jastrow_scale_factor = 0.5 * jnp.sum(jnp.linalg.norm(ii_distances, axis=-1))
+        jastrow = make_molecular_decay(ion_charges, scale_factor=jastrow_scale_factor)
         if model_config.antisym_type == "rank_one":
             return SplitBruteForceAntisymmetryWithDecay(
                 spin_split,
                 backflow,
+                jastrow,
                 ndense_resnet=model_config.ndense_resnet,
                 nlayers_resnet=model_config.nlayers_resnet,
                 kernel_initializer_resnet=kernel_init_constructor(
@@ -174,6 +180,7 @@ def get_model_from_config(
             return ComposedBruteForceAntisymmetryWithDecay(
                 spin_split,
                 backflow,
+                jastrow,
                 ndense_resnet=model_config.ndense_resnet,
                 nlayers_resnet=model_config.nlayers_resnet,
                 kernel_initializer_resnet=kernel_init_constructor(
@@ -474,7 +481,7 @@ class FermiNet(flax.linen.Module):
     """
 
     spin_split: SpinSplit
-    backflow: Callable[[jnp.ndarray], Tuple[jnp.ndarray, jnp.ndarray]]
+    backflow: Callable[[jnp.ndarray], Tuple[jnp.ndarray, jnp.ndarray, jnp.ndarray]]
     ndeterminants: int
     kernel_initializer_orbital_linear: WeightInitializer
     kernel_initializer_envelope_dim: WeightInitializer
@@ -512,7 +519,7 @@ class FermiNet(flax.linen.Module):
         """
         nelec_total = elec_pos.shape[-2]
         norbitals_per_spin = get_nelec_per_spin(self.spin_split, nelec_total)
-        stream_1e, r_ei = self._backflow(elec_pos)
+        stream_1e, r_ei, _ = self._backflow(elec_pos)
         orbitals = [
             FermiNetOrbitalLayer(
                 spin_split=self.spin_split,
@@ -565,7 +572,7 @@ class AntiequivarianceNet(flax.linen.Module):
             dimensions of the output.
     """
 
-    backflow: Callable[[jnp.ndarray], Tuple[jnp.ndarray, jnp.ndarray]]
+    backflow: Callable[[jnp.ndarray], Tuple[jnp.ndarray, jnp.ndarray, jnp.ndarray]]
     antiequivariant_layer: Callable[[jnp.ndarray, jnp.ndarray], ArrayList]
     array_list_equivariance: Callable[[ArrayList], jnp.ndarray]
 
@@ -591,7 +598,7 @@ class AntiequivarianceNet(flax.linen.Module):
             anti-equivariant backflow. If the inputs have shape (batch_dims, nelec, d),
             then the output has shape (batch_dims,).
         """
-        backflow_out, r_ei = self._backflow(elec_pos)
+        backflow_out, r_ei, _ = self._backflow(elec_pos)
         antiequivariant_out = self._antiequivariant_layer(backflow_out, r_ei)
         transformed_out = self._sign_cov_equivariance(antiequivariant_out)
         return jnp.log(jnp.abs(jnp.sum(transformed_out, axis=(-1, -2))))
@@ -636,7 +643,8 @@ class SplitBruteForceAntisymmetryWithDecay(flax.linen.Module):
     """
 
     spin_split: SpinSplit
-    backflow: Callable[[jnp.ndarray], Tuple[jnp.ndarray, jnp.ndarray]]
+    backflow: Callable[[jnp.ndarray], Tuple[jnp.ndarray, jnp.ndarray, jnp.ndarray]]
+    jastrow: Callable[[jnp.ndarray, jnp.ndarray], jnp.ndarray]
     ndense_resnet: int
     nlayers_resnet: int
     kernel_initializer_resnet: WeightInitializer
@@ -650,6 +658,7 @@ class SplitBruteForceAntisymmetryWithDecay(flax.linen.Module):
         # workaround MyPy's typing error for callable attribute, see
         # https://github.com/python/mypy/issues/708
         self._backflow = self.backflow
+        self._jastrow = self.jastrow
 
     @flax.linen.compact
     def __call__(self, elec_pos: jnp.ndarray) -> jnp.ndarray:
@@ -666,7 +675,7 @@ class SplitBruteForceAntisymmetryWithDecay(flax.linen.Module):
             particles across different spin splits. If the inputs have shape
             (batch_dims, nelec, d), then the output has shape (batch_dims,).
         """
-        stream_1e, r_ei = self._backflow(elec_pos)
+        stream_1e, r_ei, r_ee = self._backflow(elec_pos)
         split_spins = jnp.split(stream_1e, self.spin_split, axis=-2)
         antisymmetric_part = SplitBruteForceAntisymmetrize(
             [
@@ -682,7 +691,7 @@ class SplitBruteForceAntisymmetryWithDecay(flax.linen.Module):
                 for _ in split_spins
             ]
         )(split_spins)
-        jastrow_part = IsotropicAtomicExpDecay(self.kernel_initializer_jastrow)(r_ei)
+        jastrow_part = self._jastrow(r_ei, r_ee)
 
         return antisymmetric_part + jastrow_part
 
@@ -728,7 +737,8 @@ class ComposedBruteForceAntisymmetryWithDecay(flax.linen.Module):
     """
 
     spin_split: SpinSplit
-    backflow: Callable[[jnp.ndarray], Tuple[jnp.ndarray, jnp.ndarray]]
+    backflow: Callable[[jnp.ndarray], Tuple[jnp.ndarray, jnp.ndarray, jnp.ndarray]]
+    jastrow: Callable[[jnp.ndarray, jnp.ndarray], jnp.ndarray]
     ndense_resnet: int
     nlayers_resnet: int
     kernel_initializer_resnet: WeightInitializer
@@ -742,6 +752,7 @@ class ComposedBruteForceAntisymmetryWithDecay(flax.linen.Module):
         # workaround MyPy's typing error for callable attribute, see
         # https://github.com/python/mypy/issues/708
         self._backflow = self.backflow
+        self._jastrow = self.jastrow
 
     @flax.linen.compact
     def __call__(self, elec_pos: jnp.ndarray) -> jnp.ndarray:
@@ -758,7 +769,7 @@ class ComposedBruteForceAntisymmetryWithDecay(flax.linen.Module):
             particles across different spin splits. If the inputs have shape
             (batch_dims, nelec, d), then the output has shape (batch_dims,).
         """
-        stream_1e, r_ei = self._backflow(elec_pos)
+        stream_1e, r_ei, r_ee = self._backflow(elec_pos)
         split_spins = jnp.split(stream_1e, self.spin_split, axis=-2)
         antisymmetric_part = ComposedBruteForceAntisymmetrize(
             SimpleResNet(
@@ -771,6 +782,6 @@ class ComposedBruteForceAntisymmetryWithDecay(flax.linen.Module):
                 use_bias=self.resnet_use_bias,
             )
         )(split_spins)
-        jastrow_part = IsotropicAtomicExpDecay(self.kernel_initializer_jastrow)(r_ei)
+        jastrow_part = self._jastrow(r_ei, r_ee)
 
         return antisymmetric_part + jastrow_part

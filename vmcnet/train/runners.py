@@ -71,6 +71,7 @@ def _get_electron_ion_config_as_arrays(
 def _get_and_init_model(
     model_config: ConfigDict,
     ion_pos: jnp.ndarray,
+    ion_charges: jnp.ndarray,
     nelec: jnp.ndarray,
     init_pos: jnp.ndarray,
     key: jnp.ndarray,
@@ -78,7 +79,7 @@ def _get_and_init_model(
     apply_pmap: bool = True,
 ) -> Tuple[flax.linen.Module, flax.core.FrozenDict, jnp.ndarray]:
     log_psi = models.construct.get_model_from_config(
-        model_config, nelec, ion_pos, dtype=dtype
+        model_config, nelec, ion_pos, ion_charges, dtype=dtype
     )
     key, subkey = jax.random.split(key)
     params = log_psi.init(subkey, init_pos[0:1])
@@ -423,7 +424,14 @@ def _setup_vmc(
 
     # Make the model
     log_psi, params, key = _get_and_init_model(
-        config.model, ion_pos, nelec, init_pos, key, dtype=dtype, apply_pmap=apply_pmap
+        config.model,
+        ion_pos,
+        ion_charges,
+        nelec,
+        init_pos,
+        key,
+        dtype=dtype,
+        apply_pmap=apply_pmap,
     )
 
     # Make initial data
@@ -609,7 +617,7 @@ def run_molecule() -> None:
         burning_step,
         walker_fn,
         local_energy_fn,
-        update_param_fn,
+        default_update_param_fn,
         params,
         data,
         optimizer_state,
@@ -623,6 +631,60 @@ def run_molecule() -> None:
         dtype=dtype_to_use,
         apply_pmap=config.distribute,
     )
+
+    # pmapped_log_psi_apply = utils.distribute.pmap(
+    #     functools.partial(log_psi.apply, mutable="intermediates")
+    # )
+
+    # def update_param_fn(params, data, optimizer_state, key):
+    #     new_params, new_optimizer_state, metrics, new_key = default_update_param_fn(
+    #         params, data, optimizer_state, key
+    #     )
+    #     amps, mod_vars = pmapped_log_psi_apply(params, data["walker_data"]["position"])
+    #     perms_out = mod_vars["intermediates"]["ComposedBruteForceAntisymmetrize_0"][
+    #         "perms_out"
+    #     ][0]
+    #     antisym_out = mod_vars["intermediates"]["ComposedBruteForceAntisymmetrize_0"][
+    #         "antisym_out"
+    #     ][0]
+
+    #     metrics.update(
+    #         {
+    #             "first_two_perms_out": perms_out[0][:2],
+    #             "first_two_antisyms_out": antisym_out[0][:2],
+    #             "first_two_recalculated_amps": amps[0][:2],
+    #             "first_two_amps": data["walker_data"]["amplitude"][0][:2],
+    #         }
+    #     )
+    #     local_e_nans = jnp.isnan(metrics["local_energies"])
+    #     if jnp.any(local_e_nans):
+    #         problem_idx = jnp.argwhere(local_e_nans)
+    #         problem_pos = data["walker_data"]["position"][
+    #             problem_idx[0], problem_idx[1], :, :
+    #         ]
+    #         problem_local_e = metrics["local_energies"][problem_idx[0], problem_idx[1]]
+    #         problem_amp = data["walker_data"]["amplitude"][
+    #             problem_idx[0], problem_idx[1]
+    #         ]
+    #         problem_recalculated_amp = amps[problem_idx[0], problem_idx[1]]
+    #         problem_antisym = antisym_out[problem_idx[0], problem_idx[1]]
+    #         problem_perms_out = perms_out[problem_idx[0], problem_idx[1], ...]
+    #         metrics.update(
+    #             {
+    #                 "problem_pos": problem_pos,
+    #                 "problem_local_e": problem_local_e,
+    #                 "problem_amp": problem_amp,
+    #                 "problem_recalculated_amp": problem_recalculated_amp,
+    #                 "problem_antisym": problem_antisym,
+    #                 "problem_perms_out": problem_perms_out,
+    #             }
+    #         )
+
+    #     del metrics["local_energies"]
+
+    #     return new_params, new_optimizer_state, metrics, new_key
+
+    update_param_fn = default_update_param_fn
 
     reload_from_checkpoint = (
         reload_config.logdir != train.default_config.NO_RELOAD_LOG_DIR
