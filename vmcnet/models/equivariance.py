@@ -196,6 +196,7 @@ class FermiNetOneElectronLayer(flax.linen.Module):
             [(1, 2, 3), (1, 2, 3), (1, 2, 3)] (as in the original FermiNet).
             When there are only two spins (spin-1/2 case), then this is equivalent to
             true spin equivariance. Defaults to False (original FermiNet).
+        mixing (bool. optional)
     """
 
     spin_split: ParticleSplit
@@ -208,6 +209,7 @@ class FermiNetOneElectronLayer(flax.linen.Module):
     use_bias: bool = True
     skip_connection: bool = True
     cyclic_spins: bool = True
+    mixing: bool = True
 
     def setup(self):
         """Setup Dense layers."""
@@ -359,19 +361,20 @@ class FermiNetOneElectronLayer(flax.linen.Module):
             stream
         """
         dense_unmixed = self._unmixed_dense(in_1e)
-        dense_unmixed_split = jnp.split(dense_unmixed, self.spin_split, axis=-2)
+        dense_out = jnp.split(dense_unmixed, self.spin_split, axis=-2)
 
-        split_1e_means = _split_mean(in_1e, self.spin_split, axis=-2, keepdims=True)
-        dense_mixed_split = self._compute_transformed_1e_means(split_1e_means)
+        if self.mixing:
+            split_1e_means = _split_mean(in_1e, self.spin_split, axis=-2, keepdims=True)
+            dense_mixed_split = self._compute_transformed_1e_means(split_1e_means)
 
-        # adds the unmixed [i: (..., n[i], d')] to the mixed [i: (..., 1, d')] to get
-        # an equivariant function. Without the two-electron mixing, this is a spinful
-        # version of DeepSet's Lemma 3: https://arxiv.org/pdf/1703.06114.pdf
-        dense_out = tree_sum(dense_unmixed_split, dense_mixed_split)
+            # adds the unmixed [i: (..., n[i], d')] to the mixed [i: (..., 1, d')] to get
+            # an equivariant function. Without the two-electron mixing, this is a spinful
+            # version of DeepSet's Lemma 3: https://arxiv.org/pdf/1703.06114.pdf
+            dense_out = tree_sum(dense_out, dense_mixed_split)
 
-        if in_2e is not None:
-            dense_2e_split = self._compute_transformed_2e_means(in_2e)
-            dense_out = tree_sum(dense_out, dense_2e_split)
+            if in_2e is not None:
+                dense_2e_split = self._compute_transformed_2e_means(in_2e)
+                dense_out = tree_sum(dense_out, dense_2e_split)
 
         dense_out_concat = jnp.concatenate(dense_out, axis=-2)
         nonlinear_out = self._activation_fn(dense_out_concat)

@@ -90,6 +90,7 @@ def get_model_from_config(
         model_config.backflow,
         spin_split,
         dtype=dtype,
+        mixing=model_config.mixing,
     )
 
     kernel_init_constructor, bias_init_constructor = _get_dtype_init_constructors(dtype)
@@ -196,6 +197,7 @@ def get_model_from_config(
                     invariance_config.backflow,
                     spin_split,
                     dtype=dtype,
+                    mixing=True,
                 )
             else:
                 invariance_backflow = None
@@ -359,6 +361,7 @@ def get_backflow_from_config(
     backflow_config,
     spin_split,
     dtype=jnp.float32,
+    mixing=True,
 ) -> flax.linen.Module:
     """Get a FermiNet backflow from a model configuration."""
     kernel_init_constructor, bias_init_constructor = _get_dtype_init_constructors(dtype)
@@ -388,6 +391,7 @@ def get_backflow_from_config(
         use_bias=backflow_config.use_bias,
         skip_connection=backflow_config.skip_connection,
         cyclic_spins=backflow_config.cyclic_spins,
+        mixing=mixing,
     )
 
     return FermiNetBackflow(residual_blocks)
@@ -456,6 +460,7 @@ def get_residual_blocks_for_ferminet_backflow(
     use_bias: bool = True,
     skip_connection: bool = True,
     cyclic_spins: bool = True,
+    mixing: bool = True,
 ) -> List[FermiNetResidualBlock]:
     """Construct a list of FermiNet residual blocks composed by FermiNetBackflow.
 
@@ -524,9 +529,10 @@ def get_residual_blocks_for_ferminet_backflow(
             use_bias,
             skip_connection,
             cyclic_spins,
+            mixing=mixing,
         )
         two_electron_layer = None
-        if len(ndense) > 1:
+        if len(ndense) > 1 and mixing:
             two_electron_layer = FermiNetTwoElectronLayer(
                 ndense[1],
                 kernel_initializer_2e_2e_stream,

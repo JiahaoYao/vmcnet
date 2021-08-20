@@ -62,7 +62,7 @@ def _get_compute_input_streams(ion_pos):
     return functools.partial(models.equivariance.compute_input_streams, ion_pos=ion_pos)
 
 
-def _get_backflow(spin_split, ndense_list, cyclic_spins):
+def _get_backflow(spin_split, ndense_list, cyclic_spins, mixing=True):
     residual_blocks = models.construct.get_residual_blocks_for_ferminet_backflow(
         spin_split,
         ndense_list,
@@ -74,6 +74,7 @@ def _get_backflow(spin_split, ndense_list, cyclic_spins):
         models.weights.get_bias_initializer("normal"),
         jnp.tanh,
         cyclic_spins=cyclic_spins,
+        mixing=mixing,
     )
     return models.construct.FermiNetBackflow(residual_blocks)
 
@@ -101,33 +102,27 @@ def _make_ferminets():
     log_psis = []
     # No need for combinatorial testing over these flags; just make sure Ferminet is
     # tested with and without cyclic spins, and with each different determinant_fn_mode.
-    for cyclic_spins, use_det_resnet, determinant_fn_mode, full_det in [
-        (False, False, models.construct.DeterminantFnMode.SIGN_COVARIANCE, False),
-        (False, False, models.construct.DeterminantFnMode.SIGN_COVARIANCE, True),
-        (True, True, models.construct.DeterminantFnMode.SIGN_COVARIANCE, False),
-        (False, True, models.construct.DeterminantFnMode.PARALLEL_EVEN, False),
-        (True, True, models.construct.DeterminantFnMode.PAIRWISE_EVEN, False),
-    ]:
-        compute_input_streams = _get_compute_input_streams(ion_pos)
-        backflow = _get_backflow(spin_split, ndense_list, cyclic_spins)
-        resnet_det_fn = _get_det_resnet_fn() if use_det_resnet else None
 
-        log_psi = models.construct.FermiNet(
-            spin_split,
-            compute_input_streams,
-            backflow,
-            3,
-            models.weights.get_kernel_initializer("he_normal"),
-            models.weights.get_kernel_initializer("lecun_normal"),
-            models.weights.get_kernel_initializer("ones"),
-            models.weights.get_bias_initializer("uniform"),
-            orbitals_use_bias=True,
-            isotropic_decay=True,
-            determinant_fn=resnet_det_fn,
-            determinant_fn_mode=determinant_fn_mode,
-            full_det=full_det,
-        )
-        log_psis.append(log_psi)
+    compute_input_streams = _get_compute_input_streams(ion_pos)
+    backflow = _get_backflow(spin_split, ndense_list, False, mixing=False)
+    resnet_det_fn = None
+
+    log_psi = models.construct.FermiNet(
+        spin_split,
+        compute_input_streams,
+        backflow,
+        3,
+        models.weights.get_kernel_initializer("he_normal"),
+        models.weights.get_kernel_initializer("lecun_normal"),
+        models.weights.get_kernel_initializer("ones"),
+        models.weights.get_bias_initializer("uniform"),
+        orbitals_use_bias=True,
+        isotropic_decay=True,
+        determinant_fn=resnet_det_fn,
+        determinant_fn_mode=DeterminantFnMode.PARALLEL_EVEN,
+        full_det=False,
+    )
+    log_psis.append(log_psi)
 
     return key, init_pos, log_psis
 
@@ -190,18 +185,22 @@ def _make_extended_orbital_matrix_ferminets():
 
     log_psis = []
     cyclic_spins = False
-    backflow = _get_backflow(spin_split, ndense_list, cyclic_spins)
     extra_backflow = _get_backflow(spin_split, ndense_list, cyclic_spins)
 
-    for nhidden_fermions_per_spin, use_separate_invariance_backflow, full_det in [
-        ((2, 3), True, False),
-        ((4, 0), False, True),
+    for (
+        nhidden_fermions_per_spin,
+        use_separate_invariance_backflow,
+        full_det,
+        mixing,
+    ) in [
+        ((2, 3), True, False, False),
     ]:
         if use_separate_invariance_backflow:
             invariance_backflow = extra_backflow
         else:
             invariance_backflow = None
 
+        backflow = _get_backflow(spin_split, ndense_list, cyclic_spins, mixing)
         log_psi = models.construct.ExtendedOrbitalMatrixFermiNet(
             spin_split=spin_split,
             compute_input_streams=_get_compute_input_streams(ion_pos),
