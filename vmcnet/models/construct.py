@@ -33,7 +33,10 @@ from .equivariance import (
     compute_input_streams,
 )
 from .invariance import InvariantTensor
-from .jastrow import get_mol_decay_scaled_for_chargeless_molecules
+from .jastrow import (
+    IsotropicAtomicExpDecay,
+    get_mol_decay_scaled_for_chargeless_molecules,
+)
 from .sign_symmetry import (
     ProductsSignCovariance,
     make_array_list_fn_sign_covariant,
@@ -285,9 +288,10 @@ def get_model_from_config(
 
     elif model_config.type == "brute_force_antisym":
         # TODO(Jeffmin): make interface more flexible w.r.t. different types of Jastrows
-        jastrow = get_mol_decay_scaled_for_chargeless_molecules(
-            ion_pos, ion_charges, trainable=model_config.trainable_jastrow
-        )
+        # jastrow = get_mol_decay_scaled_for_chargeless_molecules(
+        #     ion_pos, ion_charges, trainable=model_config.trainable_jastrow
+        # )
+        jastrow = IsotropicAtomicExpDecay(kernel_init_constructor("ones"))
         if model_config.antisym_type == "rank_one":
             return SplitBruteForceAntisymmetryWithDecay(
                 spin_split,
