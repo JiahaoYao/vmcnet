@@ -291,7 +291,9 @@ def get_model_from_config(
         # jastrow = get_mol_decay_scaled_for_chargeless_molecules(
         #     ion_pos, ion_charges, trainable=model_config.trainable_jastrow
         # )
-        jastrow = IsotropicAtomicExpDecay(kernel_init_constructor("ones"))
+        jastrow = IsotropicAtomicExpDecay(
+            kernel_init_constructor(ConfigDict({"type": "ones"}))
+        )
         if model_config.antisym_type == "rank_one":
             return SplitBruteForceAntisymmetryWithDecay(
                 spin_split,
