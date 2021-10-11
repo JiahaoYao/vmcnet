@@ -18,7 +18,7 @@ from .core import (
     get_nsplits,
 )
 from .jastrow import _anisotropy_on_leaf, _isotropy_on_leaf
-from .weights import WeightInitializer
+from .weights import WeightInitializer, zeros
 
 
 def _rolled_concat(arrays: ArrayList, n: int, axis: int = -1) -> jnp.ndarray:
@@ -630,12 +630,15 @@ def _compute_exponential_envelopes_on_leaf(
     distances = jnp.linalg.norm(scale_out, axis=-1)
     inv_exp_distances = jnp.exp(-distances)  # (..., nelec, norbitals, nion)
 
-    lin_comb_nion = Dense(
-        1,
-        kernel_init=kernel_initializer_ion,
+    lin_comb_nion = SplitDense(
+        int(norbitals),
+        (1,) * norbitals,
+        kernel_initializer=kernel_initializer_ion,
+        bias_initializer=zeros,
         use_bias=False,
         register_kfac=False,
     )(inv_exp_distances)
+    lin_comb_nion = jnp.concatenate(lin_comb_nion, axis=-2)
 
     return jnp.squeeze(lin_comb_nion, axis=-1)  # (..., nelec, norbitals)
 
