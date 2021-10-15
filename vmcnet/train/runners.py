@@ -265,6 +265,7 @@ def _get_energy_fns(
 # _make_initial_distributed_data is more general
 def _setup_vmc(
     config: ConfigDict,
+    reload_config: ConfigDict,
     ion_pos: jnp.ndarray,
     ion_charges: jnp.ndarray,
     nelec: jnp.ndarray,
@@ -283,6 +284,15 @@ def _setup_vmc(
     OptimizerState,
     jnp.ndarray,
 ]:
+    reload_from_checkpoint = (
+        reload_config.logdir != train.default_config.NO_RELOAD_LOG_DIR
+        and reload_config.use_checkpoint_file
+    )
+    reload_checkpoint_file_path = os.path.join(
+        reload_config.logdir, reload_config.checkpoint_relative_file_path
+    )
+    reload_dir, reload_filename = os.path.split(reload_checkpoint_file_path)
+
     nelec_total = jnp.sum(nelec)
     key, init_pos = physics.core.initialize_molecular_pos(
         key, config.vmc.nchains, ion_pos, ion_charges, nelec_total, dtype=dtype
@@ -299,6 +309,10 @@ def _setup_vmc(
         dtype=dtype,
         apply_pmap=apply_pmap,
     )
+
+    # Handle reload params case before optimizer state is set up to ensure consistency.
+    if reload_from_checkpoint and reload_config.params_only:
+        _, _, params, _, _ = utils.io.reload_vmc_state(reload_dir, reload_filename)
 
     # Make initial data
     data = _make_initial_data(
@@ -332,6 +346,24 @@ def _setup_vmc(
         key,
         apply_pmap=apply_pmap,
     )
+
+    reload_from_checkpoint = (
+        reload_config.logdir != train.default_config.NO_RELOAD_LOG_DIR
+        and reload_config.use_checkpoint_file
+    )
+
+    if reload_from_checkpoint and not reload_config.params_only:
+        _, data, params, optimizer_state, key = utils.io.reload_vmc_state(
+            reload_dir, reload_filename
+        )
+        (
+            data,
+            params,
+            optimizer_state,
+            key,
+        ) = utils.distribute.distribute_vmc_state_from_checkpoint(
+            data, params, optimizer_state, key
+        )
 
     return (
         log_psi,
@@ -503,6 +535,7 @@ def run_molecule() -> None:
         key,
     ) = _setup_vmc(
         config,
+        reload_config,
         ion_pos,
         ion_charges,
         nelec,
@@ -510,31 +543,6 @@ def run_molecule() -> None:
         dtype=dtype_to_use,
         apply_pmap=config.distribute,
     )
-
-    reload_from_checkpoint = (
-        reload_config.logdir != train.default_config.NO_RELOAD_LOG_DIR
-        and reload_config.use_checkpoint_file
-    )
-
-    if reload_from_checkpoint:
-        checkpoint_file_path = os.path.join(
-            reload_config.logdir, reload_config.checkpoint_relative_file_path
-        )
-        directory, filename = os.path.split(checkpoint_file_path)
-        if reload_config.params_only:
-            _, _, params, _, _ = utils.io.reload_vmc_state(directory, filename)
-        else:
-            _, data, params, optimizer_state, key = utils.io.reload_vmc_state(
-                directory, filename
-            )
-        (
-            data,
-            params,
-            optimizer_state,
-            key,
-        ) = utils.distribute.distribute_vmc_state_from_checkpoint(
-            data, params, optimizer_state, key
-        )
 
     params, optimizer_state, data, key = _burn_and_run_vmc(
         config.vmc,
