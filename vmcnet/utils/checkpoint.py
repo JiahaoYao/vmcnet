@@ -626,7 +626,7 @@ def save_metrics_and_regular_checkpoint(
     checkpoint_data = (epoch, data, old_params, optimizer_state, key)
 
     if checkpoint_every is not None:
-        if (epoch + 1) % checkpoint_every == 0:
+        if epoch == 0 or (epoch + 1) % checkpoint_every == 0:
             checkpoint_writer.save_data(
                 os.path.join(logdir, checkpoint_dir),
                 str(epoch + 1) + ".npz",
