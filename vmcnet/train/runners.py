@@ -313,6 +313,7 @@ def _setup_vmc(
     # Handle reload params case before optimizer state is set up to ensure consistency.
     if reload_from_checkpoint and reload_config.params_only:
         _, _, params, _, _ = utils.io.reload_vmc_state(reload_dir, reload_filename)
+        params = utils.distribute.replicate_all_local_devices(params)
 
     # Make initial data
     data = _make_initial_data(
