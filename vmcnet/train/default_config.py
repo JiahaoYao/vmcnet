@@ -240,7 +240,7 @@ def get_default_model_config() -> Dict:
                         "kernel_init_2e_2e_stream": orthogonal_init,
                         "bias_init_1e_stream": normal_init,
                         "bias_init_2e_stream": normal_init,
-                        "activation_fn": "gelu",
+                        "activation_fn": "quasilinear",
                         "use_bias": True,
                         "skip_connection": True,
                         "cyclic_spins": cyclic_spins,

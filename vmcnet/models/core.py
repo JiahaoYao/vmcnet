@@ -17,6 +17,11 @@ Activation = Callable[[jnp.ndarray], jnp.ndarray]
 SLActivation = Callable[[SLArray], SLArray]
 
 
+def quasilinear(x):
+    """Slightly non-linear activation which is asymptotically linear for large x."""
+    return jnp.tanh(x) + x
+
+
 def _split_mean(
     x: jnp.ndarray,
     splits: ParticleSplit,

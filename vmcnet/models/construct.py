@@ -31,6 +31,7 @@ from .core import (
     get_nelec_per_split,
     get_nsplits,
     get_spin_split,
+    quasilinear,
 )
 from .equivariance import (
     FermiNetBackflow,
@@ -80,8 +81,12 @@ def _get_named_activation_fn(name):
         return jnp.tanh
     elif name == "gelu":
         return jax.nn.gelu
+    elif name == "quasilinear":
+        return quasilinear
     else:
-        raise ValueError("Activations besides tanh and gelu are not yet supported.")
+        raise ValueError(
+            "Activations besides tanh, gelu, and quasilinear are not yet supported."
+        )
 
 
 def _get_dtype_init_constructors(dtype):
