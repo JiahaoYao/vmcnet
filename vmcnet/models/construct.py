@@ -77,7 +77,7 @@ def _get_named_activation_fn(name):
         raise ValueError("Activations besides tanh and gelu are not yet supported.")
 
 
-def _get_dtype_init_constructors(dtype):
+def _get_dtype_init_constructors(dtype: jnp.floating):
     kernel_init_constructor = functools.partial(
         get_kernel_init_from_config, dtype=dtype
     )
@@ -90,8 +90,8 @@ def get_model_from_config(
     nelec: jnp.ndarray,
     ion_pos: jnp.ndarray,
     ion_charges: jnp.ndarray,
-    dtype=jnp.float32,
-    antisym_sum_dtype=jnp.float32,
+    dtype: jnp.floating = jnp.float32,
+    antisym_sum_dtype: jnp.floating = jnp.float32,
 ) -> flax.linen.Module:
     """Get a model from a hyperparameter config."""
     spin_split = tuple(jnp.cumsum(nelec)[:-1])
@@ -409,7 +409,7 @@ def get_compute_input_streams_from_config(
 def get_backflow_from_config(
     backflow_config,
     spin_split,
-    dtype=jnp.float32,
+    dtype: jnp.floating = jnp.float32,
 ) -> flax.linen.Module:
     """Get a FermiNet backflow from a model configuration."""
     kernel_init_constructor, bias_init_constructor = _get_dtype_init_constructors(dtype)
@@ -448,7 +448,7 @@ def get_sign_covariance_from_config(
     model_config: ConfigDict,
     spin_split: ParticleSplit,
     kernel_init_constructor: Callable[[ConfigDict], WeightInitializer],
-    dtype: jnp.dtype,
+    dtype: jnp.floating,
 ) -> Callable[[ArrayList], jnp.ndarray]:
     """Get a sign covariance from a model config, for use in AntiequivarianceNet."""
     if model_config.use_products_covariance:
@@ -1326,7 +1326,7 @@ class SplitBruteForceAntisymmetryWithDecay(flax.linen.Module):
     bias_initializer_resnet: WeightInitializer
     activation_fn_resnet: Activation
     resnet_use_bias: bool = True
-    antisym_sum_dtype = jnp.float32
+    antisym_sum_dtype: jnp.floating = jnp.float32
 
     def setup(self):
         """Setup backflow."""
@@ -1452,7 +1452,7 @@ class ComposedBruteForceAntisymmetryWithDecay(flax.linen.Module):
     bias_initializer_resnet: WeightInitializer
     activation_fn_resnet: Activation
     resnet_use_bias: bool = True
-    antisym_sum_dtype = jnp.float32
+    antisym_sum_dtype: jnp.floating = jnp.float32
 
     def setup(self):
         """Setup backflow."""

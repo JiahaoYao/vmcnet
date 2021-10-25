@@ -128,7 +128,7 @@ class SplitBruteForceAntisymmetrize(flax.linen.Module):
 
     fns_to_antisymmetrize: PyTree  # pytree of Callables with the same treedef as input
     logabs: bool = True
-    antisym_sum_dtype = jnp.float32
+    antisym_sum_dtype: jnp.floating = jnp.float32
 
     def _single_leaf_call(
         self, fn_to_antisymmetrize: Callable[[jnp.ndarray], jnp.ndarray], x: jnp.ndarray
@@ -208,7 +208,7 @@ class ComposedBruteForceAntisymmetrize(flax.linen.Module):
 
     fn_to_antisymmetrize: Callable[[jnp.ndarray], jnp.ndarray]
     logabs: bool = True
-    antisym_sum_dtype = jnp.float32
+    antisym_sum_dtype: jnp.floating = jnp.float32
 
     def setup(self):
         """Setup the function to antisymmetrize."""

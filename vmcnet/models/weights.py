@@ -59,7 +59,7 @@ def validate_kernel_initializer(name: str) -> None:
 
 
 def get_kernel_initializer(
-    name: str, dtype=jnp.float32, **kwargs: Any
+    name: str, dtype: jnp.floating = jnp.float32, **kwargs: Any
 ) -> WeightInitializer:
     """Get a kernel initializer."""
     validate_kernel_initializer(name)
@@ -70,7 +70,7 @@ def get_kernel_initializer(
         return constructor(dtype=dtype)
 
 
-def get_kernel_init_from_config(config: ConfigDict, dtype=jnp.float32):
+def get_kernel_init_from_config(config: ConfigDict, dtype: jnp.floating = jnp.float32):
     """Get a kernel initializer from a ConfigDict.
 
     The ConfigDict should have the key "type", as well as any other kwargs to pass
@@ -88,13 +88,15 @@ def validate_bias_initializer(name: str) -> None:
         )
 
 
-def get_bias_initializer(name: str, dtype=jnp.float32) -> WeightInitializer:
+def get_bias_initializer(
+    name: str, dtype: jnp.floating = jnp.float32
+) -> WeightInitializer:
     """Get a bias initializer."""
     validate_bias_initializer(name)
     return INITIALIZER_CONSTRUCTORS[name](dtype=dtype)
 
 
-def get_bias_init_from_config(config, dtype=jnp.float32):
+def get_bias_init_from_config(config, dtype: jnp.floating = jnp.float32):
     """Get a bias initializer from a ConfigDict.
 
     The ConfigDict should have the key "type", as well as any other kwargs to pass
@@ -110,7 +112,7 @@ def get_constant_init(constant: float):
         constant (float): the number to initialize to
     """
 
-    def init_fn(key, shape, dtype=jnp.float32):
+    def init_fn(key, shape, dtype: jnp.floating = jnp.float32):
         del key
         return jnp.ones(shape, dtype=dtype) * jnp.array(constant, dtype=dtype)
 

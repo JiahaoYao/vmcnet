@@ -22,7 +22,7 @@ def initialize_molecular_pos(
     ion_charges: jnp.ndarray,
     nelec_total: int,
     init_width: float = 1.0,
-    dtype=jnp.float32,
+    dtype: jnp.floating = jnp.float32,
 ) -> Tuple[jnp.ndarray, jnp.ndarray]:
     """Initialize a set of plausible initial electron positions.
 
@@ -126,7 +126,7 @@ def laplacian_psi_over_psi(
     x_shape = x.shape
     flat_x = jnp.reshape(x, (-1,))
     n = flat_x.shape[0]
-    identity_mat = jnp.eye(n)
+    identity_mat = jnp.eye(n, dtype=x.dtype)
 
     def flattened_grad_log_psi_of_flat_x(flat_x_in):
         """Flattened input to flattened output version of grad_log_psi."""

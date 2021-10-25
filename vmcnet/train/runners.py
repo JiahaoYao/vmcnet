@@ -51,7 +51,7 @@ def _get_logdir_and_save_config(reload_config: ConfigDict, config: ConfigDict) -
     return logdir
 
 
-def _get_dtype(dtype_name: str) -> jnp.dtype:
+def _get_dtype(dtype_name: str) -> jnp.floating:
     if dtype_name == "float32":
         return jnp.float32
     elif dtype_name == "float64":
@@ -65,7 +65,7 @@ def _get_dtype(dtype_name: str) -> jnp.dtype:
 
 
 def _get_electron_ion_config_as_arrays(
-    config: ConfigDict, dtype=jnp.float32
+    config: ConfigDict, dtype: jnp.floating = jnp.float32
 ) -> Tuple[jnp.ndarray, jnp.ndarray, jnp.ndarray]:
     ion_pos = jnp.array(config.problem.ion_pos, dtype=dtype)
     ion_charges = jnp.array(config.problem.ion_charges, dtype=dtype)
@@ -80,8 +80,8 @@ def _get_and_init_model(
     nelec: jnp.ndarray,
     init_pos: jnp.ndarray,
     key: jnp.ndarray,
-    dtype=jnp.float32,
-    antisym_sum_dtype=jnp.float32,
+    dtype: jnp.floating = jnp.float32,
+    antisym_sum_dtype: jnp.floating = jnp.float32,
     apply_pmap: bool = True,
 ) -> Tuple[flax.linen.Module, flax.core.FrozenDict, jnp.ndarray]:
     log_psi = models.construct.get_model_from_config(
@@ -273,8 +273,8 @@ def _setup_vmc(
     ion_charges: jnp.ndarray,
     nelec: jnp.ndarray,
     key: jnp.ndarray,
-    dtype=jnp.float32,
-    antisym_sum_dtype=jnp.float32,
+    dtype: jnp.floating = jnp.float32,
+    antisym_sum_dtype: jnp.floating = jnp.float32,
     apply_pmap: bool = True,
 ) -> Tuple[
     flax.linen.Module,
@@ -387,7 +387,7 @@ def _make_new_data_for_eval(
     ion_charges: jnp.ndarray,
     nelec: jnp.ndarray,
     key: jnp.ndarray,
-    dtype=jnp.float32,
+    dtype: jnp.floating = jnp.float32,
 ) -> Tuple[jnp.ndarray, dwpa.DWPAData]:
     nelec_total = jnp.sum(nelec)
     # grab the first key if distributed
