@@ -51,17 +51,16 @@ def _get_logdir_and_save_config(reload_config: ConfigDict, config: ConfigDict) -
     return logdir
 
 
-def _get_dtype(config: ConfigDict) -> jnp.dtype:
-    if config.dtype == "float32":
+def _get_dtype(dtype_name: str) -> jnp.dtype:
+    if dtype_name == "float32":
         return jnp.float32
-    elif config.dtype == "float64":
+    elif dtype_name == "float64":
         jax.config.update("jax_enable_x64", True)
         return jnp.float64
 
     raise ValueError(
-        "dtype other than float32, float64 not supported; {} was requested".format(
-            config.dtype
-        )
+        "dtype other than float32, float64 not supported; {} was "
+        "requested".format(dtype_name)
     )
 
 
@@ -82,10 +81,16 @@ def _get_and_init_model(
     init_pos: jnp.ndarray,
     key: jnp.ndarray,
     dtype=jnp.float32,
+    antisym_sum_dtype=jnp.float32,
     apply_pmap: bool = True,
 ) -> Tuple[flax.linen.Module, flax.core.FrozenDict, jnp.ndarray]:
     log_psi = models.construct.get_model_from_config(
-        model_config, nelec, ion_pos, ion_charges, dtype=dtype
+        model_config,
+        nelec,
+        ion_pos,
+        ion_charges,
+        dtype=dtype,
+        antisym_sum_dtype=antisym_sum_dtype,
     )
     key, subkey = jax.random.split(key)
     params = log_psi.init(subkey, init_pos[0:1])
@@ -269,6 +274,7 @@ def _setup_vmc(
     nelec: jnp.ndarray,
     key: jnp.ndarray,
     dtype=jnp.float32,
+    antisym_sum_dtype=jnp.float32,
     apply_pmap: bool = True,
 ) -> Tuple[
     flax.linen.Module,
@@ -296,6 +302,7 @@ def _setup_vmc(
         init_pos,
         key,
         dtype=dtype,
+        antisym_sum_dtype=antisym_sum_dtype,
         apply_pmap=apply_pmap,
     )
 
@@ -481,7 +488,8 @@ def run_molecule() -> None:
     root_logger.setLevel(config.logging_level)
     logdir = _get_logdir_and_save_config(reload_config, config)
 
-    dtype_to_use = _get_dtype(config)
+    dtype_to_use = _get_dtype(config.dtype)
+    antisym_sum_dtype = _get_dtype(config.model.get("antisym_sum_dtype", "float64"))
 
     ion_pos, ion_charges, nelec = _get_electron_ion_config_as_arrays(
         config, dtype=dtype_to_use
@@ -507,6 +515,7 @@ def run_molecule() -> None:
         nelec,
         key,
         dtype=dtype_to_use,
+        antisym_sum_dtype=antisym_sum_dtype,
         apply_pmap=config.distribute,
     )
 

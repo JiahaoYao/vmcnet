@@ -91,6 +91,7 @@ def get_model_from_config(
     ion_pos: jnp.ndarray,
     ion_charges: jnp.ndarray,
     dtype=jnp.float32,
+    antisym_sum_dtype=jnp.float32,
 ) -> flax.linen.Module:
     """Get a model from a hyperparameter config."""
     spin_split = tuple(jnp.cumsum(nelec)[:-1])
@@ -358,6 +359,7 @@ def get_model_from_config(
                     model_config.activation_fn_resnet
                 ),
                 resnet_use_bias=model_config.resnet_use_bias,
+                antisym_sum_dtype=antisym_sum_dtype,
             )
         elif model_config.antisym_type == "double":
             return ComposedBruteForceAntisymmetryWithDecay(
@@ -377,6 +379,7 @@ def get_model_from_config(
                     model_config.activation_fn_resnet
                 ),
                 resnet_use_bias=model_config.resnet_use_bias,
+                antisym_sum_dtype=antisym_sum_dtype,
             )
         else:
             raise ValueError(
@@ -1308,6 +1311,8 @@ class SplitBruteForceAntisymmetryWithDecay(flax.linen.Module):
             ResNets. Has the signature jnp.ndarray -> jnp.ndarray (shape is preserved)
         resnet_use_bias (bool, optional): whether to add a bias term in the dense layers
             of the antisymmetrized ResNets. Defaults to True.
+        antisym_sum_dtype (dtype, optional): precision to use for computing the final
+            summation in each split. Defaults to float32.
     """
 
     spin_split: ParticleSplit
@@ -1321,6 +1326,7 @@ class SplitBruteForceAntisymmetryWithDecay(flax.linen.Module):
     bias_initializer_resnet: WeightInitializer
     activation_fn_resnet: Activation
     resnet_use_bias: bool = True
+    antisym_sum_dtype = jnp.float32
 
     def setup(self):
         """Setup backflow."""
@@ -1369,6 +1375,7 @@ class SplitBruteForceAntisymmetryWithDecay(flax.linen.Module):
         antisymmetries = SplitBruteForceAntisymmetrize(
             [fn_to_antisymmetrize for _ in split_spins],
             logabs=False,
+            antisym_sum_dtype=self.antisym_sum_dtype,
         )(split_spins)
         antisymmetric_part = jnp.log(jnp.abs(jnp.sum(antisymmetries, axis=-1)))
 
@@ -1431,6 +1438,8 @@ class ComposedBruteForceAntisymmetryWithDecay(flax.linen.Module):
             ResNet. Has the signature jnp.ndarray -> jnp.ndarray (shape is preserved)
         resnet_use_bias (bool, optional): whether to add a bias term in the dense layers
             of the antisymmetrized ResNet. Defaults to True.
+        antisym_sum_dtype (dtype, optional): precision to use to compute the final
+            summation. Defaults to jnp.float32.
     """
 
     spin_split: ParticleSplit
@@ -1443,6 +1452,7 @@ class ComposedBruteForceAntisymmetryWithDecay(flax.linen.Module):
     bias_initializer_resnet: WeightInitializer
     activation_fn_resnet: Activation
     resnet_use_bias: bool = True
+    antisym_sum_dtype = jnp.float32
 
     def setup(self):
         """Setup backflow."""
@@ -1481,7 +1491,8 @@ class ComposedBruteForceAntisymmetryWithDecay(flax.linen.Module):
                 self.kernel_initializer_resnet,
                 self.bias_initializer_resnet,
                 use_bias=self.resnet_use_bias,
-            )
+            ),
+            antisym_sum_dtype=self.antisym_sum_dtype,
         )(split_spins)
         jastrow_part = self._jastrow(
             input_stream_1e, input_stream_2e, stream_1e, r_ei, r_ee

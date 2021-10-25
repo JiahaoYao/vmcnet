@@ -122,10 +122,13 @@ class SplitBruteForceAntisymmetrize(flax.linen.Module):
         logabs (bool, optional): whether to compute sum_i log(abs(psi_i)) if logabs is
             True, or prod_i psi_i if logabs is False, where psi_i is the output from
             antisymmetrizing the ith function on the ith input. Defaults to True.
+        antisym_sum_dtype (dtype, optional): precision to use for computing the final
+            summation in each split. Defaults to float32.
     """
 
     fns_to_antisymmetrize: PyTree  # pytree of Callables with the same treedef as input
     logabs: bool = True
+    antisym_sum_dtype = jnp.float32
 
     def _single_leaf_call(
         self, fn_to_antisymmetrize: Callable[[jnp.ndarray], jnp.ndarray], x: jnp.ndarray
@@ -143,7 +146,13 @@ class SplitBruteForceAntisymmetrize(flax.linen.Module):
         perms_out = fn_to_antisymmetrize(x_perm)
         signed_perms_out = signs * perms_out
 
-        return jnp.sum(signed_perms_out, axis=-2)
+        original_dtype = signed_perms_out.dtype
+        signed_perms_out = jnp.asarray(signed_perms_out, dtype=self.antisym_sum_dtype)
+
+        antisymmetrized_out = jnp.sum(signed_perms_out, axis=-2)
+        antisymmetrized_out = jnp.asarray(antisymmetrized_out, dtype=original_dtype)
+
+        return antisymmetrized_out
 
     @flax.linen.compact
     def __call__(self, xs: PyTree) -> jnp.ndarray:
@@ -193,10 +202,13 @@ class ComposedBruteForceAntisymmetrize(flax.linen.Module):
         logabs (bool, optional): whether to compute log(abs(psi)) if logabs is True, or
             psi if logabs is False, where psi is the output from antisymmetrizing
             self.fn_to_antisymmetrize. Defaults to True.
+        antisym_sum_dtype (dtype, optional): precision to use to compute the final
+            summation. Defaults to jnp.float32.
     """
 
     fn_to_antisymmetrize: Callable[[jnp.ndarray], jnp.ndarray]
     logabs: bool = True
+    antisym_sum_dtype = jnp.float32
 
     def setup(self):
         """Setup the function to antisymmetrize."""
@@ -268,9 +280,14 @@ class ComposedBruteForceAntisymmetrize(flax.linen.Module):
         # the signs along the correct (ith) axis of the output.
         signed_perms_out = _reduce_prod_over_leaves([all_perms_out, reshaped_signs])
 
+        original_dtype = signed_perms_out.dtype
+        signed_perms_out = jnp.asarray(signed_perms_out, dtype=self.antisym_sum_dtype)
+
         antisymmetrized_out = jnp.sum(
             signed_perms_out, axis=tuple(-i for i in range(1, nleaves + 2))
         )
+        antisymmetrized_out = jnp.asarray(antisymmetrized_out, dtype=original_dtype)
+
         if self.logabs:
             return jnp.log(jnp.abs(antisymmetrized_out))
 
