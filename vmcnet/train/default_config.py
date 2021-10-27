@@ -294,7 +294,7 @@ def get_default_vmc_config() -> Dict:
                 "estimation_mode": "fisher_exact",
                 "damping": 0.001,
                 "schedule_type": "inverse_time",  # constant or inverse_time
-                "learning_rate": 5e-2,
+                "learning_rate": 1e-4,
                 "learning_decay_rate": 1e-4,
             },
             "adam": {
