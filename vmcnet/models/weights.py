@@ -24,13 +24,40 @@ Shape = Iterable[int]
 Dtype = Any
 WeightInitializer = Callable[[Key, Shape, Dtype], jnp.ndarray]
 
+
+def get_constant_init(scale: float):
+    """Get a weight initializer for a constant array with specified dtype, ignoring key.
+
+    Args:
+        constant (float): the number to initialize to
+    """
+
+    def init_fn(key, shape, dtype=jnp.float32):
+        del key
+        return jnp.ones(shape, dtype=dtype) * jnp.array(scale, dtype=dtype)
+
+    return init_fn
+
+
+def get_identity_init(scale: float, dtype=jnp.float32):
+    """Get an identity matrix initializer. Shape of kernel must be 2D."""
+
+    def init_fn(key, shape, dtype=dtype):
+        del key
+        return scale * jnp.eye(*shape, dtype=dtype)
+
+    return init_fn
+
+
 INITIALIZER_CONSTRUCTORS: Dict[str, Callable] = {
     "zeros": lambda dtype=jnp.float32: functools.partial(zeros, dtype=dtype),
     "ones": lambda dtype=jnp.float32: functools.partial(ones, dtype=dtype),
+    "constant": get_constant_init,
     "uniform": uniform,
     "normal": normal,
     "orthogonal": orthogonal,
     "delta_orthogonal": delta_orthogonal,
+    "identity": get_identity_init,
     "xavier_normal": xavier_normal,
     "xavier_uniform": xavier_uniform,
     "glorot_normal": xavier_normal,
@@ -45,7 +72,9 @@ INITIALIZER_CONSTRUCTORS: Dict[str, Callable] = {
 
 VALID_KERNEL_INITIALIZERS = INITIALIZER_CONSTRUCTORS.keys()
 
-VALID_BIAS_INITIALIZERS = ["zeros", "ones", "uniform", "normal"]
+SUPPORTS_SCALE_PARAM = ["constant", "orthogonal", "delta_orthogonal", "identity"]
+
+VALID_BIAS_INITIALIZERS = ["zeros", "ones", "constant", "uniform", "normal"]
 
 
 # TODO: clean up initializer getting methods
@@ -64,7 +93,7 @@ def get_kernel_initializer(
     """Get a kernel initializer."""
     validate_kernel_initializer(name)
     constructor = INITIALIZER_CONSTRUCTORS[name]
-    if name == "orthogonal" or name == "delta_orthogonal":
+    if name in SUPPORTS_SCALE_PARAM:
         return constructor(scale=kwargs.get("scale", 1.0), dtype=dtype)
     else:
         return constructor(dtype=dtype)
@@ -101,17 +130,3 @@ def get_bias_init_from_config(config, dtype=jnp.float32):
     to the initializer constructor.
     """
     return get_bias_initializer(config.type, dtype=dtype)
-
-
-def get_constant_init(constant: float):
-    """Get a weight initializer for a constant array with specified dtype, ignoring key.
-
-    Args:
-        constant (float): the number to initialize to
-    """
-
-    def init_fn(key, shape, dtype=jnp.float32):
-        del key
-        return jnp.ones(shape, dtype=dtype) * jnp.array(constant, dtype=dtype)
-
-    return init_fn
