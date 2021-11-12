@@ -1,5 +1,6 @@
 """Permutation equivariant functions."""
 import functools
+import logging
 from typing import Callable, Optional, Sequence, Tuple
 
 import flax
@@ -122,7 +123,7 @@ def compute_electron_ion(
         input_1e = r_ei
         if include_ei_norm:
             input_norm = jnp.linalg.norm(input_1e, axis=-1, keepdims=True)
-            input_with_norm = jnp.concatenate([input_1e, input_norm], axis=-1)
+            input_with_norm = jnp.concatenate([input_norm, input_1e], axis=-1)
             input_1e = jnp.reshape(input_with_norm, input_with_norm.shape[:-2] + (-1,))
     return input_1e, r_ei
 
@@ -150,7 +151,7 @@ def compute_electron_electron(
     input_2e = r_ee
     if include_ee_norm:
         r_ee_norm = compute_ee_norm_with_safe_diag(r_ee)
-        input_2e = jnp.concatenate([input_2e, r_ee_norm], axis=-1)
+        input_2e = jnp.concatenate([r_ee_norm, input_2e], axis=-1)
     return input_2e, r_ee
 
 
@@ -377,7 +378,7 @@ class FermiNetOneElectronLayer(flax.linen.Module):
         nonlinear_out = self._activation_fn(dense_out_concat)
 
         if self.skip_connection and _valid_skip(in_1e, nonlinear_out):
-            nonlinear_out = nonlinear_out + in_1e
+            nonlinear_out = (nonlinear_out + in_1e) / jnp.sqrt(2.0)
 
         return nonlinear_out
 
@@ -429,7 +430,7 @@ class FermiNetTwoElectronLayer(flax.linen.Module):
         nonlinear_out = self._activation_fn(dense_out)
 
         if self.skip_connection and _valid_skip(x, nonlinear_out):
-            nonlinear_out = nonlinear_out + x
+            nonlinear_out = (nonlinear_out + x) / jnp.sqrt(2.0)
 
         return nonlinear_out
 
