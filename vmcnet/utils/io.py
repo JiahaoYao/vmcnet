@@ -132,6 +132,16 @@ def save_vmc_state(directory, name, checkpoint_data: CheckpointData):
         )
 
 
+def reload_params_only(directory: str, name: str):
+    """Reload a VMC state from a saved checkpoint."""
+    with open_existing_file(directory, name, "rb") as file_handle:
+        # np.savez wraps non-array objects in arrays for storage, so call
+        # tolist() on such objects to get them back to their original type.
+        with np.load(file_handle, allow_pickle=True) as npz_data:
+            params = frozen_dict.freeze(npz_data["p"].tolist())
+            return params
+
+
 def reload_vmc_state(directory: str, name: str) -> CheckpointData:
     """Reload a VMC state from a saved checkpoint."""
     with open_existing_file(directory, name, "rb") as file_handle:
