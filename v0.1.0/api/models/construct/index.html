@@ -1,0 +1,4076 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.5">
+    
+    
+      
+        <title>construct - vmcnet</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a617204b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9204c3b2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/docstrings.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/sidebar.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/content.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vmcnet.models.construct" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        <aside class="md-banner md-banner--warning">
+          
+        </aside>
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="vmcnet" class="md-header__button md-logo" aria-label="vmcnet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            vmcnet
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              construct
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/jeffminlin/vmcnet" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jeffminlin/vmcnet
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../examples/harmonic_oscillator/" class="md-tabs__link md-tabs__link--active">
+        API Reference
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../CONTRIBUTING/" class="md-tabs__link">
+      Contributing
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="vmcnet" class="md-nav__button md-logo" aria-label="vmcnet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    vmcnet
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/jeffminlin/vmcnet" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jeffminlin/vmcnet
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          API Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          API Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="examples" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/harmonic_oscillator/" class="md-nav__link">
+        harmonic_oscillator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/hydrogen_like_atom/" class="md-nav__link">
+        hydrogen_like_atom
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          mcmc
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="mcmc" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          mcmc
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mcmc/dynamic_width_position_amplitude/" class="md-nav__link">
+        dynamic_width_position_amplitude
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mcmc/metropolis/" class="md-nav__link">
+        metropolis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mcmc/position_amplitude_core/" class="md-nav__link">
+        position_amplitude_core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mcmc/simple_position_amplitude/" class="md-nav__link">
+        simple_position_amplitude
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mcmc/statistics/" class="md-nav__link">
+        statistics
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3">
+          models
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="models" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          models
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../antiequivariance/" class="md-nav__link">
+        antiequivariance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../antisymmetry/" class="md-nav__link">
+        antisymmetry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          construct
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        construct
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct" class="md-nav__link">
+    vmcnet.models.construct
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.AntiequivarianceNet" class="md-nav__link">
+    AntiequivarianceNet
+  </a>
+  
+    <nav class="md-nav" aria-label="AntiequivarianceNet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.AntiequivarianceNet.setup" class="md-nav__link">
+    setup()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.AntiequivarianceNet.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.DeterminantFnMode" class="md-nav__link">
+    DeterminantFnMode
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.EmbeddedParticleFermiNet" class="md-nav__link">
+    EmbeddedParticleFermiNet
+  </a>
+  
+    <nav class="md-nav" aria-label="EmbeddedParticleFermiNet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.EmbeddedParticleFermiNet.setup" class="md-nav__link">
+    setup()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.ExtendedOrbitalMatrixFermiNet" class="md-nav__link">
+    ExtendedOrbitalMatrixFermiNet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.FactorizedAntisymmetry" class="md-nav__link">
+    FactorizedAntisymmetry
+  </a>
+  
+    <nav class="md-nav" aria-label="FactorizedAntisymmetry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.FactorizedAntisymmetry.setup" class="md-nav__link">
+    setup()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.FactorizedAntisymmetry.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.FermiNet" class="md-nav__link">
+    FermiNet
+  </a>
+  
+    <nav class="md-nav" aria-label="FermiNet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.FermiNet.setup" class="md-nav__link">
+    setup()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.FermiNet.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.GenericAntisymmetry" class="md-nav__link">
+    GenericAntisymmetry
+  </a>
+  
+    <nav class="md-nav" aria-label="GenericAntisymmetry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.GenericAntisymmetry.setup" class="md-nav__link">
+    setup()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.GenericAntisymmetry.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.slog_psi_to_log_psi_apply" class="md-nav__link">
+    slog_psi_to_log_psi_apply()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.get_model_from_config" class="md-nav__link">
+    get_model_from_config()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.get_compute_input_streams_from_config" class="md-nav__link">
+    get_compute_input_streams_from_config()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.get_backflow_from_config" class="md-nav__link">
+    get_backflow_from_config()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.get_sign_covariance_from_config" class="md-nav__link">
+    get_sign_covariance_from_config()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.get_residual_blocks_for_ferminet_backflow" class="md-nav__link">
+    get_residual_blocks_for_ferminet_backflow()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.get_resnet_determinant_fn_for_ferminet" class="md-nav__link">
+    get_resnet_determinant_fn_for_ferminet()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../core/" class="md-nav__link">
+        core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../equivariance/" class="md-nav__link">
+        equivariance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jastrow/" class="md-nav__link">
+        jastrow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sign_symmetry/" class="md-nav__link">
+        sign_symmetry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../weights/" class="md-nav__link">
+        weights
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4">
+          physics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="physics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          physics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../physics/core/" class="md-nav__link">
+        core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../physics/kinetic/" class="md-nav__link">
+        kinetic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../physics/potential/" class="md-nav__link">
+        potential
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          train
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="train" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          train
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../train/default_config/" class="md-nav__link">
+        default_config
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../train/parse_config_flags/" class="md-nav__link">
+        parse_config_flags
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../train/runners/" class="md-nav__link">
+        runners
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../train/vmc/" class="md-nav__link">
+        vmc
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6">
+          updates
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="updates" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          updates
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../updates/params/" class="md-nav__link">
+        params
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../updates/parse_config/" class="md-nav__link">
+        parse_config
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../updates/sr/" class="md-nav__link">
+        sr
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          utils
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="utils" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          utils
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/checkpoint/" class="md-nav__link">
+        checkpoint
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/distribute/" class="md-nav__link">
+        distribute
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/kfac/" class="md-nav__link">
+        kfac
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/log_linear_exp/" class="md-nav__link">
+        log_linear_exp
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/pytree_helpers/" class="md-nav__link">
+        pytree_helpers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/slog_helpers/" class="md-nav__link">
+        slog_helpers
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CONTRIBUTING/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct" class="md-nav__link">
+    vmcnet.models.construct
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.AntiequivarianceNet" class="md-nav__link">
+    AntiequivarianceNet
+  </a>
+  
+    <nav class="md-nav" aria-label="AntiequivarianceNet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.AntiequivarianceNet.setup" class="md-nav__link">
+    setup()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.AntiequivarianceNet.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.DeterminantFnMode" class="md-nav__link">
+    DeterminantFnMode
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.EmbeddedParticleFermiNet" class="md-nav__link">
+    EmbeddedParticleFermiNet
+  </a>
+  
+    <nav class="md-nav" aria-label="EmbeddedParticleFermiNet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.EmbeddedParticleFermiNet.setup" class="md-nav__link">
+    setup()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.ExtendedOrbitalMatrixFermiNet" class="md-nav__link">
+    ExtendedOrbitalMatrixFermiNet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.FactorizedAntisymmetry" class="md-nav__link">
+    FactorizedAntisymmetry
+  </a>
+  
+    <nav class="md-nav" aria-label="FactorizedAntisymmetry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.FactorizedAntisymmetry.setup" class="md-nav__link">
+    setup()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.FactorizedAntisymmetry.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.FermiNet" class="md-nav__link">
+    FermiNet
+  </a>
+  
+    <nav class="md-nav" aria-label="FermiNet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.FermiNet.setup" class="md-nav__link">
+    setup()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.FermiNet.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.GenericAntisymmetry" class="md-nav__link">
+    GenericAntisymmetry
+  </a>
+  
+    <nav class="md-nav" aria-label="GenericAntisymmetry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.GenericAntisymmetry.setup" class="md-nav__link">
+    setup()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.GenericAntisymmetry.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.slog_psi_to_log_psi_apply" class="md-nav__link">
+    slog_psi_to_log_psi_apply()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.get_model_from_config" class="md-nav__link">
+    get_model_from_config()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.get_compute_input_streams_from_config" class="md-nav__link">
+    get_compute_input_streams_from_config()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.get_backflow_from_config" class="md-nav__link">
+    get_backflow_from_config()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.get_sign_covariance_from_config" class="md-nav__link">
+    get_sign_covariance_from_config()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.get_residual_blocks_for_ferminet_backflow" class="md-nav__link">
+    get_residual_blocks_for_ferminet_backflow()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.construct.get_resnet_determinant_fn_for_ferminet" class="md-nav__link">
+    get_resnet_determinant_fn_for_ferminet()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+  <h1>construct</h1>
+
+<div class="doc doc-object doc-module">
+
+<a id="vmcnet.models.construct"></a>
+    <div class="doc doc-contents first">
+
+      <p>Combine pieces to form full models.</p>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="vmcnet.models.construct.AntiequivarianceNet" class="doc doc-heading">
+        <code>
+AntiequivarianceNet            (<span title="vmcnet.models.core.Module">Module</span>)
+        </code>
+
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-dataclass"><code>dataclass</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Antisymmetry from anti-equivariance, backflow -&gt; antieq -&gt; odd invariance.</p>
+
+<p><strong>Attributes:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>spin_split</code></td>
+        <td><code>ParticleSplit</code></td>
+        <td><p>number of spins to split the input equally,
+or specified sequence of locations to split along the 2nd-to-last axis.
+E.g., if nelec = 10, and <code>spin_split</code> = 2, then the input is split (5, 5).
+If nelec = 10, and <code>spin_split</code> = (2, 4), then the input is split into
+(2, 4, 4) -- note when <code>spin_split</code> is a sequence, there will be one more
+spin than the length of the sequence. In the original use-case of spin-1/2
+particles, <code>spin_split</code> should be either the number 2 (for closed-shell
+systems) or should be a Sequence with length 1 whose element is less than
+the total number of electrons.</p></td>
+      </tr>
+      <tr>
+        <td><code>compute_input_streams</code></td>
+        <td><code>ComputeInputStreams</code></td>
+        <td><p>function to compute input
+streams from electron positions. Has the signature
+(elec_pos of shape (..., n, d)) -&gt; (
+    stream_1e of shape (..., n, d'),
+    optional stream_2e of shape (..., nelec, nelec, d2),
+    optional r_ei of shape (..., n, nion, d),
+    optional r_ee of shape (..., n, n, d),
+)</p></td>
+      </tr>
+      <tr>
+        <td><code>backflow</code></td>
+        <td><code>Callable</code></td>
+        <td><p>function which computes position features from the electron
+positions. Has the signature
+(
+    stream_1e of shape (..., n, d'),
+    optional stream_2e of shape (..., nelec, nelec, d2),
+) -&gt; stream_1e of shape (..., n, d')</p></td>
+      </tr>
+      <tr>
+        <td><code>antiequivariant_layer</code></td>
+        <td><code>Callable</code></td>
+        <td><p>function which computes antiequivariances-per-
+spin. Has the signature
+(stream_1e of shape (..., n, d_backflow), r_ei of shape (..., n, nion, d))
+    -&gt; (antieqs of shapes [spin: (..., n[spin], d_antieq)])</p></td>
+      </tr>
+      <tr>
+        <td><code>array_list_sign_covariance</code></td>
+        <td><code>Callable</code></td>
+        <td><p>function which is sign-
+covariant with respect to each spin. Has the signature
+[(..., nelec[spin], d_antieq)]  -&gt; (..., d_antisym). Since this function
+is sign covariant, its outputs are antisymmetric, so Psi can be calculated
+by summing over the final axis of the result.</p></td>
+      </tr>
+      <tr>
+        <td><code>multiply_by_eq_features</code></td>
+        <td><code>bool</code></td>
+        <td><p>If True, the antiequivariance from the
+antiequivariant_layer is multiplied by the equivariant features from the
+backflow before being fed into the sign covariant function. If False, the
+antiequivariance is processed directly by the sign covariant function.
+Defaults to False.</p></td>
+      </tr>
+  </tbody>
+</table>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.models.construct.AntiequivarianceNet.setup" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Setup backflow.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/construct.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Setup backflow.&quot;&quot;&quot;</span>
+    <span class="c1"># workaround MyPy&#39;s typing error for callable attribute, see</span>
+    <span class="c1"># https://github.com/python/mypy/issues/708</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_compute_input_streams</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_input_streams</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_backflow</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backflow</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_antiequivariant_layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">antiequivariant_layer</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_array_list_sign_covariance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">array_list_sign_covariance</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.models.construct.AntiequivarianceNet.__call__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elec_pos</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Compose backflow -&gt; antiequivariance -&gt; sign covariant equivariance -&gt; sum.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>elec_pos</code></td>
+        <td><code>Array</code></td>
+        <td><p>array of particle positions (..., nelec, d)</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Array</code></td>
+      <td><p>log(abs(psi)), where psi is a general odd invariance of an
+anti-equivariant backflow. If the inputs have shape (batch_dims, nelec, d),
+then the output has shape (batch_dims,).</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/construct.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@flax</span><span class="o">.</span><span class="n">linen</span><span class="o">.</span><span class="n">compact</span>
+<span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elec_pos</span><span class="p">:</span> <span class="n">Array</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SLArray</span><span class="p">:</span>  <span class="c1"># type: ignore[override]</span>
+    <span class="sd">&quot;&quot;&quot;Compose backflow -&gt; antiequivariance -&gt; sign covariant equivariance -&gt; sum.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        elec_pos (Array): array of particle positions (..., nelec, d)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Array: log(abs(psi)), where psi is a general odd invariance of an</span>
+<span class="sd">        anti-equivariant backflow. If the inputs have shape (batch_dims, nelec, d),</span>
+<span class="sd">        then the output has shape (batch_dims,).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">stream_1e</span><span class="p">,</span> <span class="n">stream_2e</span><span class="p">,</span> <span class="n">r_ei</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_input_streams</span><span class="p">(</span><span class="n">elec_pos</span><span class="p">)</span>
+    <span class="n">backflow_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backflow</span><span class="p">(</span><span class="n">stream_1e</span><span class="p">,</span> <span class="n">stream_2e</span><span class="p">)</span>
+    <span class="n">antiequivariant_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_antiequivariant_layer</span><span class="p">(</span><span class="n">backflow_out</span><span class="p">,</span> <span class="n">r_ei</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">multiply_by_eq_features</span><span class="p">:</span>
+        <span class="n">antiequivariant_out</span> <span class="o">=</span> <span class="n">antiequivariance</span><span class="o">.</span><span class="n">multiply_antieq_by_eq_features</span><span class="p">(</span>
+            <span class="n">antiequivariant_out</span><span class="p">,</span> <span class="n">backflow_out</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">spin_split</span>
+        <span class="p">)</span>
+
+    <span class="n">antisym_vector</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_array_list_sign_covariance</span><span class="p">(</span><span class="n">antiequivariant_out</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">array_to_slog</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">antisym_vector</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="vmcnet.models.construct.DeterminantFnMode" class="doc doc-heading">
+        <code>
+DeterminantFnMode            (<span title="enum.Enum">Enum</span>)
+        </code>
+
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Enum specifying how to use determinant resnet in FermiNet model.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="vmcnet.models.construct.EmbeddedParticleFermiNet" class="doc doc-heading">
+        <code>
+EmbeddedParticleFermiNet            (<a title="vmcnet.models.construct.FermiNet" href="#vmcnet.models.construct.FermiNet">FermiNet</a>)
+        </code>
+
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-dataclass"><code>dataclass</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Model that expands its inputs with extra hidden particles, then applies FermiNet.</p>
+<p>Note: the backflow argument supplied for the construction of this model should use
+the spin_split for the TOTAL number of particles, visible and hidden, for each spin,
+not the standard spin_split for the visible particles only.</p>
+
+<p><strong>Attributes:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>nhidden_fermions_per_spin</code></td>
+        <td><code>Sequence[int]</code></td>
+        <td><p>number of hidden fermions to
+generate for each spin. Must have length nspins.</p></td>
+      </tr>
+      <tr>
+        <td><code>invariance_compute_input_streams</code></td>
+        <td><code>ComputeInputStreams</code></td>
+        <td><p>function to compute
+input streams from electron positions, for the invariance that is used to
+generate the hidden particle positions. Has the signature
+(elec_pos of shape (..., n, d)) -&gt; (
+    stream_1e of shape (..., n, d'),
+    optional stream_2e of shape (..., nelec, nelec, d2),
+    optional r_ei of shape (..., n, nion, d),
+    optional r_ee of shape (..., n, n, d),
+)</p></td>
+      </tr>
+      <tr>
+        <td><code>invariance_backflow</code></td>
+        <td><code>Callable</code></td>
+        <td><p>backflow function to be used for the invariance
+which generates the hidden fermion positions. Has the signature
+(
+    stream_1e of shape (..., n, d'),
+    optional stream_2e of shape (..., nelec, nelec, d2),
+) -&gt; stream_1e of shape (..., n, d')</p></td>
+      </tr>
+      <tr>
+        <td><code>invariance_kernel_initializer</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>kernel initializer for the
+invariance dense layer. Has signature (key, shape, dtype) -&gt; Array</p></td>
+      </tr>
+      <tr>
+        <td><code>invariance_bias_initializer</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>bias initializer for the
+invariance dense layer. Has signature (key, shape, dtype) -&gt; Array</p></td>
+      </tr>
+      <tr>
+        <td><code>invariance_use_bias</code></td>
+        <td></td>
+        <td><p>(bool, optional): whether to add a bias term in the dense
+layer of the invariance. Defaults to True.</p></td>
+      </tr>
+      <tr>
+        <td><code>invariance_register_kfac</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to register the dense layer
+of the invariance with KFAC. Defaults to True.</p></td>
+      </tr>
+  </tbody>
+</table>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.models.construct.EmbeddedParticleFermiNet.setup" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Setup EmbeddedParticleFermiNet.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/construct.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Setup EmbeddedParticleFermiNet.&quot;&quot;&quot;</span>
+    <span class="c1"># workaround MyPy&#39;s typing error for callable attribute, see</span>
+    <span class="c1"># https://github.com/python/mypy/issues/708</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_invariance_compute_input_streams</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">invariance_compute_input_streams</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_invariance_backflow</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">invariance_backflow</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="vmcnet.models.construct.ExtendedOrbitalMatrixFermiNet" class="doc doc-heading">
+        <code>
+ExtendedOrbitalMatrixFermiNet            (<a title="vmcnet.models.construct.FermiNet" href="#vmcnet.models.construct.FermiNet">FermiNet</a>)
+        </code>
+
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-dataclass"><code>dataclass</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>FermiNet-based model with larger orbital matrices via padding with invariance.</p>
+
+<p><strong>Attributes:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>nhidden_fermions_per_spin</code></td>
+        <td><code>Sequence[int]</code></td>
+        <td><p>sequence of integers
+specifying how many extra hidden particle dimensions and corresponding
+virtual orbitals to add to the orbital matrices. If not None, must have
+length nspins. Defaults to None (no extra dims added, equivalent to
+FermiNet).</p></td>
+      </tr>
+      <tr>
+        <td><code>invariance_kernel_initializer</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>kernel initializer
+for the invariance dense layer. Has signature
+    (key, shape, dtype) -&gt; Array.
+Defaults to an orthogonal initializer.</p></td>
+      </tr>
+      <tr>
+        <td><code>invariance_bias_initializer</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>bias initializer for
+the invariance dense layer. Has signature
+    (key, shape, dtype) -&gt; Array.
+Defaults to a scaled random normal initializer.</p></td>
+      </tr>
+      <tr>
+        <td><code>invariance_use_bias</code></td>
+        <td></td>
+        <td><p>(bool, optional): whether to add a bias term in the dense
+layer of the invariance. Defaults to True.</p></td>
+      </tr>
+      <tr>
+        <td><code>invariance_register_kfac</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to register the dense layer
+of the invariance with KFAC. Defaults to True.</p></td>
+      </tr>
+      <tr>
+        <td><code>invariance_backflow</code></td>
+        <td><code>Callable</code></td>
+        <td><p>backflow function to be used for the
+invariance which generates the hidden fermion positions. If None, the
+outputs of the regular FermiNet backflow are used instead to form an
+invariance. Defaults to None.</p></td>
+      </tr>
+  </tbody>
+</table>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="vmcnet.models.construct.FactorizedAntisymmetry" class="doc doc-heading">
+        <code>
+FactorizedAntisymmetry            (<span title="vmcnet.models.core.Module">Module</span>)
+        </code>
+
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-dataclass"><code>dataclass</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>A sum of products of explicitly antisymmetrized ResNets, composed with backflow.</p>
+<p>This connects the computational graph between a backflow, a factorized
+antisymmetrized ResNet, and a jastrow.</p>
+<p>See https://arxiv.org/abs/2112.03491 for a description of the factorized
+antisymmetric layer.</p>
+
+<p><strong>Attributes:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>spin_split</code></td>
+        <td><code>ParticleSplit</code></td>
+        <td><p>number of spins to split the input equally,
+or specified sequence of locations to split along the 2nd-to-last axis.
+E.g., if nelec = 10, and <code>spin_split</code> = 2, then the input is split (5, 5).
+If nelec = 10, and <code>spin_split</code> = (2, 4), then the input is split into
+(2, 4, 4) -- note when <code>spin_split</code> is a sequence, there will be one more
+spin than the length of the sequence. In the original use-case of spin-1/2
+particles, <code>spin_split</code> should be either the number 2 (for closed-shell
+systems) or should be a Sequence with length 1 whose element is less than
+the total number of electrons.</p></td>
+      </tr>
+      <tr>
+        <td><code>compute_input_streams</code></td>
+        <td><code>ComputeInputStreams</code></td>
+        <td><p>function to compute input
+streams from electron positions. Has the signature
+(elec_pos of shape (..., n, d)) -&gt; (
+    stream_1e of shape (..., n, d'),
+    optional stream_2e of shape (..., nelec, nelec, d2),
+    optional r_ei of shape (..., n, nion, d),
+    optional r_ee of shape (..., n, n, d),
+)</p></td>
+      </tr>
+      <tr>
+        <td><code>backflow</code></td>
+        <td><code>Callable</code></td>
+        <td><p>function which computes position features from the electron
+positions. Has the signature
+(
+    stream_1e of shape (..., n, d'),
+    optional stream_2e of shape (..., nelec, nelec, d2),
+) -&gt; stream_1e of shape (..., n, d')</p></td>
+      </tr>
+      <tr>
+        <td><code>jastrow</code></td>
+        <td><code>Callable</code></td>
+        <td><p>function which computes a Jastrow factor from displacements.
+Has the signature
+(
+    r_ei of shape (batch_dims, n, nion, d),
+    r_ee of shape (batch_dims, n, n, d),
+)
+    -&gt; log jastrow of shape (batch_dims,)</p></td>
+      </tr>
+      <tr>
+        <td><code>rank</code></td>
+        <td><code>int</code></td>
+        <td><p>The rank of the explicit antisymmetry. In practical terms, the
+number of resnets to antisymmetrize for each spin. This is analogous to
+ndeterminants for regular FermiNet.</p></td>
+      </tr>
+      <tr>
+        <td><code>ndense_resnet</code></td>
+        <td><code>int</code></td>
+        <td><p>number of dense nodes in each layer of each antisymmetrized
+ResNet</p></td>
+      </tr>
+      <tr>
+        <td><code>nlayers_resnet</code></td>
+        <td><code>int</code></td>
+        <td><p>number of layers in each antisymmetrized ResNet</p></td>
+      </tr>
+      <tr>
+        <td><code>kernel_initializer_resnet</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>kernel initializer for
+the dense layers in the antisymmetrized ResNets. Has signature
+(key, shape, dtype) -&gt; Array</p></td>
+      </tr>
+      <tr>
+        <td><code>bias_initializer_resnet</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>bias initializer for the
+dense layers in the antisymmetrized ResNets. Has signature
+(key, shape, dtype) -&gt; Array</p></td>
+      </tr>
+      <tr>
+        <td><code>activation_fn_resnet</code></td>
+        <td><code>Activation</code></td>
+        <td><p>activation function in the antisymmetrized
+ResNets. Has the signature Array -&gt; Array (shape is preserved)</p></td>
+      </tr>
+      <tr>
+        <td><code>resnet_use_bias</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to add a bias term in the dense layers
+of the antisymmetrized ResNets. Defaults to True.</p></td>
+      </tr>
+  </tbody>
+</table>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.models.construct.FactorizedAntisymmetry.setup" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Setup backflow.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/construct.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Setup backflow.&quot;&quot;&quot;</span>
+    <span class="c1"># workaround MyPy&#39;s typing error for callable attribute, see</span>
+    <span class="c1"># https://github.com/python/mypy/issues/708</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_compute_input_streams</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_input_streams</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_backflow</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backflow</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_jastrow</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">jastrow</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.models.construct.FactorizedAntisymmetry.__call__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elec_pos</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Compose FermiNet backflow -&gt; antisymmetrized ResNets -&gt; logabs product.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>elec_pos</code></td>
+        <td><code>Array</code></td>
+        <td><p>array of particle positions (..., nelec, d)</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Array</code></td>
+      <td><p>spinful antisymmetrized output; logarithm of the absolute value
+of a anti-symmetric function of elec_pos, where the anti-symmetry is with
+respect to the second-to-last axis of elec_pos. The anti-symmetry holds for
+particles within the same split, but not for permutations which swap
+particles across different spin splits. If the inputs have shape
+(batch_dims, nelec, d), then the output has shape (batch_dims,).</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/construct.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@flax</span><span class="o">.</span><span class="n">linen</span><span class="o">.</span><span class="n">compact</span>
+<span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elec_pos</span><span class="p">:</span> <span class="n">Array</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SLArray</span><span class="p">:</span>  <span class="c1"># type: ignore[override]</span>
+    <span class="sd">&quot;&quot;&quot;Compose FermiNet backflow -&gt; antisymmetrized ResNets -&gt; logabs product.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        elec_pos (Array): array of particle positions (..., nelec, d)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Array: spinful antisymmetrized output; logarithm of the absolute value</span>
+<span class="sd">        of a anti-symmetric function of elec_pos, where the anti-symmetry is with</span>
+<span class="sd">        respect to the second-to-last axis of elec_pos. The anti-symmetry holds for</span>
+<span class="sd">        particles within the same split, but not for permutations which swap</span>
+<span class="sd">        particles across different spin splits. If the inputs have shape</span>
+<span class="sd">        (batch_dims, nelec, d), then the output has shape (batch_dims,).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">input_stream_1e</span><span class="p">,</span> <span class="n">input_stream_2e</span><span class="p">,</span> <span class="n">r_ei</span><span class="p">,</span> <span class="n">r_ee</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_input_streams</span><span class="p">(</span>
+        <span class="n">elec_pos</span>
+    <span class="p">)</span>
+    <span class="n">stream_1e</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backflow</span><span class="p">(</span><span class="n">input_stream_1e</span><span class="p">,</span> <span class="n">input_stream_2e</span><span class="p">)</span>
+    <span class="n">split_spins</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">stream_1e</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">spin_split</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">fn_to_antisymmetrize</span><span class="p">(</span><span class="n">x_one_spin</span><span class="p">):</span>
+        <span class="n">resnet_outputs</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">SimpleResNet</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ndense_resnet</span><span class="p">,</span>
+                <span class="mi">1</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nlayers_resnet</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">activation_fn_resnet</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">kernel_initializer_resnet</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">bias_initializer_resnet</span><span class="p">,</span>
+                <span class="n">use_bias</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">resnet_use_bias</span><span class="p">,</span>
+            <span class="p">)(</span><span class="n">x_one_spin</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">)</span>
+        <span class="p">]</span>
+        <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">resnet_outputs</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># TODO (ggoldsh/jeffminlin): better typing for the Array vs SLArray version of</span>
+    <span class="c1"># this model to avoid having to cast the return type.</span>
+    <span class="n">slog_antisyms</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span>
+        <span class="n">SLArray</span><span class="p">,</span>
+        <span class="n">FactorizedAntisymmetrize</span><span class="p">([</span><span class="n">fn_to_antisymmetrize</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">split_spins</span><span class="p">])(</span>
+            <span class="n">split_spins</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="n">sign_psi</span><span class="p">,</span> <span class="n">log_antisyms</span> <span class="o">=</span> <span class="n">slog_sum_over_axis</span><span class="p">(</span><span class="n">slog_antisyms</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">jastrow_part</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jastrow</span><span class="p">(</span>
+        <span class="n">input_stream_1e</span><span class="p">,</span> <span class="n">input_stream_2e</span><span class="p">,</span> <span class="n">stream_1e</span><span class="p">,</span> <span class="n">r_ei</span><span class="p">,</span> <span class="n">r_ee</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">sign_psi</span><span class="p">,</span> <span class="n">log_antisyms</span> <span class="o">+</span> <span class="n">jastrow_part</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="vmcnet.models.construct.FermiNet" class="doc doc-heading">
+        <code>
+FermiNet            (<span title="vmcnet.models.core.Module">Module</span>)
+        </code>
+
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-dataclass"><code>dataclass</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>FermiNet/generalized Slater determinant model.</p>
+<p>This model was first introduced in the following papers:
+    https://journals.aps.org/prresearch/abstract/10.1103/PhysRevResearch.2.033429
+    https://arxiv.org/abs/2011.07125
+Their repository can be found at https://github.com/deepmind/ferminet, which
+includes a JAX branch.</p>
+
+<p><strong>Attributes:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>spin_split</code></td>
+        <td><code>ParticleSplit</code></td>
+        <td><p>number of spins to split the input equally,
+or specified sequence of locations to split along the 2nd-to-last axis.
+E.g., if nelec = 10, and <code>spin_split</code> = 2, then the input is split (5, 5).
+If nelec = 10, and <code>spin_split</code> = (2, 4), then the input is split into
+(2, 4, 4) -- note when <code>spin_split</code> is a sequence, there will be one more
+spin than the length of the sequence. In the original use-case of spin-1/2
+particles, <code>spin_split</code> should be either the number 2 (for closed-shell
+systems) or should be a Sequence with length 1 whose element is less than
+the total number of electrons.</p></td>
+      </tr>
+      <tr>
+        <td><code>compute_input_streams</code></td>
+        <td><code>ComputeInputStreams</code></td>
+        <td><p>function to compute input
+streams from electron positions. Has the signature
+(elec_pos of shape (..., n, d)) -&gt; (
+    stream_1e of shape (..., n, d'),
+    optional stream_2e of shape (..., nelec, nelec, d2),
+    optional r_ei of shape (..., n, nion, d),
+    optional r_ee of shape (..., n, n, d),
+)</p></td>
+      </tr>
+      <tr>
+        <td><code>backflow</code></td>
+        <td><code>Callable</code></td>
+        <td><p>function which computes position features from the electron
+positions. Has the signature
+(
+    stream_1e of shape (..., n, d'),
+    optional stream_2e of shape (..., nelec, nelec, d2),
+) -&gt; stream_1e of shape (..., n, d')</p></td>
+      </tr>
+      <tr>
+        <td><code>ndeterminants</code></td>
+        <td><code>int</code></td>
+        <td><p>number of determinants in the FermiNet model, i.e. the
+number of distinct orbital layers applied</p></td>
+      </tr>
+      <tr>
+        <td><code>kernel_initializer_orbital_linear</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>kernel initializer for
+the linear part of the orbitals. Has signature
+(key, shape, dtype) -&gt; Array</p></td>
+      </tr>
+      <tr>
+        <td><code>kernel_initializer_envelope_dim</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>kernel initializer for the
+decay rate in the exponential envelopes. If <code>isotropic_decay</code> is True, then
+this initializes a single decay rate number per ion and orbital. If
+<code>isotropic_decay</code> is False, then this initializes a 3x3 matrix per ion and
+orbital. Has signature (key, shape, dtype) -&gt; Array</p></td>
+      </tr>
+      <tr>
+        <td><code>kernel_initializer_envelope_ion</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>kernel initializer for the
+linear combination over the ions of exponential envelopes. Has signature
+(key, shape, dtype) -&gt; Array</p></td>
+      </tr>
+      <tr>
+        <td><code>bias_initializer_orbital_linear</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>bias initializer for the
+linear part of the orbitals. Has signature
+(key, shape, dtype) -&gt; Array</p></td>
+      </tr>
+      <tr>
+        <td><code>orbitals_use_bias</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to add a bias term in the linear part of the
+orbitals.</p></td>
+      </tr>
+      <tr>
+        <td><code>isotropic_decay</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether the decay for each ion should be anisotropic
+(w.r.t. the dimensions of the input), giving envelopes of the form
+exp(-||A(r - R)||) for a dxd matrix A or isotropic, giving
+exp(-||a(r - R||)) for a number a.</p></td>
+      </tr>
+      <tr>
+        <td><code>determinant_fn</code></td>
+        <td><code>DeterminantFn or None</code></td>
+        <td><p>A optional function with signature
+dout, [nspins: (..., ndeterminants)] -&gt; (..., dout).</p>
+<p>If not None, the function will be used to calculate Psi based on the
+outputs of the orbital matrix determinants. Depending on the
+determinant_fn_mode selected, this function can be used in one of several
+ways.</p>
+<p>If the mode is SIGN_COVARIANCE, the function will use d=1
+and will be explicitly symmetrized over the sign group, on a per-spin basis,
+to be sign-covariant (odd). If PARALLEL_EVEN or PAIRWISE_EVEN are
+selected, the function will be symmetrized to be spin-wise sign invariant
+(even).</p>
+<p>For PARALLEL_EVEN, the function will use d=ndeterminants, and each
+output will be multiplied by the product of corresponding determinants. That
+is, for 2 spins, with up determinants u_i and down determinants d_i, the
+ansatz will be sum_{i}(u_i * d_i * f_i(u,d)), where f_i(u,d) is the
+symmetrized determinant function.</p>
+<p>For PAIRWISE_EVEN, the function will use
+d=ndeterminants**nspins, and each output will again be multiplied by a
+product of determinants, but this time the determinants will range over all
+pairs. That is, for 2 spins, the ansatz will be
+sum_{i, j}(u_i * d_j * f_{i,j}(u,d)). Currently, PAIRWISE_EVEN mode only
+supports nspins = 2.</p>
+<p>If None, the equivalent of PARALLEL_EVEN mode (overriding any set
+determinant_fn_mode) is used without a symmetrized resnet (so the output,
+before any log-transformations, is a sum of products of determinants).</p></td>
+      </tr>
+      <tr>
+        <td><code>determinant_fn_mode</code></td>
+        <td><code>DeterminantFnMode</code></td>
+        <td><p>One of SIGN_COVARIANCE,
+PARALLEL_EVEN, or PAIRWISE_EVEN. Used to decide how exactly to use the
+provided determinant_fn to calculate an ansatz for Psi; irrelevant
+if determinant_fn is set to None.</p></td>
+      </tr>
+      <tr>
+        <td><code>full_det</code></td>
+        <td><code>bool</code></td>
+        <td><p>If True, the model will use a single, "full" determinant with
+orbitals from particles of all spins. For example, for a spin_split of
+(2,2), the original FermiNet with ndeterminants=1 would calculate two
+separate 2x2 orbital matrices and multiply their determinants together. A
+full determinant model would instead calculate a single 4x4 matrix, with the
+first two particle indices corresponding to the up-spin particles and the
+last two particle indices corresponding to the down-spin particles. The
+output of the model would then be the determinant of that single matrix, if
+ndeterminants=1, or the sum of multiple such determinants if
+ndeterminants&gt;1.</p></td>
+      </tr>
+  </tbody>
+</table>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.models.construct.FermiNet.setup" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Setup backflow and symmetrized determinant function.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/construct.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Setup backflow and symmetrized determinant function.&quot;&quot;&quot;</span>
+    <span class="c1"># workaround MyPy&#39;s typing error for callable attribute, see</span>
+    <span class="c1"># https://github.com/python/mypy/issues/708</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_compute_input_streams</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_input_streams</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_backflow</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backflow</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_symmetrized_det_fn</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">determinant_fn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">determinant_fn_mode</span> <span class="o">==</span> <span class="n">DeterminantFnMode</span><span class="o">.</span><span class="n">SIGN_COVARIANCE</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_symmetrized_det_fn</span> <span class="o">=</span> <span class="n">make_array_list_fn_sign_covariant</span><span class="p">(</span>
+                <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">determinant_fn</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">determinant_fn_mode</span> <span class="o">==</span> <span class="n">DeterminantFnMode</span><span class="o">.</span><span class="n">PARALLEL_EVEN</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_symmetrized_det_fn</span> <span class="o">=</span> <span class="n">make_array_list_fn_sign_invariant</span><span class="p">(</span>
+                <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">determinant_fn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ndeterminants</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">determinant_fn_mode</span> <span class="o">==</span> <span class="n">DeterminantFnMode</span><span class="o">.</span><span class="n">PAIRWISE_EVEN</span><span class="p">:</span>
+            <span class="c1"># TODO (ggoldsh): build support for PAIRWISE_EVEN for nspins != 2</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_symmetrized_det_fn</span> <span class="o">=</span> <span class="n">make_array_list_fn_sign_invariant</span><span class="p">(</span>
+                <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">determinant_fn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ndeterminants</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_bad_determinant_fn_mode_error</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.models.construct.FermiNet.__call__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elec_pos</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Compose FermiNet backflow -&gt; orbitals -&gt; logabs determinant product.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>elec_pos</code></td>
+        <td><code>Array</code></td>
+        <td><p>array of particle positions (..., nelec, d)</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Array</code></td>
+      <td><p>FermiNet output; logarithm of the absolute value of a
+anti-symmetric function of elec_pos, where the anti-symmetry is with respect
+to the second-to-last axis of elec_pos. The anti-symmetry holds for
+particles within the same split, but not for permutations which swap
+particles across different spin splits. If the inputs have shape
+(batch_dims, nelec, d), then the output has shape (batch_dims,).</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/construct.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@flax</span><span class="o">.</span><span class="n">linen</span><span class="o">.</span><span class="n">compact</span>
+<span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elec_pos</span><span class="p">:</span> <span class="n">Array</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SLArray</span><span class="p">:</span>  <span class="c1"># type: ignore[override]</span>
+    <span class="sd">&quot;&quot;&quot;Compose FermiNet backflow -&gt; orbitals -&gt; logabs determinant product.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        elec_pos (Array): array of particle positions (..., nelec, d)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Array: FermiNet output; logarithm of the absolute value of a</span>
+<span class="sd">        anti-symmetric function of elec_pos, where the anti-symmetry is with respect</span>
+<span class="sd">        to the second-to-last axis of elec_pos. The anti-symmetry holds for</span>
+<span class="sd">        particles within the same split, but not for permutations which swap</span>
+<span class="sd">        particles across different spin splits. If the inputs have shape</span>
+<span class="sd">        (batch_dims, nelec, d), then the output has shape (batch_dims,).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">elec_pos</span><span class="p">,</span> <span class="n">orbitals_split</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_elec_pos_and_orbitals_split</span><span class="p">(</span><span class="n">elec_pos</span><span class="p">)</span>
+
+    <span class="n">input_stream_1e</span><span class="p">,</span> <span class="n">input_stream_2e</span><span class="p">,</span> <span class="n">r_ei</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_input_streams</span><span class="p">(</span>
+        <span class="n">elec_pos</span>
+    <span class="p">)</span>
+    <span class="n">stream_1e</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backflow</span><span class="p">(</span><span class="n">input_stream_1e</span><span class="p">,</span> <span class="n">input_stream_2e</span><span class="p">)</span>
+
+    <span class="n">norbitals_per_split</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_norbitals_per_split</span><span class="p">(</span><span class="n">elec_pos</span><span class="p">,</span> <span class="n">orbitals_split</span><span class="p">)</span>
+    <span class="c1"># orbitals is [norb_splits: (ndeterminants, ..., nelec[i], norbitals[i])]</span>
+    <span class="n">orbitals</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_eval_orbitals</span><span class="p">(</span>
+        <span class="n">orbitals_split</span><span class="p">,</span>
+        <span class="n">norbitals_per_split</span><span class="p">,</span>
+        <span class="n">input_stream_1e</span><span class="p">,</span>
+        <span class="n">input_stream_2e</span><span class="p">,</span>
+        <span class="n">stream_1e</span><span class="p">,</span>
+        <span class="n">r_ei</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">full_det</span><span class="p">:</span>
+        <span class="n">orbitals</span> <span class="o">=</span> <span class="p">[</span><span class="n">jnp</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">orbitals</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">2</span><span class="p">)]</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_symmetrized_det_fn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># dets is ArrayList of shape [norb_splits: (ndeterminants, ...)]</span>
+        <span class="n">dets</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">tree_map</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">,</span> <span class="n">orbitals</span><span class="p">)</span>
+        <span class="c1"># Move axis to get shape [norb_splits: (..., ndeterminants)]</span>
+        <span class="n">fn_inputs</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">tree_map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">moveaxis</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">dets</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">determinant_fn_mode</span> <span class="o">==</span> <span class="n">DeterminantFnMode</span><span class="o">.</span><span class="n">SIGN_COVARIANCE</span><span class="p">:</span>
+            <span class="n">psi</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_symmetrized_det_fn</span><span class="p">(</span><span class="n">fn_inputs</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">determinant_fn_mode</span> <span class="o">==</span> <span class="n">DeterminantFnMode</span><span class="o">.</span><span class="n">PARALLEL_EVEN</span><span class="p">:</span>
+            <span class="n">psi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_psi_parallel_even</span><span class="p">(</span><span class="n">fn_inputs</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">determinant_fn_mode</span> <span class="o">==</span> <span class="n">DeterminantFnMode</span><span class="o">.</span><span class="n">PAIRWISE_EVEN</span><span class="p">:</span>
+            <span class="n">psi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_psi_pairwise_even</span><span class="p">(</span><span class="n">fn_inputs</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_bad_determinant_fn_mode_error</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">array_to_slog</span><span class="p">(</span><span class="n">psi</span><span class="p">)</span>
+
+    <span class="c1"># slog_det_prods is SLArray of shape (ndeterminants, ...)</span>
+    <span class="n">slog_det_prods</span> <span class="o">=</span> <span class="n">slogdet_product</span><span class="p">(</span><span class="n">orbitals</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">slog_sum_over_axis</span><span class="p">(</span><span class="n">slog_det_prods</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="vmcnet.models.construct.GenericAntisymmetry" class="doc doc-heading">
+        <code>
+GenericAntisymmetry            (<span title="vmcnet.models.core.Module">Module</span>)
+        </code>
+
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-dataclass"><code>dataclass</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>A single ResNet antisymmetrized over all input leaves, composed with backflow.</p>
+<p>The ResNet is antisymmetrized with respect to each spin split separately (i.e. the
+antisymmetrization operators for each spin are composed and applied).</p>
+<p>This connects the computational graph between a backflow, a generic antisymmetrized
+ResNet, and a jastrow.</p>
+<p>See https://arxiv.org/abs/2112.03491 for a description of the generic antisymmetric
+layer.</p>
+
+<p><strong>Attributes:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>spin_split</code></td>
+        <td><code>ParticleSplit</code></td>
+        <td><p>number of spins to split the input equally,
+or specified sequence of locations to split along the 2nd-to-last axis.
+E.g., if nelec = 10, and <code>spin_split</code> = 2, then the input is split (5, 5).
+If nelec = 10, and <code>spin_split</code> = (2, 4), then the input is split into
+(2, 4, 4) -- note when <code>spin_split</code> is a sequence, there will be one more
+spin than the length of the sequence. In the original use-case of spin-1/2
+particles, <code>spin_split</code> should be either the number 2 (for closed-shell
+systems) or should be a Sequence with length 1 whose element is less than
+the total number of electrons.</p></td>
+      </tr>
+      <tr>
+        <td><code>compute_input_streams</code></td>
+        <td><code>ComputeInputStreams</code></td>
+        <td><p>function to compute input
+streams from electron positions. Has the signature
+(elec_pos of shape (..., n, d)) -&gt; (
+    stream_1e of shape (..., n, d'),
+    optional stream_2e of shape (..., nelec, nelec, d2),
+    optional r_ei of shape (..., n, nion, d),
+    optional r_ee of shape (..., n, n, d),
+)</p></td>
+      </tr>
+      <tr>
+        <td><code>backflow</code></td>
+        <td><code>Callable</code></td>
+        <td><p>function which computes position features from the electron
+positions. Has the signature
+(
+    stream_1e of shape (..., n, d'),
+    optional stream_2e of shape (..., nelec, nelec, d2),
+) -&gt; stream_1e of shape (..., n, d')</p></td>
+      </tr>
+      <tr>
+        <td><code>jastrow</code></td>
+        <td><code>Callable</code></td>
+        <td><p>function which computes a Jastrow factor from displacements.
+Has the signature
+(
+    r_ei of shape (batch_dims, n, nion, d),
+    r_ee of shape (batch_dims, n, n, d),
+)
+    -&gt; log jastrow of shape (batch_dims,)</p></td>
+      </tr>
+      <tr>
+        <td><code>ndense_resnet</code></td>
+        <td><code>int</code></td>
+        <td><p>number of dense nodes in each layer of the ResNet</p></td>
+      </tr>
+      <tr>
+        <td><code>nlayers_resnet</code></td>
+        <td><code>int</code></td>
+        <td><p>number of layers in each antisymmetrized ResNet</p></td>
+      </tr>
+      <tr>
+        <td><code>kernel_initializer_resnet</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>kernel initializer for
+the dense layers in the antisymmetrized ResNet. Has signature
+(key, shape, dtype) -&gt; Array</p></td>
+      </tr>
+      <tr>
+        <td><code>bias_initializer_resnet</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>bias initializer for the
+dense layers in the antisymmetrized ResNet. Has signature
+(key, shape, dtype) -&gt; Array</p></td>
+      </tr>
+      <tr>
+        <td><code>activation_fn_resnet</code></td>
+        <td><code>Activation</code></td>
+        <td><p>activation function in the antisymmetrized
+ResNet. Has the signature Array -&gt; Array (shape is preserved)</p></td>
+      </tr>
+      <tr>
+        <td><code>resnet_use_bias</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to add a bias term in the dense layers
+of the antisymmetrized ResNet. Defaults to True.</p></td>
+      </tr>
+  </tbody>
+</table>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.models.construct.GenericAntisymmetry.setup" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Setup backflow.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/construct.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Setup backflow.&quot;&quot;&quot;</span>
+    <span class="c1"># workaround MyPy&#39;s typing error for callable attribute, see</span>
+    <span class="c1"># https://github.com/python/mypy/issues/708</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_compute_input_streams</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_input_streams</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_backflow</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backflow</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_jastrow</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">jastrow</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_activation_fn_resnet</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation_fn_resnet</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.models.construct.GenericAntisymmetry.__call__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elec_pos</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Compose FermiNet backflow -&gt; antisymmetrized ResNet -&gt; logabs.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>elec_pos</code></td>
+        <td><code>Array</code></td>
+        <td><p>array of particle positions (..., nelec, d)</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Array</code></td>
+      <td><p>spinful antisymmetrized output; logarithm of the absolute value
+of a anti-symmetric function of elec_pos, where the anti-symmetry is with
+respect to the second-to-last axis of elec_pos. The anti-symmetry holds for
+particles within the same split, but not for permutations which swap
+particles across different spin splits. If the inputs have shape
+(batch_dims, nelec, d), then the output has shape (batch_dims,).</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/construct.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@flax</span><span class="o">.</span><span class="n">linen</span><span class="o">.</span><span class="n">compact</span>
+<span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elec_pos</span><span class="p">:</span> <span class="n">Array</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SLArray</span><span class="p">:</span>  <span class="c1"># type: ignore[override]</span>
+    <span class="sd">&quot;&quot;&quot;Compose FermiNet backflow -&gt; antisymmetrized ResNet -&gt; logabs.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        elec_pos (Array): array of particle positions (..., nelec, d)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Array: spinful antisymmetrized output; logarithm of the absolute value</span>
+<span class="sd">        of a anti-symmetric function of elec_pos, where the anti-symmetry is with</span>
+<span class="sd">        respect to the second-to-last axis of elec_pos. The anti-symmetry holds for</span>
+<span class="sd">        particles within the same split, but not for permutations which swap</span>
+<span class="sd">        particles across different spin splits. If the inputs have shape</span>
+<span class="sd">        (batch_dims, nelec, d), then the output has shape (batch_dims,).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">input_stream_1e</span><span class="p">,</span> <span class="n">input_stream_2e</span><span class="p">,</span> <span class="n">r_ei</span><span class="p">,</span> <span class="n">r_ee</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_input_streams</span><span class="p">(</span>
+        <span class="n">elec_pos</span>
+    <span class="p">)</span>
+    <span class="n">stream_1e</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backflow</span><span class="p">(</span><span class="n">input_stream_1e</span><span class="p">,</span> <span class="n">input_stream_2e</span><span class="p">)</span>
+    <span class="n">split_spins</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">stream_1e</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">spin_split</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">sign_psi</span><span class="p">,</span> <span class="n">log_antisym</span> <span class="o">=</span> <span class="n">GenericAntisymmetrize</span><span class="p">(</span>
+        <span class="n">SimpleResNet</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ndense_resnet</span><span class="p">,</span>
+            <span class="mi">1</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nlayers_resnet</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_activation_fn_resnet</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">kernel_initializer_resnet</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">bias_initializer_resnet</span><span class="p">,</span>
+            <span class="n">use_bias</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">resnet_use_bias</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)(</span><span class="n">split_spins</span><span class="p">)</span>
+    <span class="n">jastrow_part</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jastrow</span><span class="p">(</span>
+        <span class="n">input_stream_1e</span><span class="p">,</span> <span class="n">input_stream_2e</span><span class="p">,</span> <span class="n">stream_1e</span><span class="p">,</span> <span class="n">r_ei</span><span class="p">,</span> <span class="n">r_ee</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">sign_psi</span><span class="p">,</span> <span class="n">log_antisym</span> <span class="o">+</span> <span class="n">jastrow_part</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="vmcnet.models.construct.slog_psi_to_log_psi_apply" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">slog_psi_to_log_psi_apply</span><span class="p">(</span><span class="n">slog_psi_apply</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Get a log|psi| model apply callable from a sign(psi), log|psi| apply callable.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/construct.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">slog_psi_to_log_psi_apply</span><span class="p">(</span>
+    <span class="n">slog_psi_apply</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">SLArray</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Array</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Get a log|psi| model apply callable from a sign(psi), log|psi| apply callable.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">log_psi_apply</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Array</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">slog_psi_apply</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">log_psi_apply</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="vmcnet.models.construct.get_model_from_config" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_model_from_config</span><span class="p">(</span><span class="n">model_config</span><span class="p">,</span> <span class="n">nelec</span><span class="p">,</span> <span class="n">ion_pos</span><span class="p">,</span> <span class="n">ion_charges</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">jax</span><span class="o">.</span><span class="n">_src</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">lax_numpy</span><span class="o">.</span><span class="n">float32</span><span class="s1">&#39;&gt;)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Get a model from a hyperparameter config.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/construct.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_model_from_config</span><span class="p">(</span>
+    <span class="n">model_config</span><span class="p">:</span> <span class="n">ConfigDict</span><span class="p">,</span>
+    <span class="n">nelec</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span>
+    <span class="n">ion_pos</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span>
+    <span class="n">ion_charges</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span>
+    <span class="n">dtype</span><span class="o">=</span><span class="n">jnp</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Module</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Get a model from a hyperparameter config.&quot;&quot;&quot;</span>
+    <span class="n">spin_split</span> <span class="o">=</span> <span class="n">get_spin_split</span><span class="p">(</span><span class="n">nelec</span><span class="p">)</span>
+
+    <span class="n">compute_input_streams</span> <span class="o">=</span> <span class="n">get_compute_input_streams_from_config</span><span class="p">(</span>
+        <span class="n">model_config</span><span class="o">.</span><span class="n">input_streams</span><span class="p">,</span> <span class="n">ion_pos</span>
+    <span class="p">)</span>
+    <span class="n">backflow</span> <span class="o">=</span> <span class="n">get_backflow_from_config</span><span class="p">(</span>
+        <span class="n">model_config</span><span class="o">.</span><span class="n">backflow</span><span class="p">,</span>
+        <span class="n">spin_split</span><span class="p">,</span>
+        <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">kernel_init_constructor</span><span class="p">,</span> <span class="n">bias_init_constructor</span> <span class="o">=</span> <span class="n">_get_dtype_init_constructors</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+
+    <span class="n">ferminet_model_types</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;ferminet&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;embedded_particle_ferminet&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;extended_orbital_matrix_ferminet&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+    <span class="k">if</span> <span class="n">model_config</span><span class="o">.</span><span class="n">type</span> <span class="ow">in</span> <span class="n">ferminet_model_types</span><span class="p">:</span>
+        <span class="n">determinant_fn</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">resnet_config</span> <span class="o">=</span> <span class="n">model_config</span><span class="o">.</span><span class="n">det_resnet</span>
+        <span class="k">if</span> <span class="n">model_config</span><span class="o">.</span><span class="n">use_det_resnet</span><span class="p">:</span>
+            <span class="n">determinant_fn</span> <span class="o">=</span> <span class="n">get_resnet_determinant_fn_for_ferminet</span><span class="p">(</span>
+                <span class="n">resnet_config</span><span class="o">.</span><span class="n">ndense</span><span class="p">,</span>
+                <span class="n">resnet_config</span><span class="o">.</span><span class="n">nlayers</span><span class="p">,</span>
+                <span class="n">_get_named_activation_fn</span><span class="p">(</span><span class="n">resnet_config</span><span class="o">.</span><span class="n">activation</span><span class="p">),</span>
+                <span class="n">kernel_init_constructor</span><span class="p">(</span><span class="n">resnet_config</span><span class="o">.</span><span class="n">kernel_init</span><span class="p">),</span>
+                <span class="n">bias_init_constructor</span><span class="p">(</span><span class="n">resnet_config</span><span class="o">.</span><span class="n">bias_init</span><span class="p">),</span>
+                <span class="n">resnet_config</span><span class="o">.</span><span class="n">use_bias</span><span class="p">,</span>
+                <span class="n">resnet_config</span><span class="o">.</span><span class="n">register_kfac</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="c1"># TODO(Jeffmin): make interface more flexible w.r.t. different types of Jastrows</span>
+        <span class="k">if</span> <span class="n">model_config</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;ferminet&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">FermiNet</span><span class="p">(</span>
+                <span class="n">spin_split</span><span class="p">,</span>
+                <span class="n">compute_input_streams</span><span class="p">,</span>
+                <span class="n">backflow</span><span class="p">,</span>
+                <span class="n">model_config</span><span class="o">.</span><span class="n">ndeterminants</span><span class="p">,</span>
+                <span class="n">kernel_initializer_orbital_linear</span><span class="o">=</span><span class="n">kernel_init_constructor</span><span class="p">(</span>
+                    <span class="n">model_config</span><span class="o">.</span><span class="n">kernel_init_orbital_linear</span>
+                <span class="p">),</span>
+                <span class="n">kernel_initializer_envelope_dim</span><span class="o">=</span><span class="n">kernel_init_constructor</span><span class="p">(</span>
+                    <span class="n">model_config</span><span class="o">.</span><span class="n">kernel_init_envelope_dim</span>
+                <span class="p">),</span>
+                <span class="n">kernel_initializer_envelope_ion</span><span class="o">=</span><span class="n">kernel_init_constructor</span><span class="p">(</span>
+                    <span class="n">model_config</span><span class="o">.</span><span class="n">kernel_init_envelope_ion</span>
+                <span class="p">),</span>
+                <span class="n">bias_initializer_orbital_linear</span><span class="o">=</span><span class="n">bias_init_constructor</span><span class="p">(</span>
+                    <span class="n">model_config</span><span class="o">.</span><span class="n">bias_init_orbital_linear</span>
+                <span class="p">),</span>
+                <span class="n">orbitals_use_bias</span><span class="o">=</span><span class="n">model_config</span><span class="o">.</span><span class="n">orbitals_use_bias</span><span class="p">,</span>
+                <span class="n">isotropic_decay</span><span class="o">=</span><span class="n">model_config</span><span class="o">.</span><span class="n">isotropic_decay</span><span class="p">,</span>
+                <span class="n">determinant_fn</span><span class="o">=</span><span class="n">determinant_fn</span><span class="p">,</span>
+                <span class="n">determinant_fn_mode</span><span class="o">=</span><span class="n">DeterminantFnMode</span><span class="p">[</span><span class="n">resnet_config</span><span class="o">.</span><span class="n">mode</span><span class="o">.</span><span class="n">upper</span><span class="p">()],</span>
+                <span class="n">full_det</span><span class="o">=</span><span class="n">model_config</span><span class="o">.</span><span class="n">full_det</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">model_config</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;embedded_particle_ferminet&quot;</span><span class="p">:</span>
+            <span class="n">total_nelec</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">model_config</span><span class="o">.</span><span class="n">nhidden_fermions_per_spin</span><span class="p">)</span> <span class="o">+</span> <span class="n">nelec</span>
+            <span class="n">total_spin_split</span> <span class="o">=</span> <span class="n">get_spin_split</span><span class="p">(</span><span class="n">total_nelec</span><span class="p">)</span>
+
+            <span class="n">backflow</span> <span class="o">=</span> <span class="n">get_backflow_from_config</span><span class="p">(</span>
+                <span class="n">model_config</span><span class="o">.</span><span class="n">backflow</span><span class="p">,</span>
+                <span class="n">total_spin_split</span><span class="p">,</span>
+                <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">invariance_config</span> <span class="o">=</span> <span class="n">model_config</span><span class="o">.</span><span class="n">invariance</span>
+            <span class="n">invariance_compute_input_streams</span> <span class="o">=</span> <span class="n">get_compute_input_streams_from_config</span><span class="p">(</span>
+                <span class="n">invariance_config</span><span class="o">.</span><span class="n">input_streams</span><span class="p">,</span> <span class="n">ion_pos</span>
+            <span class="p">)</span>
+            <span class="n">invariance_backflow</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Module</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_backflow_from_config</span><span class="p">(</span>
+                <span class="n">invariance_config</span><span class="o">.</span><span class="n">backflow</span><span class="p">,</span>
+                <span class="n">spin_split</span><span class="p">,</span>
+                <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">EmbeddedParticleFermiNet</span><span class="p">(</span>
+                <span class="n">spin_split</span><span class="p">,</span>
+                <span class="n">compute_input_streams</span><span class="p">,</span>
+                <span class="n">backflow</span><span class="p">,</span>
+                <span class="n">model_config</span><span class="o">.</span><span class="n">ndeterminants</span><span class="p">,</span>
+                <span class="n">kernel_initializer_orbital_linear</span><span class="o">=</span><span class="n">kernel_init_constructor</span><span class="p">(</span>
+                    <span class="n">model_config</span><span class="o">.</span><span class="n">kernel_init_orbital_linear</span>
+                <span class="p">),</span>
+                <span class="n">kernel_initializer_envelope_dim</span><span class="o">=</span><span class="n">kernel_init_constructor</span><span class="p">(</span>
+                    <span class="n">model_config</span><span class="o">.</span><span class="n">kernel_init_envelope_dim</span>
+                <span class="p">),</span>
+                <span class="n">kernel_initializer_envelope_ion</span><span class="o">=</span><span class="n">kernel_init_constructor</span><span class="p">(</span>
+                    <span class="n">model_config</span><span class="o">.</span><span class="n">kernel_init_envelope_ion</span>
+                <span class="p">),</span>
+                <span class="n">bias_initializer_orbital_linear</span><span class="o">=</span><span class="n">bias_init_constructor</span><span class="p">(</span>
+                    <span class="n">model_config</span><span class="o">.</span><span class="n">bias_init_orbital_linear</span>
+                <span class="p">),</span>
+                <span class="n">orbitals_use_bias</span><span class="o">=</span><span class="n">model_config</span><span class="o">.</span><span class="n">orbitals_use_bias</span><span class="p">,</span>
+                <span class="n">isotropic_decay</span><span class="o">=</span><span class="n">model_config</span><span class="o">.</span><span class="n">isotropic_decay</span><span class="p">,</span>
+                <span class="n">determinant_fn</span><span class="o">=</span><span class="n">determinant_fn</span><span class="p">,</span>
+                <span class="n">determinant_fn_mode</span><span class="o">=</span><span class="n">DeterminantFnMode</span><span class="p">[</span><span class="n">resnet_config</span><span class="o">.</span><span class="n">mode</span><span class="o">.</span><span class="n">upper</span><span class="p">()],</span>
+                <span class="n">full_det</span><span class="o">=</span><span class="n">model_config</span><span class="o">.</span><span class="n">full_det</span><span class="p">,</span>
+                <span class="n">nhidden_fermions_per_spin</span><span class="o">=</span><span class="n">model_config</span><span class="o">.</span><span class="n">nhidden_fermions_per_spin</span><span class="p">,</span>
+                <span class="n">invariance_compute_input_streams</span><span class="o">=</span><span class="n">invariance_compute_input_streams</span><span class="p">,</span>
+                <span class="n">invariance_backflow</span><span class="o">=</span><span class="n">invariance_backflow</span><span class="p">,</span>
+                <span class="n">invariance_kernel_initializer</span><span class="o">=</span><span class="n">kernel_init_constructor</span><span class="p">(</span>
+                    <span class="n">invariance_config</span><span class="o">.</span><span class="n">kernel_initializer</span>
+                <span class="p">),</span>
+                <span class="n">invariance_bias_initializer</span><span class="o">=</span><span class="n">bias_init_constructor</span><span class="p">(</span>
+                    <span class="n">invariance_config</span><span class="o">.</span><span class="n">bias_initializer</span>
+                <span class="p">),</span>
+                <span class="n">invariance_use_bias</span><span class="o">=</span><span class="n">invariance_config</span><span class="o">.</span><span class="n">use_bias</span><span class="p">,</span>
+                <span class="n">invariance_register_kfac</span><span class="o">=</span><span class="n">invariance_config</span><span class="o">.</span><span class="n">register_kfac</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">model_config</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;extended_orbital_matrix_ferminet&quot;</span><span class="p">:</span>
+            <span class="n">invariance_config</span> <span class="o">=</span> <span class="n">model_config</span><span class="o">.</span><span class="n">invariance</span>
+            <span class="k">if</span> <span class="n">model_config</span><span class="o">.</span><span class="n">use_separate_invariance_backflow</span><span class="p">:</span>
+                <span class="n">invariance_backflow</span> <span class="o">=</span> <span class="n">get_backflow_from_config</span><span class="p">(</span>
+                    <span class="n">invariance_config</span><span class="o">.</span><span class="n">backflow</span><span class="p">,</span>
+                    <span class="n">spin_split</span><span class="p">,</span>
+                    <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">invariance_backflow</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">return</span> <span class="n">ExtendedOrbitalMatrixFermiNet</span><span class="p">(</span>
+                <span class="n">spin_split</span><span class="p">,</span>
+                <span class="n">compute_input_streams</span><span class="p">,</span>
+                <span class="n">backflow</span><span class="p">,</span>
+                <span class="n">model_config</span><span class="o">.</span><span class="n">ndeterminants</span><span class="p">,</span>
+                <span class="n">kernel_initializer_orbital_linear</span><span class="o">=</span><span class="n">kernel_init_constructor</span><span class="p">(</span>
+                    <span class="n">model_config</span><span class="o">.</span><span class="n">kernel_init_orbital_linear</span>
+                <span class="p">),</span>
+                <span class="n">kernel_initializer_envelope_dim</span><span class="o">=</span><span class="n">kernel_init_constructor</span><span class="p">(</span>
+                    <span class="n">model_config</span><span class="o">.</span><span class="n">kernel_init_envelope_dim</span>
+                <span class="p">),</span>
+                <span class="n">kernel_initializer_envelope_ion</span><span class="o">=</span><span class="n">kernel_init_constructor</span><span class="p">(</span>
+                    <span class="n">model_config</span><span class="o">.</span><span class="n">kernel_init_envelope_ion</span>
+                <span class="p">),</span>
+                <span class="n">bias_initializer_orbital_linear</span><span class="o">=</span><span class="n">bias_init_constructor</span><span class="p">(</span>
+                    <span class="n">model_config</span><span class="o">.</span><span class="n">bias_init_orbital_linear</span>
+                <span class="p">),</span>
+                <span class="n">orbitals_use_bias</span><span class="o">=</span><span class="n">model_config</span><span class="o">.</span><span class="n">orbitals_use_bias</span><span class="p">,</span>
+                <span class="n">isotropic_decay</span><span class="o">=</span><span class="n">model_config</span><span class="o">.</span><span class="n">isotropic_decay</span><span class="p">,</span>
+                <span class="n">determinant_fn</span><span class="o">=</span><span class="n">determinant_fn</span><span class="p">,</span>
+                <span class="n">determinant_fn_mode</span><span class="o">=</span><span class="n">DeterminantFnMode</span><span class="p">[</span><span class="n">resnet_config</span><span class="o">.</span><span class="n">mode</span><span class="o">.</span><span class="n">upper</span><span class="p">()],</span>
+                <span class="n">full_det</span><span class="o">=</span><span class="n">model_config</span><span class="o">.</span><span class="n">full_det</span><span class="p">,</span>
+                <span class="n">nhidden_fermions_per_spin</span><span class="o">=</span><span class="n">model_config</span><span class="o">.</span><span class="n">nhidden_fermions_per_spin</span><span class="p">,</span>
+                <span class="n">invariance_backflow</span><span class="o">=</span><span class="n">invariance_backflow</span><span class="p">,</span>
+                <span class="n">invariance_kernel_initializer</span><span class="o">=</span><span class="n">kernel_init_constructor</span><span class="p">(</span>
+                    <span class="n">invariance_config</span><span class="o">.</span><span class="n">kernel_initializer</span>
+                <span class="p">),</span>
+                <span class="n">invariance_bias_initializer</span><span class="o">=</span><span class="n">bias_init_constructor</span><span class="p">(</span>
+                    <span class="n">invariance_config</span><span class="o">.</span><span class="n">bias_initializer</span>
+                <span class="p">),</span>
+                <span class="n">invariance_use_bias</span><span class="o">=</span><span class="n">invariance_config</span><span class="o">.</span><span class="n">use_bias</span><span class="p">,</span>
+                <span class="n">invariance_register_kfac</span><span class="o">=</span><span class="n">invariance_config</span><span class="o">.</span><span class="n">register_kfac</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;FermiNet model type </span><span class="si">{}</span><span class="s2"> requested, but the only supported &quot;</span>
+                <span class="s2">&quot;types are: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">model_config</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">ferminet_model_types</span><span class="p">)</span>
+            <span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">model_config</span><span class="o">.</span><span class="n">type</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;orbital_cofactor_net&quot;</span><span class="p">,</span> <span class="s2">&quot;per_particle_dets_net&quot;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">model_config</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;orbital_cofactor_net&quot;</span><span class="p">:</span>
+            <span class="n">antieq_layer</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span>
+                <span class="p">[</span><span class="n">Array</span><span class="p">,</span> <span class="n">Array</span><span class="p">],</span> <span class="n">ArrayList</span>
+            <span class="p">]</span> <span class="o">=</span> <span class="n">antiequivariance</span><span class="o">.</span><span class="n">OrbitalCofactorAntiequivarianceLayer</span><span class="p">(</span>
+                <span class="n">spin_split</span><span class="p">,</span>
+                <span class="n">kernel_initializer_orbital_linear</span><span class="o">=</span><span class="n">kernel_init_constructor</span><span class="p">(</span>
+                    <span class="n">model_config</span><span class="o">.</span><span class="n">kernel_init_orbital_linear</span>
+                <span class="p">),</span>
+                <span class="n">kernel_initializer_envelope_dim</span><span class="o">=</span><span class="n">kernel_init_constructor</span><span class="p">(</span>
+                    <span class="n">model_config</span><span class="o">.</span><span class="n">kernel_init_envelope_dim</span>
+                <span class="p">),</span>
+                <span class="n">kernel_initializer_envelope_ion</span><span class="o">=</span><span class="n">kernel_init_constructor</span><span class="p">(</span>
+                    <span class="n">model_config</span><span class="o">.</span><span class="n">kernel_init_envelope_ion</span>
+                <span class="p">),</span>
+                <span class="n">bias_initializer_orbital_linear</span><span class="o">=</span><span class="n">bias_init_constructor</span><span class="p">(</span>
+                    <span class="n">model_config</span><span class="o">.</span><span class="n">bias_init_orbital_linear</span>
+                <span class="p">),</span>
+                <span class="n">orbitals_use_bias</span><span class="o">=</span><span class="n">model_config</span><span class="o">.</span><span class="n">orbitals_use_bias</span><span class="p">,</span>
+                <span class="n">isotropic_decay</span><span class="o">=</span><span class="n">model_config</span><span class="o">.</span><span class="n">isotropic_decay</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">model_config</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;per_particle_dets_net&quot;</span><span class="p">:</span>
+            <span class="n">antieq_layer</span> <span class="o">=</span> <span class="n">antiequivariance</span><span class="o">.</span><span class="n">PerParticleDeterminantAntiequivarianceLayer</span><span class="p">(</span>
+                <span class="n">spin_split</span><span class="p">,</span>
+                <span class="n">kernel_initializer_orbital_linear</span><span class="o">=</span><span class="n">kernel_init_constructor</span><span class="p">(</span>
+                    <span class="n">model_config</span><span class="o">.</span><span class="n">kernel_init_orbital_linear</span>
+                <span class="p">),</span>
+                <span class="n">kernel_initializer_envelope_dim</span><span class="o">=</span><span class="n">kernel_init_constructor</span><span class="p">(</span>
+                    <span class="n">model_config</span><span class="o">.</span><span class="n">kernel_init_envelope_dim</span>
+                <span class="p">),</span>
+                <span class="n">kernel_initializer_envelope_ion</span><span class="o">=</span><span class="n">kernel_init_constructor</span><span class="p">(</span>
+                    <span class="n">model_config</span><span class="o">.</span><span class="n">kernel_init_envelope_ion</span>
+                <span class="p">),</span>
+                <span class="n">bias_initializer_orbital_linear</span><span class="o">=</span><span class="n">bias_init_constructor</span><span class="p">(</span>
+                    <span class="n">model_config</span><span class="o">.</span><span class="n">bias_init_orbital_linear</span>
+                <span class="p">),</span>
+                <span class="n">orbitals_use_bias</span><span class="o">=</span><span class="n">model_config</span><span class="o">.</span><span class="n">orbitals_use_bias</span><span class="p">,</span>
+                <span class="n">isotropic_decay</span><span class="o">=</span><span class="n">model_config</span><span class="o">.</span><span class="n">isotropic_decay</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="n">array_list_sign_covariance</span> <span class="o">=</span> <span class="n">get_sign_covariance_from_config</span><span class="p">(</span>
+            <span class="n">model_config</span><span class="p">,</span> <span class="n">spin_split</span><span class="p">,</span> <span class="n">kernel_init_constructor</span><span class="p">,</span> <span class="n">dtype</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">AntiequivarianceNet</span><span class="p">(</span>
+            <span class="n">spin_split</span><span class="p">,</span>
+            <span class="n">compute_input_streams</span><span class="p">,</span>
+            <span class="n">backflow</span><span class="p">,</span>
+            <span class="n">antieq_layer</span><span class="p">,</span>
+            <span class="n">array_list_sign_covariance</span><span class="p">,</span>
+            <span class="n">multiply_by_eq_features</span><span class="o">=</span><span class="n">model_config</span><span class="o">.</span><span class="n">multiply_by_eq_features</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">model_config</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;explicit_antisym&quot;</span><span class="p">:</span>
+        <span class="n">jastrow_config</span> <span class="o">=</span> <span class="n">model_config</span><span class="o">.</span><span class="n">jastrow</span>
+
+        <span class="k">def</span> <span class="nf">_get_two_body_decay_jastrow</span><span class="p">():</span>
+            <span class="k">return</span> <span class="n">get_two_body_decay_scaled_for_chargeless_molecules</span><span class="p">(</span>
+                <span class="n">ion_pos</span><span class="p">,</span>
+                <span class="n">ion_charges</span><span class="p">,</span>
+                <span class="n">init_ee_strength</span><span class="o">=</span><span class="n">jastrow_config</span><span class="o">.</span><span class="n">two_body_decay</span><span class="o">.</span><span class="n">init_ee_strength</span><span class="p">,</span>
+                <span class="n">trainable</span><span class="o">=</span><span class="n">jastrow_config</span><span class="o">.</span><span class="n">two_body_decay</span><span class="o">.</span><span class="n">trainable</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">_get_backflow_based_jastrow</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">jastrow_config</span><span class="o">.</span><span class="n">backflow_based</span><span class="o">.</span><span class="n">use_separate_jastrow_backflow</span><span class="p">:</span>
+                <span class="n">jastrow_backflow</span> <span class="o">=</span> <span class="n">get_backflow_from_config</span><span class="p">(</span>
+                    <span class="n">jastrow_config</span><span class="o">.</span><span class="n">backflow_based</span><span class="o">.</span><span class="n">backflow</span><span class="p">,</span>
+                    <span class="n">spin_split</span><span class="p">,</span>
+                    <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">jastrow_backflow</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">return</span> <span class="n">BackflowJastrow</span><span class="p">(</span><span class="n">backflow</span><span class="o">=</span><span class="n">jastrow_backflow</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">jastrow_config</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;one_body_decay&quot;</span><span class="p">:</span>
+            <span class="n">jastrow</span><span class="p">:</span> <span class="n">Jastrow</span> <span class="o">=</span> <span class="n">OneBodyExpDecay</span><span class="p">(</span>
+                <span class="n">kernel_initializer</span><span class="o">=</span><span class="n">kernel_init_constructor</span><span class="p">(</span>
+                    <span class="n">jastrow_config</span><span class="o">.</span><span class="n">one_body_decay</span><span class="o">.</span><span class="n">kernel_init</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">jastrow_config</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;two_body_decay&quot;</span><span class="p">:</span>
+            <span class="n">jastrow</span> <span class="o">=</span> <span class="n">_get_two_body_decay_jastrow</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">jastrow_config</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;backflow_based&quot;</span><span class="p">:</span>
+            <span class="n">jastrow</span> <span class="o">=</span> <span class="n">_get_backflow_based_jastrow</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">jastrow_config</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;two_body_decay_and_backflow_based&quot;</span><span class="p">:</span>
+            <span class="n">two_body_decay_jastrow</span> <span class="o">=</span> <span class="n">_get_two_body_decay_jastrow</span><span class="p">()</span>
+            <span class="n">backflow_jastrow</span> <span class="o">=</span> <span class="n">_get_backflow_based_jastrow</span><span class="p">()</span>
+            <span class="n">jastrow</span> <span class="o">=</span> <span class="n">AddedModel</span><span class="p">([</span><span class="n">two_body_decay_jastrow</span><span class="p">,</span> <span class="n">backflow_jastrow</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Unsupported jastrow type; </span><span class="si">{}</span><span class="s2"> was requested, but the only supported &quot;</span>
+                <span class="s2">&quot;types are: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">jastrow_config</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">VALID_JASTROW_TYPES</span><span class="p">)</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">model_config</span><span class="o">.</span><span class="n">antisym_type</span> <span class="o">==</span> <span class="s2">&quot;factorized&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">FactorizedAntisymmetry</span><span class="p">(</span>
+                <span class="n">spin_split</span><span class="p">,</span>
+                <span class="n">compute_input_streams</span><span class="p">,</span>
+                <span class="n">backflow</span><span class="p">,</span>
+                <span class="n">jastrow</span><span class="p">,</span>
+                <span class="n">rank</span><span class="o">=</span><span class="n">model_config</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span>
+                <span class="n">ndense_resnet</span><span class="o">=</span><span class="n">model_config</span><span class="o">.</span><span class="n">ndense_resnet</span><span class="p">,</span>
+                <span class="n">nlayers_resnet</span><span class="o">=</span><span class="n">model_config</span><span class="o">.</span><span class="n">nlayers_resnet</span><span class="p">,</span>
+                <span class="n">kernel_initializer_resnet</span><span class="o">=</span><span class="n">kernel_init_constructor</span><span class="p">(</span>
+                    <span class="n">model_config</span><span class="o">.</span><span class="n">kernel_init_resnet</span>
+                <span class="p">),</span>
+                <span class="n">bias_initializer_resnet</span><span class="o">=</span><span class="n">bias_init_constructor</span><span class="p">(</span>
+                    <span class="n">model_config</span><span class="o">.</span><span class="n">bias_init_resnet</span>
+                <span class="p">),</span>
+                <span class="n">activation_fn_resnet</span><span class="o">=</span><span class="n">_get_named_activation_fn</span><span class="p">(</span>
+                    <span class="n">model_config</span><span class="o">.</span><span class="n">activation_fn_resnet</span>
+                <span class="p">),</span>
+                <span class="n">resnet_use_bias</span><span class="o">=</span><span class="n">model_config</span><span class="o">.</span><span class="n">resnet_use_bias</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">model_config</span><span class="o">.</span><span class="n">antisym_type</span> <span class="o">==</span> <span class="s2">&quot;generic&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">GenericAntisymmetry</span><span class="p">(</span>
+                <span class="n">spin_split</span><span class="p">,</span>
+                <span class="n">compute_input_streams</span><span class="p">,</span>
+                <span class="n">backflow</span><span class="p">,</span>
+                <span class="n">jastrow</span><span class="p">,</span>
+                <span class="n">ndense_resnet</span><span class="o">=</span><span class="n">model_config</span><span class="o">.</span><span class="n">ndense_resnet</span><span class="p">,</span>
+                <span class="n">nlayers_resnet</span><span class="o">=</span><span class="n">model_config</span><span class="o">.</span><span class="n">nlayers_resnet</span><span class="p">,</span>
+                <span class="n">kernel_initializer_resnet</span><span class="o">=</span><span class="n">kernel_init_constructor</span><span class="p">(</span>
+                    <span class="n">model_config</span><span class="o">.</span><span class="n">kernel_init_resnet</span>
+                <span class="p">),</span>
+                <span class="n">bias_initializer_resnet</span><span class="o">=</span><span class="n">bias_init_constructor</span><span class="p">(</span>
+                    <span class="n">model_config</span><span class="o">.</span><span class="n">bias_init_resnet</span>
+                <span class="p">),</span>
+                <span class="n">activation_fn_resnet</span><span class="o">=</span><span class="n">_get_named_activation_fn</span><span class="p">(</span>
+                    <span class="n">model_config</span><span class="o">.</span><span class="n">activation_fn_resnet</span>
+                <span class="p">),</span>
+                <span class="n">resnet_use_bias</span><span class="o">=</span><span class="n">model_config</span><span class="o">.</span><span class="n">resnet_use_bias</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Unsupported explicit antisymmetry type; </span><span class="si">{}</span><span class="s2"> was requested&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">model_config</span><span class="o">.</span><span class="n">antisym_type</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Unsupported model type; </span><span class="si">{}</span><span class="s2"> was requested&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">model_config</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
+        <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="vmcnet.models.construct.get_compute_input_streams_from_config" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_compute_input_streams_from_config</span><span class="p">(</span><span class="n">input_streams_config</span><span class="p">,</span> <span class="n">ion_pos</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Get a function for computing input streams from a model configuration.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/construct.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_compute_input_streams_from_config</span><span class="p">(</span>
+    <span class="n">input_streams_config</span><span class="p">:</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">ion_pos</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Array</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ComputeInputStreams</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Get a function for computing input streams from a model configuration.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span>
+        <span class="n">compute_input_streams</span><span class="p">,</span>
+        <span class="n">ion_pos</span><span class="o">=</span><span class="n">ion_pos</span><span class="p">,</span>
+        <span class="n">include_2e_stream</span><span class="o">=</span><span class="n">input_streams_config</span><span class="o">.</span><span class="n">include_2e_stream</span><span class="p">,</span>
+        <span class="n">include_ei_norm</span><span class="o">=</span><span class="n">input_streams_config</span><span class="o">.</span><span class="n">include_ei_norm</span><span class="p">,</span>
+        <span class="n">include_ee_norm</span><span class="o">=</span><span class="n">input_streams_config</span><span class="o">.</span><span class="n">include_ee_norm</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="vmcnet.models.construct.get_backflow_from_config" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_backflow_from_config</span><span class="p">(</span><span class="n">backflow_config</span><span class="p">,</span> <span class="n">spin_split</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">jax</span><span class="o">.</span><span class="n">_src</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">lax_numpy</span><span class="o">.</span><span class="n">float32</span><span class="s1">&#39;&gt;)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Get a FermiNet backflow from a model configuration.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/construct.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_backflow_from_config</span><span class="p">(</span>
+    <span class="n">backflow_config</span><span class="p">,</span>
+    <span class="n">spin_split</span><span class="p">,</span>
+    <span class="n">dtype</span><span class="o">=</span><span class="n">jnp</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Module</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Get a FermiNet backflow from a model configuration.&quot;&quot;&quot;</span>
+    <span class="n">kernel_init_constructor</span><span class="p">,</span> <span class="n">bias_init_constructor</span> <span class="o">=</span> <span class="n">_get_dtype_init_constructors</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+
+    <span class="n">residual_blocks</span> <span class="o">=</span> <span class="n">get_residual_blocks_for_ferminet_backflow</span><span class="p">(</span>
+        <span class="n">spin_split</span><span class="p">,</span>
+        <span class="n">backflow_config</span><span class="o">.</span><span class="n">ndense_list</span><span class="p">,</span>
+        <span class="n">kernel_initializer_unmixed</span><span class="o">=</span><span class="n">kernel_init_constructor</span><span class="p">(</span>
+            <span class="n">backflow_config</span><span class="o">.</span><span class="n">kernel_init_unmixed</span>
+        <span class="p">),</span>
+        <span class="n">kernel_initializer_mixed</span><span class="o">=</span><span class="n">kernel_init_constructor</span><span class="p">(</span>
+            <span class="n">backflow_config</span><span class="o">.</span><span class="n">kernel_init_mixed</span>
+        <span class="p">),</span>
+        <span class="n">kernel_initializer_2e_1e_stream</span><span class="o">=</span><span class="n">kernel_init_constructor</span><span class="p">(</span>
+            <span class="n">backflow_config</span><span class="o">.</span><span class="n">kernel_init_2e_1e_stream</span>
+        <span class="p">),</span>
+        <span class="n">kernel_initializer_2e_2e_stream</span><span class="o">=</span><span class="n">kernel_init_constructor</span><span class="p">(</span>
+            <span class="n">backflow_config</span><span class="o">.</span><span class="n">kernel_init_2e_2e_stream</span>
+        <span class="p">),</span>
+        <span class="n">bias_initializer_1e_stream</span><span class="o">=</span><span class="n">bias_init_constructor</span><span class="p">(</span>
+            <span class="n">backflow_config</span><span class="o">.</span><span class="n">bias_init_1e_stream</span>
+        <span class="p">),</span>
+        <span class="n">bias_initializer_2e_stream</span><span class="o">=</span><span class="n">bias_init_constructor</span><span class="p">(</span>
+            <span class="n">backflow_config</span><span class="o">.</span><span class="n">bias_init_2e_stream</span>
+        <span class="p">),</span>
+        <span class="n">activation_fn</span><span class="o">=</span><span class="n">_get_named_activation_fn</span><span class="p">(</span><span class="n">backflow_config</span><span class="o">.</span><span class="n">activation_fn</span><span class="p">),</span>
+        <span class="n">use_bias</span><span class="o">=</span><span class="n">backflow_config</span><span class="o">.</span><span class="n">use_bias</span><span class="p">,</span>
+        <span class="n">one_electron_skip</span><span class="o">=</span><span class="n">backflow_config</span><span class="o">.</span><span class="n">one_electron_skip</span><span class="p">,</span>
+        <span class="n">one_electron_skip_scale</span><span class="o">=</span><span class="n">backflow_config</span><span class="o">.</span><span class="n">one_electron_skip_scale</span><span class="p">,</span>
+        <span class="n">two_electron_skip</span><span class="o">=</span><span class="n">backflow_config</span><span class="o">.</span><span class="n">two_electron_skip</span><span class="p">,</span>
+        <span class="n">two_electron_skip_scale</span><span class="o">=</span><span class="n">backflow_config</span><span class="o">.</span><span class="n">two_electron_skip_scale</span><span class="p">,</span>
+        <span class="n">cyclic_spins</span><span class="o">=</span><span class="n">backflow_config</span><span class="o">.</span><span class="n">cyclic_spins</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">FermiNetBackflow</span><span class="p">(</span><span class="n">residual_blocks</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="vmcnet.models.construct.get_sign_covariance_from_config" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_sign_covariance_from_config</span><span class="p">(</span><span class="n">model_config</span><span class="p">,</span> <span class="n">spin_split</span><span class="p">,</span> <span class="n">kernel_init_constructor</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Get a sign covariance from a model config, for use in AntiequivarianceNet.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/construct.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_sign_covariance_from_config</span><span class="p">(</span>
+    <span class="n">model_config</span><span class="p">:</span> <span class="n">ConfigDict</span><span class="p">,</span>
+    <span class="n">spin_split</span><span class="p">:</span> <span class="n">ParticleSplit</span><span class="p">,</span>
+    <span class="n">kernel_init_constructor</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">ConfigDict</span><span class="p">],</span> <span class="n">WeightInitializer</span><span class="p">],</span>
+    <span class="n">dtype</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">ArrayList</span><span class="p">],</span> <span class="n">Array</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Get a sign covariance from a model config, for use in AntiequivarianceNet.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">model_config</span><span class="o">.</span><span class="n">use_products_covariance</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ProductsSignCovariance</span><span class="p">(</span>
+            <span class="mi">1</span><span class="p">,</span>
+            <span class="n">kernel_init_constructor</span><span class="p">(</span><span class="n">model_config</span><span class="o">.</span><span class="n">products_covariance</span><span class="o">.</span><span class="n">kernel_init</span><span class="p">),</span>
+            <span class="n">model_config</span><span class="o">.</span><span class="n">products_covariance</span><span class="o">.</span><span class="n">register_kfac</span><span class="p">,</span>
+            <span class="n">use_weights</span><span class="o">=</span><span class="n">model_config</span><span class="o">.</span><span class="n">products_covariance</span><span class="o">.</span><span class="n">use_weights</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+
+        <span class="k">def</span> <span class="nf">backflow_based_equivariance</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">ArrayList</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Array</span><span class="p">:</span>
+            <span class="n">concat_x</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">get_backflow_from_config</span><span class="p">(</span>
+                <span class="n">model_config</span><span class="o">.</span><span class="n">invariance</span><span class="p">,</span>
+                <span class="n">spin_split</span><span class="o">=</span><span class="n">spin_split</span><span class="p">,</span>
+                <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
+            <span class="p">)(</span><span class="n">concat_x</span><span class="p">)</span>
+
+        <span class="n">odd_equivariance</span> <span class="o">=</span> <span class="n">make_array_list_fn_sign_covariant</span><span class="p">(</span>
+            <span class="n">backflow_based_equivariance</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">3</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">odd_equivariance</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="vmcnet.models.construct.get_residual_blocks_for_ferminet_backflow" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_residual_blocks_for_ferminet_backflow</span><span class="p">(</span><span class="n">spin_split</span><span class="p">,</span> <span class="n">ndense_list</span><span class="p">,</span> <span class="n">kernel_initializer_unmixed</span><span class="p">,</span> <span class="n">kernel_initializer_mixed</span><span class="p">,</span> <span class="n">kernel_initializer_2e_1e_stream</span><span class="p">,</span> <span class="n">kernel_initializer_2e_2e_stream</span><span class="p">,</span> <span class="n">bias_initializer_1e_stream</span><span class="p">,</span> <span class="n">bias_initializer_2e_stream</span><span class="p">,</span> <span class="n">activation_fn</span><span class="p">,</span> <span class="n">use_bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">one_electron_skip</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">one_electron_skip_scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">two_electron_skip</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">two_electron_skip_scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">cyclic_spins</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Construct a list of FermiNet residual blocks composed by FermiNetBackflow.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>spin_split</code></td>
+        <td><code>int or Sequence[int]</code></td>
+        <td><p>number of spins to split the input equally,
+or specified sequence of locations to split along the 2nd-to-last axis.
+E.g., if nelec = 10, and <code>spin_split</code> = 2, then the input is split (5, 5).
+If nelec = 10, and <code>spin_split</code> = (2, 4), then the input is split into
+(2, 4, 4) -- note when <code>spin_split</code> is a sequence, there will be one more
+spin than the length of the sequence. In the original use-case of spin-1/2
+particles, <code>spin_split</code> should be either the number 2 (for closed-shell
+systems) or should be a Sequence with length 1 whose element is less than
+the total number of electrons.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>ndense_list</code></td>
+        <td><code>List[Tuple[int, ...]]</code></td>
+        <td><p>(list of (int, ...)): number of dense nodes in each of the
+residual blocks, (ndense_1e, optional ndense_2e). The length of this list
+determines the number of residual blocks which are composed on top of the
+input streams. If ndense_2e is specified, then then a dense layer is applied
+to the two-electron stream with an optional skip connection, otherwise
+the two-electron stream is mixed into the one-electron stream but no
+transformation is done.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>kernel_initializer_unmixed</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>kernel initializer for the
+unmixed part of the one-electron stream. This initializes the part of the
+dense kernel which multiplies the previous one-electron stream output. Has
+signature (key, shape, dtype) -&gt; Array</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>kernel_initializer_mixed</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>kernel initializer for the
+mixed part of the one-electron stream. This initializes the part of the
+dense kernel which multiplies the average of the previous one-electron
+stream output. Has signature (key, shape, dtype) -&gt; Array</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>kernel_initializer_2e_1e_stream</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>kernel initializer for the
+two-electron part of the one-electron stream. This initializes the part of
+the dense kernel which multiplies the average of the previous two-electron
+stream which is mixed into the one-electron stream. Has signature
+(key, shape, dtype) -&gt; Array</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>kernel_initializer_2e_2e_stream</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>kernel initializer for the
+two-electron stream. Has signature (key, shape, dtype) -&gt; Array</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>bias_initializer_1e_stream</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>bias initializer for the
+one-electron stream. Has signature (key, shape, dtype) -&gt; Array</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>bias_initializer_2e_stream</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>bias initializer for the
+two-electron stream. Has signature (key, shape, dtype) -&gt; Array</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>activation_fn</code></td>
+        <td><code>Activation</code></td>
+        <td><p>activation function in the electron streams. Has
+the signature Array -&gt; Array (shape is preserved)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>use_bias</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to add a bias term in the electron streams.
+Defaults to True.</p></td>
+        <td><code>True</code></td>
+      </tr>
+      <tr>
+        <td><code>one_electron_skip</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to add a residual skip connection to
+the one-electron layer whenever the shapes of the input and output match.
+Defaults to True.</p></td>
+        <td><code>True</code></td>
+      </tr>
+      <tr>
+        <td><code>one_electron_skip_scale</code></td>
+        <td><code>float</code></td>
+        <td><p>quantity to scale the one-electron
+output by if a skip connection is added. Defaults to 1.0.</p></td>
+        <td><code>1.0</code></td>
+      </tr>
+      <tr>
+        <td><code>two_electron_skip</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to add a residual skip connection to
+the two-electron layer whenever the shapes of the input and output match.
+Defaults to True.</p></td>
+        <td><code>True</code></td>
+      </tr>
+      <tr>
+        <td><code>two_electron_skip_scale</code></td>
+        <td><code>float</code></td>
+        <td><p>quantity to scale the two-electron
+output by if a skip connection is added. Defaults to 1.0.</p></td>
+        <td><code>1.0</code></td>
+      </tr>
+      <tr>
+        <td><code>cyclic_spins</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether the the concatenation in the one-electron
+stream should satisfy a cyclic equivariance structure, i.e. if there are
+three spins (1, 2, 3), then in the mixed part of the stream, after averaging
+but before the linear transformation, cyclic equivariance means the inputs
+are [(1, 2, 3), (2, 3, 1), (3, 1, 2)]. If False, then the inputs are
+[(1, 2, 3), (1, 2, 3), (1, 2, 3)] (as in the original FermiNet).
+When there are only two spins (spin-1/2 case), then this is equivalent to
+true spin equivariance. Defaults to False (original FermiNet).</p></td>
+        <td><code>True</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/construct.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_residual_blocks_for_ferminet_backflow</span><span class="p">(</span>
+    <span class="n">spin_split</span><span class="p">:</span> <span class="n">ParticleSplit</span><span class="p">,</span>
+    <span class="n">ndense_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">]],</span>
+    <span class="n">kernel_initializer_unmixed</span><span class="p">:</span> <span class="n">WeightInitializer</span><span class="p">,</span>
+    <span class="n">kernel_initializer_mixed</span><span class="p">:</span> <span class="n">WeightInitializer</span><span class="p">,</span>
+    <span class="n">kernel_initializer_2e_1e_stream</span><span class="p">:</span> <span class="n">WeightInitializer</span><span class="p">,</span>
+    <span class="n">kernel_initializer_2e_2e_stream</span><span class="p">:</span> <span class="n">WeightInitializer</span><span class="p">,</span>
+    <span class="n">bias_initializer_1e_stream</span><span class="p">:</span> <span class="n">WeightInitializer</span><span class="p">,</span>
+    <span class="n">bias_initializer_2e_stream</span><span class="p">:</span> <span class="n">WeightInitializer</span><span class="p">,</span>
+    <span class="n">activation_fn</span><span class="p">:</span> <span class="n">Activation</span><span class="p">,</span>
+    <span class="n">use_bias</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">one_electron_skip</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">one_electron_skip_scale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">two_electron_skip</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">two_electron_skip_scale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">cyclic_spins</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">FermiNetResidualBlock</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Construct a list of FermiNet residual blocks composed by FermiNetBackflow.</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        spin_split (int or Sequence[int]): number of spins to split the input equally,</span>
+<span class="sd">            or specified sequence of locations to split along the 2nd-to-last axis.</span>
+<span class="sd">            E.g., if nelec = 10, and `spin_split` = 2, then the input is split (5, 5).</span>
+<span class="sd">            If nelec = 10, and `spin_split` = (2, 4), then the input is split into</span>
+<span class="sd">            (2, 4, 4) -- note when `spin_split` is a sequence, there will be one more</span>
+<span class="sd">            spin than the length of the sequence. In the original use-case of spin-1/2</span>
+<span class="sd">            particles, `spin_split` should be either the number 2 (for closed-shell</span>
+<span class="sd">            systems) or should be a Sequence with length 1 whose element is less than</span>
+<span class="sd">            the total number of electrons.</span>
+<span class="sd">        ndense_list: (list of (int, ...)): number of dense nodes in each of the</span>
+<span class="sd">            residual blocks, (ndense_1e, optional ndense_2e). The length of this list</span>
+<span class="sd">            determines the number of residual blocks which are composed on top of the</span>
+<span class="sd">            input streams. If ndense_2e is specified, then then a dense layer is applied</span>
+<span class="sd">            to the two-electron stream with an optional skip connection, otherwise</span>
+<span class="sd">            the two-electron stream is mixed into the one-electron stream but no</span>
+<span class="sd">            transformation is done.</span>
+<span class="sd">        kernel_initializer_unmixed (WeightInitializer): kernel initializer for the</span>
+<span class="sd">            unmixed part of the one-electron stream. This initializes the part of the</span>
+<span class="sd">            dense kernel which multiplies the previous one-electron stream output. Has</span>
+<span class="sd">            signature (key, shape, dtype) -&gt; Array</span>
+<span class="sd">        kernel_initializer_mixed (WeightInitializer): kernel initializer for the</span>
+<span class="sd">            mixed part of the one-electron stream. This initializes the part of the</span>
+<span class="sd">            dense kernel which multiplies the average of the previous one-electron</span>
+<span class="sd">            stream output. Has signature (key, shape, dtype) -&gt; Array</span>
+<span class="sd">        kernel_initializer_2e_1e_stream (WeightInitializer): kernel initializer for the</span>
+<span class="sd">            two-electron part of the one-electron stream. This initializes the part of</span>
+<span class="sd">            the dense kernel which multiplies the average of the previous two-electron</span>
+<span class="sd">            stream which is mixed into the one-electron stream. Has signature</span>
+<span class="sd">            (key, shape, dtype) -&gt; Array</span>
+<span class="sd">        kernel_initializer_2e_2e_stream (WeightInitializer): kernel initializer for the</span>
+<span class="sd">            two-electron stream. Has signature (key, shape, dtype) -&gt; Array</span>
+<span class="sd">        bias_initializer_1e_stream (WeightInitializer): bias initializer for the</span>
+<span class="sd">            one-electron stream. Has signature (key, shape, dtype) -&gt; Array</span>
+<span class="sd">        bias_initializer_2e_stream (WeightInitializer): bias initializer for the</span>
+<span class="sd">            two-electron stream. Has signature (key, shape, dtype) -&gt; Array</span>
+<span class="sd">        activation_fn (Activation): activation function in the electron streams. Has</span>
+<span class="sd">            the signature Array -&gt; Array (shape is preserved)</span>
+<span class="sd">        use_bias (bool, optional): whether to add a bias term in the electron streams.</span>
+<span class="sd">            Defaults to True.</span>
+<span class="sd">        one_electron_skip (bool, optional): whether to add a residual skip connection to</span>
+<span class="sd">            the one-electron layer whenever the shapes of the input and output match.</span>
+<span class="sd">            Defaults to True.</span>
+<span class="sd">        one_electron_skip_scale (float, optional): quantity to scale the one-electron</span>
+<span class="sd">            output by if a skip connection is added. Defaults to 1.0.</span>
+<span class="sd">        two_electron_skip (bool, optional): whether to add a residual skip connection to</span>
+<span class="sd">            the two-electron layer whenever the shapes of the input and output match.</span>
+<span class="sd">            Defaults to True.</span>
+<span class="sd">        two_electron_skip_scale (float, optional): quantity to scale the two-electron</span>
+<span class="sd">            output by if a skip connection is added. Defaults to 1.0.</span>
+<span class="sd">        cyclic_spins (bool, optional): whether the the concatenation in the one-electron</span>
+<span class="sd">            stream should satisfy a cyclic equivariance structure, i.e. if there are</span>
+<span class="sd">            three spins (1, 2, 3), then in the mixed part of the stream, after averaging</span>
+<span class="sd">            but before the linear transformation, cyclic equivariance means the inputs</span>
+<span class="sd">            are [(1, 2, 3), (2, 3, 1), (3, 1, 2)]. If False, then the inputs are</span>
+<span class="sd">            [(1, 2, 3), (1, 2, 3), (1, 2, 3)] (as in the original FermiNet).</span>
+<span class="sd">            When there are only two spins (spin-1/2 case), then this is equivalent to</span>
+<span class="sd">            true spin equivariance. Defaults to False (original FermiNet).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">residual_blocks</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">ndense</span> <span class="ow">in</span> <span class="n">ndense_list</span><span class="p">:</span>
+        <span class="n">one_electron_layer</span> <span class="o">=</span> <span class="n">FermiNetOneElectronLayer</span><span class="p">(</span>
+            <span class="n">spin_split</span><span class="p">,</span>
+            <span class="n">ndense</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="n">kernel_initializer_unmixed</span><span class="p">,</span>
+            <span class="n">kernel_initializer_mixed</span><span class="p">,</span>
+            <span class="n">kernel_initializer_2e_1e_stream</span><span class="p">,</span>
+            <span class="n">bias_initializer_1e_stream</span><span class="p">,</span>
+            <span class="n">activation_fn</span><span class="p">,</span>
+            <span class="n">use_bias</span><span class="p">,</span>
+            <span class="n">skip_connection</span><span class="o">=</span><span class="n">one_electron_skip</span><span class="p">,</span>
+            <span class="n">skip_connection_scale</span><span class="o">=</span><span class="n">one_electron_skip_scale</span><span class="p">,</span>
+            <span class="n">cyclic_spins</span><span class="o">=</span><span class="n">cyclic_spins</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">two_electron_layer</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ndense</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">two_electron_layer</span> <span class="o">=</span> <span class="n">FermiNetTwoElectronLayer</span><span class="p">(</span>
+                <span class="n">ndense</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                <span class="n">kernel_initializer_2e_2e_stream</span><span class="p">,</span>
+                <span class="n">bias_initializer_2e_stream</span><span class="p">,</span>
+                <span class="n">activation_fn</span><span class="p">,</span>
+                <span class="n">use_bias</span><span class="p">,</span>
+                <span class="n">skip_connection</span><span class="o">=</span><span class="n">two_electron_skip</span><span class="p">,</span>
+                <span class="n">skip_connection_scale</span><span class="o">=</span><span class="n">two_electron_skip_scale</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="n">residual_blocks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">FermiNetResidualBlock</span><span class="p">(</span><span class="n">one_electron_layer</span><span class="p">,</span> <span class="n">two_electron_layer</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">residual_blocks</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="vmcnet.models.construct.get_resnet_determinant_fn_for_ferminet" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_resnet_determinant_fn_for_ferminet</span><span class="p">(</span><span class="n">ndense</span><span class="p">,</span> <span class="n">nlayers</span><span class="p">,</span> <span class="n">activation</span><span class="p">,</span> <span class="n">kernel_initializer</span><span class="p">,</span> <span class="n">bias_initializer</span><span class="p">,</span> <span class="n">use_bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">register_kfac</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Get a resnet-based determinant function for FermiNet construction.</p>
+<p>The returned function is used as a more general way to combine the determinant
+outputs into the final wavefunction value, relative to the original method of a
+sum of products. The function takes as its first argument the number of requested
+output features because several variants of this method are supported, and each
+requires the function to generate a different output size.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ndense</code></td>
+        <td><code>int</code></td>
+        <td><p>the number of neurons in the dense layers
+of the ResNet.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>nlayers</code></td>
+        <td><code>int</code></td>
+        <td><p>the number of layers in the ResNet.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>activation</code></td>
+        <td><code>Activation</code></td>
+        <td><p>the activation function to use for the  resnet.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>kernel_initializer</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>kernel initializer for the resnet.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>bias_initializer</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>bias initializer for the resnet.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>use_bias</code></td>
+        <td><code>bool</code></td>
+        <td><p>Whether to use a bias in the ResNet. Defaults to True.</p></td>
+        <td><code>True</code></td>
+      </tr>
+      <tr>
+        <td><code>register_kfac</code></td>
+        <td><code>bool</code></td>
+        <td><p>Whether to register the ResNet Dense layers with KFAC.
+Currently, params for this ResNet explode to huge values and cause nans
+if register_kfac is True, so this flag defaults to false and should only be
+overridden with care. The reason for the instability is not known.</p></td>
+        <td><code>False</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>(DeterminantFn)</code></td>
+      <td><p>A resnet-based function. Has the signature
+dout, [nspins: (..., ndeterminants)] -&gt; (..., dout).</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/construct.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_resnet_determinant_fn_for_ferminet</span><span class="p">(</span>
+    <span class="n">ndense</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">nlayers</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">activation</span><span class="p">:</span> <span class="n">Activation</span><span class="p">,</span>
+    <span class="n">kernel_initializer</span><span class="p">:</span> <span class="n">WeightInitializer</span><span class="p">,</span>
+    <span class="n">bias_initializer</span><span class="p">:</span> <span class="n">WeightInitializer</span><span class="p">,</span>
+    <span class="n">use_bias</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">register_kfac</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DeterminantFn</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Get a resnet-based determinant function for FermiNet construction.</span>
+
+<span class="sd">    The returned function is used as a more general way to combine the determinant</span>
+<span class="sd">    outputs into the final wavefunction value, relative to the original method of a</span>
+<span class="sd">    sum of products. The function takes as its first argument the number of requested</span>
+<span class="sd">    output features because several variants of this method are supported, and each</span>
+<span class="sd">    requires the function to generate a different output size.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ndense (int): the number of neurons in the dense layers</span>
+<span class="sd">            of the ResNet.</span>
+<span class="sd">        nlayers (int): the number of layers in the ResNet.</span>
+<span class="sd">        activation (Activation): the activation function to use for the  resnet.</span>
+<span class="sd">        kernel_initializer (WeightInitializer): kernel initializer for the resnet.</span>
+<span class="sd">        bias_initializer (WeightInitializer): bias initializer for the resnet.</span>
+<span class="sd">        use_bias (bool): Whether to use a bias in the ResNet. Defaults to True.</span>
+<span class="sd">        register_kfac (bool): Whether to register the ResNet Dense layers with KFAC.</span>
+<span class="sd">            Currently, params for this ResNet explode to huge values and cause nans</span>
+<span class="sd">            if register_kfac is True, so this flag defaults to false and should only be</span>
+<span class="sd">            overridden with care. The reason for the instability is not known.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (DeterminantFn): A resnet-based function. Has the signature</span>
+<span class="sd">        dout, [nspins: (..., ndeterminants)] -&gt; (..., dout).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">fn</span><span class="p">(</span><span class="n">dout</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">det_values</span><span class="p">:</span> <span class="n">ArrayList</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Array</span><span class="p">:</span>
+        <span class="n">concat_values</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">det_values</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">SimpleResNet</span><span class="p">(</span>
+            <span class="n">ndense</span><span class="p">,</span>
+            <span class="n">dout</span><span class="p">,</span>
+            <span class="n">nlayers</span><span class="p">,</span>
+            <span class="n">activation</span><span class="p">,</span>
+            <span class="n">kernel_initializer</span><span class="p">,</span>
+            <span class="n">bias_initializer</span><span class="p">,</span>
+            <span class="n">use_bias</span><span class="p">,</span>
+            <span class="n">register_kfac</span><span class="o">=</span><span class="n">register_kfac</span><span class="p">,</span>
+        <span class="p">)(</span><span class="n">concat_values</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">fn</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../antisymmetry/" class="md-footer__link md-footer__link--prev" aria-label="Previous: antisymmetry" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              antisymmetry
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../core/" class="md-footer__link md-footer__link--next" aria-label="Next: core" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              core
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.tracking"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.cefbb252.min.js", "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a5f8ea78.min.js"></script>
+      
+    
+  </body>
+</html>

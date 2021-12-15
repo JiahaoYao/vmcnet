@@ -1,0 +1,3526 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.5">
+    
+    
+      
+        <title>checkpoint - vmcnet</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a617204b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9204c3b2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/docstrings.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/sidebar.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/content.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vmcnet.utils.checkpoint" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        <aside class="md-banner md-banner--warning">
+          
+        </aside>
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="vmcnet" class="md-header__button md-logo" aria-label="vmcnet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            vmcnet
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              checkpoint
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/jeffminlin/vmcnet" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jeffminlin/vmcnet
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../examples/harmonic_oscillator/" class="md-tabs__link md-tabs__link--active">
+        API Reference
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../CONTRIBUTING/" class="md-tabs__link">
+      Contributing
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="vmcnet" class="md-nav__button md-logo" aria-label="vmcnet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    vmcnet
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/jeffminlin/vmcnet" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jeffminlin/vmcnet
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          API Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          API Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="examples" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/harmonic_oscillator/" class="md-nav__link">
+        harmonic_oscillator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/hydrogen_like_atom/" class="md-nav__link">
+        hydrogen_like_atom
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          mcmc
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="mcmc" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          mcmc
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mcmc/dynamic_width_position_amplitude/" class="md-nav__link">
+        dynamic_width_position_amplitude
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mcmc/metropolis/" class="md-nav__link">
+        metropolis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mcmc/position_amplitude_core/" class="md-nav__link">
+        position_amplitude_core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mcmc/simple_position_amplitude/" class="md-nav__link">
+        simple_position_amplitude
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mcmc/statistics/" class="md-nav__link">
+        statistics
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3">
+          models
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="models" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          models
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../models/antiequivariance/" class="md-nav__link">
+        antiequivariance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../models/antisymmetry/" class="md-nav__link">
+        antisymmetry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../models/construct/" class="md-nav__link">
+        construct
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../models/core/" class="md-nav__link">
+        core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../models/equivariance/" class="md-nav__link">
+        equivariance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../models/jastrow/" class="md-nav__link">
+        jastrow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../models/sign_symmetry/" class="md-nav__link">
+        sign_symmetry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../models/weights/" class="md-nav__link">
+        weights
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4">
+          physics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="physics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          physics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../physics/core/" class="md-nav__link">
+        core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../physics/kinetic/" class="md-nav__link">
+        kinetic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../physics/potential/" class="md-nav__link">
+        potential
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          train
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="train" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          train
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../train/default_config/" class="md-nav__link">
+        default_config
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../train/parse_config_flags/" class="md-nav__link">
+        parse_config_flags
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../train/runners/" class="md-nav__link">
+        runners
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../train/vmc/" class="md-nav__link">
+        vmc
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6">
+          updates
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="updates" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          updates
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../updates/params/" class="md-nav__link">
+        params
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../updates/parse_config/" class="md-nav__link">
+        parse_config
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../updates/sr/" class="md-nav__link">
+        sr
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          utils
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="utils" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          utils
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          checkpoint
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        checkpoint
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint" class="md-nav__link">
+    vmcnet.utils.checkpoint
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.CheckpointWriter" class="md-nav__link">
+    CheckpointWriter
+  </a>
+  
+    <nav class="md-nav" aria-label="CheckpointWriter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.CheckpointWriter.write_out_data" class="md-nav__link">
+    write_out_data()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.CheckpointWriter.save_data" class="md-nav__link">
+    save_data()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.MetricsWriter" class="md-nav__link">
+    MetricsWriter
+  </a>
+  
+    <nav class="md-nav" aria-label="MetricsWriter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.MetricsWriter.write_out_data" class="md-nav__link">
+    write_out_data()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.RunningEnergyVariance" class="md-nav__link">
+    RunningEnergyVariance
+  </a>
+  
+    <nav class="md-nav" aria-label="RunningEnergyVariance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.RunningEnergyVariance.__new__" class="md-nav__link">
+    __new__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.RunningEnergyVariance.__repr__" class="md-nav__link">
+    __repr__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.RunningEnergyVariance.__getnewargs__" class="md-nav__link">
+    __getnewargs__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.RunningMetric" class="md-nav__link">
+    RunningMetric
+  </a>
+  
+    <nav class="md-nav" aria-label="RunningMetric">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.RunningMetric.move_history_window" class="md-nav__link">
+    move_history_window()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.ThreadedWriter" class="md-nav__link">
+    ThreadedWriter
+  </a>
+  
+    <nav class="md-nav" aria-label="ThreadedWriter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.ThreadedWriter.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.ThreadedWriter.write_out_data" class="md-nav__link">
+    write_out_data()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.ThreadedWriter.initialize" class="md-nav__link">
+    initialize()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.ThreadedWriter.save_data" class="md-nav__link">
+    save_data()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.ThreadedWriter.close_and_await" class="md-nav__link">
+    close_and_await()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.ThreadedWriter.__enter__" class="md-nav__link">
+    __enter__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.ThreadedWriter.__exit__" class="md-nav__link">
+    __exit__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.initialize_checkpointing" class="md-nav__link">
+    initialize_checkpointing()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.finish_checkpointing" class="md-nav__link">
+    finish_checkpointing()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.get_checkpoint_metric" class="md-nav__link">
+    get_checkpoint_metric()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.save_metrics_and_handle_checkpoints" class="md-nav__link">
+    save_metrics_and_handle_checkpoints()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.track_and_save_best_checkpoint" class="md-nav__link">
+    track_and_save_best_checkpoint()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.save_metrics_and_regular_checkpoint" class="md-nav__link">
+    save_metrics_and_regular_checkpoint()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.log_vmc_loop_state" class="md-nav__link">
+    log_vmc_loop_state()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../distribute/" class="md-nav__link">
+        distribute
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kfac/" class="md-nav__link">
+        kfac
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../log_linear_exp/" class="md-nav__link">
+        log_linear_exp
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytree_helpers/" class="md-nav__link">
+        pytree_helpers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slog_helpers/" class="md-nav__link">
+        slog_helpers
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CONTRIBUTING/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint" class="md-nav__link">
+    vmcnet.utils.checkpoint
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.CheckpointWriter" class="md-nav__link">
+    CheckpointWriter
+  </a>
+  
+    <nav class="md-nav" aria-label="CheckpointWriter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.CheckpointWriter.write_out_data" class="md-nav__link">
+    write_out_data()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.CheckpointWriter.save_data" class="md-nav__link">
+    save_data()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.MetricsWriter" class="md-nav__link">
+    MetricsWriter
+  </a>
+  
+    <nav class="md-nav" aria-label="MetricsWriter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.MetricsWriter.write_out_data" class="md-nav__link">
+    write_out_data()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.RunningEnergyVariance" class="md-nav__link">
+    RunningEnergyVariance
+  </a>
+  
+    <nav class="md-nav" aria-label="RunningEnergyVariance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.RunningEnergyVariance.__new__" class="md-nav__link">
+    __new__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.RunningEnergyVariance.__repr__" class="md-nav__link">
+    __repr__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.RunningEnergyVariance.__getnewargs__" class="md-nav__link">
+    __getnewargs__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.RunningMetric" class="md-nav__link">
+    RunningMetric
+  </a>
+  
+    <nav class="md-nav" aria-label="RunningMetric">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.RunningMetric.move_history_window" class="md-nav__link">
+    move_history_window()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.ThreadedWriter" class="md-nav__link">
+    ThreadedWriter
+  </a>
+  
+    <nav class="md-nav" aria-label="ThreadedWriter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.ThreadedWriter.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.ThreadedWriter.write_out_data" class="md-nav__link">
+    write_out_data()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.ThreadedWriter.initialize" class="md-nav__link">
+    initialize()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.ThreadedWriter.save_data" class="md-nav__link">
+    save_data()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.ThreadedWriter.close_and_await" class="md-nav__link">
+    close_and_await()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.ThreadedWriter.__enter__" class="md-nav__link">
+    __enter__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.ThreadedWriter.__exit__" class="md-nav__link">
+    __exit__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.initialize_checkpointing" class="md-nav__link">
+    initialize_checkpointing()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.finish_checkpointing" class="md-nav__link">
+    finish_checkpointing()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.get_checkpoint_metric" class="md-nav__link">
+    get_checkpoint_metric()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.save_metrics_and_handle_checkpoints" class="md-nav__link">
+    save_metrics_and_handle_checkpoints()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.track_and_save_best_checkpoint" class="md-nav__link">
+    track_and_save_best_checkpoint()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.save_metrics_and_regular_checkpoint" class="md-nav__link">
+    save_metrics_and_regular_checkpoint()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.utils.checkpoint.log_vmc_loop_state" class="md-nav__link">
+    log_vmc_loop_state()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+  <h1>checkpoint</h1>
+
+<div class="doc doc-object doc-module">
+
+<a id="vmcnet.utils.checkpoint"></a>
+    <div class="doc doc-contents first">
+
+      <p>Utilities for checkpointing and logging the VMC loop.</p>
+<p>Running queues of energy and variance histories are tracked, along with their averages.
+Unlike many of the other routines in this package, these are not pure functions, as they
+modify the RunningMetrics inside RunningEnergyVariance.</p>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="vmcnet.utils.checkpoint.CheckpointWriter" class="doc doc-heading">
+        <code>
+CheckpointWriter            (<a title="vmcnet.utils.checkpoint.ThreadedWriter" href="#vmcnet.utils.checkpoint.ThreadedWriter">ThreadedWriter</a>)
+        </code>
+
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>A ThreadedWriter for saving checkpoints during training.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.utils.checkpoint.CheckpointWriter.write_out_data" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">write_out_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">checkpoint_data</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Save checkpoint data.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>directory</code></td>
+        <td><code>str</code></td>
+        <td><p>directory in which to write the checkpoint</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>name</code></td>
+        <td><code>str</code></td>
+        <td><p>filename for the checkpoint</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>checkpoint_data</code></td>
+        <td><code>CheckpointData</code></td>
+        <td><p>checkpoint data which contains:
+epoch (int): epoch at which checkpoint is being saved
+data (pytree or Array): walker data to save
+params (pytree): model parameters to save
+optimizer_state (pytree): optimizer state to save
+key (PRNGKey): RNG key, used to reproduce exact behavior from
+    checkpoint</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/utils/checkpoint.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">write_out_data</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">checkpoint_data</span><span class="p">:</span> <span class="n">CheckpointData</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Save checkpoint data.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        directory (str): directory in which to write the checkpoint</span>
+<span class="sd">        name (str): filename for the checkpoint</span>
+
+<span class="sd">        checkpoint_data (CheckpointData): checkpoint data which contains:</span>
+<span class="sd">            epoch (int): epoch at which checkpoint is being saved</span>
+<span class="sd">            data (pytree or Array): walker data to save</span>
+<span class="sd">            params (pytree): model parameters to save</span>
+<span class="sd">            optimizer_state (pytree): optimizer state to save</span>
+<span class="sd">            key (PRNGKey): RNG key, used to reproduce exact behavior from</span>
+<span class="sd">                checkpoint</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">io</span><span class="o">.</span><span class="n">save_vmc_state</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">checkpoint_data</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.utils.checkpoint.CheckpointWriter.save_data" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">save_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">checkpoint_data</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Queue up checkpoint data to be written to disc.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/utils/checkpoint.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">save_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">checkpoint_data</span><span class="p">:</span> <span class="n">CheckpointData</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Queue up checkpoint data to be written to disc.&quot;&quot;&quot;</span>
+    <span class="n">checkpoint_data</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">process_checkpoint_data_for_saving</span><span class="p">(</span><span class="n">checkpoint_data</span><span class="p">)</span>
+    <span class="c1"># Move data to CPU to avoid clogging up GPU memory with queued checkpoints</span>
+    <span class="n">checkpoint_data</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">device_put</span><span class="p">(</span><span class="n">checkpoint_data</span><span class="p">,</span> <span class="n">jax</span><span class="o">.</span><span class="n">devices</span><span class="p">(</span><span class="s2">&quot;cpu&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">save_data</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">checkpoint_data</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="vmcnet.utils.checkpoint.MetricsWriter" class="doc doc-heading">
+        <code>
+MetricsWriter            (<a title="vmcnet.utils.checkpoint.ThreadedWriter" href="#vmcnet.utils.checkpoint.ThreadedWriter">ThreadedWriter</a>)
+        </code>
+
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>A ThreadedWriter for saving metrics during training.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.utils.checkpoint.MetricsWriter.write_out_data" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">write_out_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">metrics</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Save metrics to individual text files.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/utils/checkpoint.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">write_out_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">metrics</span><span class="p">:</span> <span class="n">Dict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Save metrics to individual text files.&quot;&quot;&quot;</span>
+    <span class="k">del</span> <span class="n">name</span>  <span class="c1"># unused, each metric gets its own file</span>
+    <span class="k">for</span> <span class="n">metric</span><span class="p">,</span> <span class="n">metric_val</span> <span class="ow">in</span> <span class="n">metrics</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">io</span><span class="o">.</span><span class="n">append_metric_to_file</span><span class="p">(</span><span class="n">metric_val</span><span class="p">,</span> <span class="n">directory</span><span class="p">,</span> <span class="n">metric</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="vmcnet.utils.checkpoint.RunningEnergyVariance" class="doc doc-heading">
+        <code>
+RunningEnergyVariance            (<span title="tuple">tuple</span>)
+        </code>
+
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Running energy history and variance history, packaged together.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.utils.checkpoint.RunningEnergyVariance.__new__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__new__</span><span class="p">(</span><span class="n">_cls</span><span class="p">,</span> <span class="n">energy</span><span class="p">,</span> <span class="n">variance</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+      <small class="doc doc-property doc-property-staticmethod"><code>staticmethod</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Create new instance of RunningEnergyVariance(energy, variance)</p>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.utils.checkpoint.RunningEnergyVariance.__repr__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Return a nicely formatted representation string</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/utils/checkpoint.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="s1">&#39;Return a nicely formatted representation string&#39;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="n">repr_fmt</span> <span class="o">%</span> <span class="bp">self</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.utils.checkpoint.RunningEnergyVariance.__getnewargs__" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">__getnewargs__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Return self as a plain tuple.  Used by copy and pickle.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/utils/checkpoint.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">__getnewargs__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="s1">&#39;Return self as a plain tuple.  Used by copy and pickle.&#39;</span>
+    <span class="k">return</span> <span class="n">_tuple</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="vmcnet.utils.checkpoint.RunningMetric" class="doc doc-heading">
+        <code>
+RunningMetric        </code>
+
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-dataclass"><code>dataclass</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Running history and average of a metric for checkpointing purposes.</p>
+
+<p><strong>Attributes:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>nhistory_max</code></td>
+        <td><code>int</code></td>
+        <td><p>maximum length of the running history to keep when adding
+new values</p></td>
+      </tr>
+      <tr>
+        <td><code>avg</code></td>
+        <td><code>jnp.float32</code></td>
+        <td><p>the running average, should be equal to
+jnp.mean(self.history). Stored here to avoid recomputation when new values
+are added</p></td>
+      </tr>
+      <tr>
+        <td><code>history</code></td>
+        <td><code>deque[jnp.float32]</code></td>
+        <td><p>the running history of the metric</p></td>
+      </tr>
+  </tbody>
+</table>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.utils.checkpoint.RunningMetric.move_history_window" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">move_history_window</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_value</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Append new value to running history, remove oldest if length &gt; nhistory_max.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>new_value</code></td>
+        <td><code>jnp.float32</code></td>
+        <td><p>new value to insert into the history</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/utils/checkpoint.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">move_history_window</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_value</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">float32</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Append new value to running history, remove oldest if length &gt; nhistory_max.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        new_value (jnp.float32): new value to insert into the history</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nhistory_max</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span>
+
+    <span class="n">history_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">history</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_value</span><span class="p">)</span>
+
+    <span class="n">self_sum</span> <span class="o">=</span> <span class="n">history_length</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">avg</span>
+    <span class="n">self_sum</span> <span class="o">+=</span> <span class="n">new_value</span>
+    <span class="n">history_length</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">if</span> <span class="n">history_length</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nhistory_max</span><span class="p">:</span>
+        <span class="n">oldest_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">history</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+        <span class="n">self_sum</span> <span class="o">-=</span> <span class="n">oldest_value</span>
+        <span class="n">history_length</span> <span class="o">-=</span> <span class="mi">1</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">avg</span> <span class="o">=</span> <span class="n">self_sum</span> <span class="o">/</span> <span class="n">history_length</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="vmcnet.utils.checkpoint.ThreadedWriter" class="doc doc-heading">
+        <code>
+ThreadedWriter            (<span title="typing.Generic">Generic</span>)
+        </code>
+
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>A simple asynchronous writer to handle file io during training.</p>
+<p>Spins up a thread for the file IO so that it does not block the main line of the
+training procedure. While Python threads do not provide true parallelism of CPU
+computations across cores, they do allow us to write to files and run Jax
+computations simultaneously.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.utils.checkpoint.ThreadedWriter.__init__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Create a new ThreadedWriter.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/utils/checkpoint.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Create a new ThreadedWriter.&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_run_thread</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_done</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_queue</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.utils.checkpoint.ThreadedWriter.write_out_data" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">write_out_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">data_to_save</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Abstract method which saves a piece of data pulled from the queue.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>directory</code></td>
+        <td><code>str</code></td>
+        <td><p>directory in which to write the checkpoint</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>name</code></td>
+        <td><code>str</code></td>
+        <td><p>filename for the checkpoint</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>data_to_save</code></td>
+        <td><code>Any</code></td>
+        <td><p>data to save</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/utils/checkpoint.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">write_out_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data_to_save</span><span class="p">:</span> <span class="n">T</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Abstract method which saves a piece of data pulled from the queue.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        directory (str): directory in which to write the checkpoint</span>
+<span class="sd">        name (str): filename for the checkpoint</span>
+<span class="sd">        data_to_save (Any): data to save</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.utils.checkpoint.ThreadedWriter.initialize" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Initialize the ThreadedWriter by starting its internal thread.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/utils/checkpoint.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Initialize the ThreadedWriter by starting its internal thread.&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.utils.checkpoint.ThreadedWriter.save_data" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">save_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">data_to_save</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Queue up data to be written to disc.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/utils/checkpoint.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">save_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data_to_save</span><span class="p">:</span> <span class="n">T</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Queue up data to be written to disc.&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_queue</span><span class="o">.</span><span class="n">put</span><span class="p">((</span><span class="n">directory</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">data_to_save</span><span class="p">))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.utils.checkpoint.ThreadedWriter.close_and_await" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">close_and_await</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Stop the thread by setting a flag, and return once it gets the message.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/utils/checkpoint.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">close_and_await</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Stop the thread by setting a flag, and return once it gets the message.&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_done</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.utils.checkpoint.ThreadedWriter.__enter__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Enter a ThreadedWriter's context, starting up a thread.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/utils/checkpoint.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Enter a ThreadedWriter&#39;s context, starting up a thread.&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+    <span class="k">return</span> <span class="bp">self</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.utils.checkpoint.ThreadedWriter.__exit__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Wait for the thread to finish, then leave the ThreadedWriter's context.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/utils/checkpoint.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Wait for the thread to finish, then leave the ThreadedWriter&#39;s context.&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">close_and_await</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="vmcnet.utils.checkpoint.initialize_checkpointing" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">initialize_checkpointing</span><span class="p">(</span><span class="n">checkpoint_dir</span><span class="p">,</span> <span class="n">nhistory_max</span><span class="p">,</span> <span class="n">logdir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">checkpoint_every</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Initialize checkpointing objects.</p>
+<p>A suffix is added to the checkpointing directory if one with the same name already
+exists in the logdir.</p>
+<p>The checkpointing metric (error-adjusted running energy average) is initialized to
+infinity, and empty arrays are initialized in running_energy_and_variance. The
+best checkpoint data is initialized to None, and saved_nan_checkpoint is initialized
+to False.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/utils/checkpoint.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">initialize_checkpointing</span><span class="p">(</span>
+    <span class="n">checkpoint_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">nhistory_max</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">logdir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">checkpoint_every</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">RunningEnergyVariance</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CheckpointData</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Initialize checkpointing objects.</span>
+
+<span class="sd">    A suffix is added to the checkpointing directory if one with the same name already</span>
+<span class="sd">    exists in the logdir.</span>
+
+<span class="sd">    The checkpointing metric (error-adjusted running energy average) is initialized to</span>
+<span class="sd">    infinity, and empty arrays are initialized in running_energy_and_variance. The</span>
+<span class="sd">    best checkpoint data is initialized to None, and saved_nan_checkpoint is initialized</span>
+<span class="sd">    to False.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">logdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Saving to </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">logdir</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">logdir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">checkpoint_every</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">checkpoint_dir</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">add_suffix_for_uniqueness</span><span class="p">(</span><span class="n">checkpoint_dir</span><span class="p">,</span> <span class="n">logdir</span><span class="p">)</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">logdir</span><span class="p">,</span> <span class="n">checkpoint_dir</span><span class="p">),</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="n">checkpoint_metric</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">inf</span>
+    <span class="n">running_energy_and_variance</span> <span class="o">=</span> <span class="n">RunningEnergyVariance</span><span class="p">(</span>
+        <span class="n">RunningMetric</span><span class="p">(</span><span class="n">nhistory_max</span><span class="p">),</span> <span class="n">RunningMetric</span><span class="p">(</span><span class="n">nhistory_max</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">best_checkpoint_data</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">saved_nan_checkpoint</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">checkpoint_dir</span><span class="p">,</span>
+        <span class="n">checkpoint_metric</span><span class="p">,</span>
+        <span class="n">running_energy_and_variance</span><span class="p">,</span>
+        <span class="n">best_checkpoint_data</span><span class="p">,</span>
+        <span class="n">saved_nan_checkpoint</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="vmcnet.utils.checkpoint.finish_checkpointing" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">finish_checkpointing</span><span class="p">(</span><span class="n">checkpoint_writer</span><span class="p">,</span> <span class="n">best_checkpoint_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logdir</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Save any final checkpoint data to the CheckpointWriter.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/utils/checkpoint.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">finish_checkpointing</span><span class="p">(</span>
+    <span class="n">checkpoint_writer</span><span class="p">:</span> <span class="n">CheckpointWriter</span><span class="p">,</span>
+    <span class="n">best_checkpoint_data</span><span class="p">:</span> <span class="n">CheckpointData</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">logdir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Save any final checkpoint data to the CheckpointWriter.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">logdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">best_checkpoint_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">checkpoint_writer</span><span class="o">.</span><span class="n">save_data</span><span class="p">(</span><span class="n">logdir</span><span class="p">,</span> <span class="n">CHECKPOINT_FILE_NAME</span><span class="p">,</span> <span class="n">best_checkpoint_data</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="vmcnet.utils.checkpoint.get_checkpoint_metric" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_checkpoint_metric</span><span class="p">(</span><span class="n">energy_running_avg</span><span class="p">,</span> <span class="n">variance_running_avg</span><span class="p">,</span> <span class="n">nsamples</span><span class="p">,</span> <span class="n">variance_scale</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Get an error-adjusted running average of the energy for checkpointing.</p>
+<p>The parameter variance_scale can be tuned and probably should scale linearly with
+some estimate of the integrated autocorrelation. Higher means more allergic to high
+variance, lower means more allergic to high energies.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>energy_running_avg</code></td>
+        <td><code>jnp.float32</code></td>
+        <td><p>running average of the energy</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>variance_running_avg</code></td>
+        <td><code>jnp.float32</code></td>
+        <td><p>running average of the variance</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>nsamples</code></td>
+        <td><code>int</code></td>
+        <td><p>total number of samples reflected in the running averages, equal
+to the number of parallel chains times the length of the history</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>variance_scale</code></td>
+        <td><code>float</code></td>
+        <td><p>weight of the variance part of the checkpointing metric.
+The final effect on the variance part is to scale it by
+jnp.sqrt(variance_scale), i.e. to treat it like the integrated
+autocorrelation.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>jnp.float32</code></td>
+      <td><p>error adjusted running average of the energy</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/utils/checkpoint.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_checkpoint_metric</span><span class="p">(</span>
+    <span class="n">energy_running_avg</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span>
+    <span class="n">variance_running_avg</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span>
+    <span class="n">nsamples</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">variance_scale</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">float32</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Get an error-adjusted running average of the energy for checkpointing.</span>
+
+<span class="sd">    The parameter variance_scale can be tuned and probably should scale linearly with</span>
+<span class="sd">    some estimate of the integrated autocorrelation. Higher means more allergic to high</span>
+<span class="sd">    variance, lower means more allergic to high energies.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        energy_running_avg (jnp.float32): running average of the energy</span>
+<span class="sd">        variance_running_avg (jnp.float32): running average of the variance</span>
+<span class="sd">        nsamples (int): total number of samples reflected in the running averages, equal</span>
+<span class="sd">            to the number of parallel chains times the length of the history</span>
+<span class="sd">        variance_scale (float): weight of the variance part of the checkpointing metric.</span>
+<span class="sd">            The final effect on the variance part is to scale it by</span>
+<span class="sd">            jnp.sqrt(variance_scale), i.e. to treat it like the integrated</span>
+<span class="sd">            autocorrelation.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        jnp.float32: error adjusted running average of the energy</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># TODO(Jeffmin): eventually maybe put in some cheap best guess at the IAC?</span>
+    <span class="k">if</span> <span class="n">variance_scale</span> <span class="o">&lt;=</span> <span class="mf">0.0</span> <span class="ow">or</span> <span class="n">nsamples</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">energy_running_avg</span>
+
+    <span class="n">effective_nsamples</span> <span class="o">=</span> <span class="n">nsamples</span> <span class="o">/</span> <span class="n">variance_scale</span>
+    <span class="k">return</span> <span class="n">energy_running_avg</span> <span class="o">+</span> <span class="n">jnp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">variance_running_avg</span> <span class="o">/</span> <span class="n">effective_nsamples</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="vmcnet.utils.checkpoint.save_metrics_and_handle_checkpoints" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">save_metrics_and_handle_checkpoints</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="n">old_params</span><span class="p">,</span> <span class="n">new_params</span><span class="p">,</span> <span class="n">optimizer_state</span><span class="p">,</span> <span class="n">old_data</span><span class="p">,</span> <span class="n">new_data</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">metrics</span><span class="p">,</span> <span class="n">nchains</span><span class="p">,</span> <span class="n">running_energy_and_variance</span><span class="p">,</span> <span class="n">checkpoint_writer</span><span class="p">,</span> <span class="n">metrics_writer</span><span class="p">,</span> <span class="n">checkpoint_metric</span><span class="p">,</span> <span class="n">logdir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">variance_scale</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">checkpoint_every</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">best_checkpoint_every</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">best_checkpoint_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">checkpoint_dir</span><span class="o">=</span><span class="s1">&#39;checkpoints&#39;</span><span class="p">,</span> <span class="n">checkpoint_if_nans</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">only_checkpoint_first_nans</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">saved_nans_checkpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">record_amplitudes</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">get_amplitude_fn</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Checkpoint the current state of the VMC loop.</p>
+<p>There are two situations to checkpoint:
+    1) Regularly, every x epochs, to handle job preemption and track
+    parameters/metrics/state over time, and
+    2) Whenever a checkpoint metric improves, i.e. the error adjusted running
+    average of the energy.</p>
+<p>This is not a pure function, as it modifies the running energy and variance history.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>epoch</code></td>
+        <td><code>int</code></td>
+        <td><p>current epoch number</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>old_params</code></td>
+        <td><code>pytree-like</code></td>
+        <td><p>model parameters, from before the update function.
+Needs to be serializable via <code>np.savez</code>.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>new_params</code></td>
+        <td><code>pytree-like</code></td>
+        <td><p>model parameters, from after the update function.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>optimizer_state</code></td>
+        <td><code>pytree-like</code></td>
+        <td><p>running state of the optimizer other than the
+trainable parameters. Needs to be serialiable via <code>np.savez</code></p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>old_data</code></td>
+        <td><code>pytree-like</code></td>
+        <td><p>previous mcmc data (e.g. position and amplitude data).
+Needs to be serializable via <code>np.savez</code></p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>new_data</code></td>
+        <td><code>pytree-like</code></td>
+        <td><p>new mcmc data (e.g. position and amplitude data). Needs
+to be serializable via <code>np.savez</code></p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>metrics</code></td>
+        <td><code>dict</code></td>
+        <td><p>dictionary of metrics. If this is not None, then it must include
+"energy" and "variance". Metrics are currently flattened and written to a
+row of a text file. See :func:<code>utils.io.write_metric_to_file</code>.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>nchains</code></td>
+        <td><code>int</code></td>
+        <td><p>number of parallel MCMC chains being run. This can be difficult
+to infer from data, depending on the structure of data, whether data has
+been pmapped, etc.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>running_energy_and_variance</code></td>
+        <td><code>RunningEnergyVariance</code></td>
+        <td><p>running history of energies
+and variances</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>checkpoint_metric</code></td>
+        <td><code>jnp.float32</code></td>
+        <td><p>current best error adjusted running average of
+the energy history</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>best_checkpoint_every</code></td>
+        <td><code>int</code></td>
+        <td><p>limit on how often to save best
+checkpoint, even if energy is improving. When the error-adjusted running avg
+of the energy improves, instead of immediately saving a checkpoint, we hold
+onto the data from that epoch in memory, and if it's still the best one when
+we hit an epoch which is a multiple of <code>best_checkpoint_every</code>, we save it
+then. This ensures we don't waste time saving best checkpoints too often
+when the energy is on a downward trajectory (as we hope it often is!).
+Defaults to 100.</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>logdir</code></td>
+        <td><code>str</code></td>
+        <td><p>name of parent log directory. If None, no checkpointing
+is done. Defaults to None.</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>variance_scale</code></td>
+        <td><code>float</code></td>
+        <td><p>scale of the variance term in the
+error-adjusted running avg of the energy. Higher means the variance is more
+important, and lower means the energy is more important. See
+:func:<code>~vmctrain.train.vmc.get_checkpoint_metric</code>. Defaults to 10.0.</p></td>
+        <td><code>10.0</code></td>
+      </tr>
+      <tr>
+        <td><code>checkpoint_every</code></td>
+        <td><code>int</code></td>
+        <td><p>how often to regularly save checkpoints. If
+None, checkpoints are only saved when the error-adjusted running avg of the
+energy improves. Defaults to None.</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>best_checkpoint_data</code></td>
+        <td><code>CheckpointData</code></td>
+        <td><p>the data needed to save a
+checkpoint for the best energy observed so far.</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>checkpoint_dir</code></td>
+        <td><code>str</code></td>
+        <td><p>name of subdirectory to save the regular
+checkpoints. These are saved as "logdir/checkpoint_dir/(epoch + 1).npz".
+Defaults to "checkpoints".</p></td>
+        <td><code>&#39;checkpoints&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>checkpoint_if_nans</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to save checkpoints when
+nan energy values are recorded. Defaults to False.</p></td>
+        <td><code>False</code></td>
+      </tr>
+      <tr>
+        <td><code>only_checkpoint_first_nans</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to checkpoint only the
+first time nans are encountered, or every time. Useful to capture a nan
+checkpoint without risking writing too many checkpoints if the optimization
+starts to hit nans most or every epoch after some point. Only relevant if
+checkpoint_if_nans is True. Defaults to True.</p></td>
+        <td><code>True</code></td>
+      </tr>
+      <tr>
+        <td><code>saved_nans_checkpoint</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether a nans checkpoint has already
+been saved. Only relevant if checkpoint_if_nans and
+only_checkpoint_first_nans are both True, and used in that case to decide
+whether to save further nans checkpoints or not. Defaults to False.</p></td>
+        <td><code>False</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>(jnp.float32, str, CheckpointData, bool)</code></td>
+      <td><p>best error-adjusted energy average,
+then string indicating if checkpointing has been done, then new best checkpoint
+data (or None), then the updated value of saved_nans_checkpoint.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/utils/checkpoint.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">save_metrics_and_handle_checkpoints</span><span class="p">(</span>
+    <span class="n">epoch</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">old_params</span><span class="p">:</span> <span class="n">P</span><span class="p">,</span>
+    <span class="n">new_params</span><span class="p">:</span> <span class="n">P</span><span class="p">,</span>
+    <span class="n">optimizer_state</span><span class="p">:</span> <span class="n">S</span><span class="p">,</span>
+    <span class="n">old_data</span><span class="p">:</span> <span class="n">D</span><span class="p">,</span>
+    <span class="n">new_data</span><span class="p">:</span> <span class="n">D</span><span class="p">,</span>
+    <span class="n">key</span><span class="p">:</span> <span class="n">PRNGKey</span><span class="p">,</span>
+    <span class="n">metrics</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span>
+    <span class="n">nchains</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">running_energy_and_variance</span><span class="p">:</span> <span class="n">RunningEnergyVariance</span><span class="p">,</span>
+    <span class="n">checkpoint_writer</span><span class="p">:</span> <span class="n">CheckpointWriter</span><span class="p">,</span>
+    <span class="n">metrics_writer</span><span class="p">:</span> <span class="n">MetricsWriter</span><span class="p">,</span>
+    <span class="n">checkpoint_metric</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span>
+    <span class="n">logdir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">variance_scale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">,</span>
+    <span class="n">checkpoint_every</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">best_checkpoint_every</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">best_checkpoint_data</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CheckpointData</span><span class="p">[</span><span class="n">D</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">S</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">checkpoint_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;checkpoints&quot;</span><span class="p">,</span>
+    <span class="n">checkpoint_if_nans</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">only_checkpoint_first_nans</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">saved_nans_checkpoint</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">record_amplitudes</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">get_amplitude_fn</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">GetAmplitudeFromData</span><span class="p">[</span><span class="n">D</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">jnp</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CheckpointData</span><span class="p">[</span><span class="n">D</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">S</span><span class="p">]],</span> <span class="nb">bool</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Checkpoint the current state of the VMC loop.</span>
+
+<span class="sd">    There are two situations to checkpoint:</span>
+<span class="sd">        1) Regularly, every x epochs, to handle job preemption and track</span>
+<span class="sd">        parameters/metrics/state over time, and</span>
+<span class="sd">        2) Whenever a checkpoint metric improves, i.e. the error adjusted running</span>
+<span class="sd">        average of the energy.</span>
+
+<span class="sd">    This is not a pure function, as it modifies the running energy and variance history.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        epoch (int): current epoch number</span>
+<span class="sd">        old_params (pytree-like): model parameters, from before the update function.</span>
+<span class="sd">            Needs to be serializable via `np.savez`.</span>
+<span class="sd">        new_params (pytree-like): model parameters, from after the update function.</span>
+<span class="sd">        optimizer_state (pytree-like): running state of the optimizer other than the</span>
+<span class="sd">            trainable parameters. Needs to be serialiable via `np.savez`</span>
+<span class="sd">        old_data (pytree-like): previous mcmc data (e.g. position and amplitude data).</span>
+<span class="sd">            Needs to be serializable via `np.savez`</span>
+<span class="sd">        new_data (pytree-like): new mcmc data (e.g. position and amplitude data). Needs</span>
+<span class="sd">            to be serializable via `np.savez`</span>
+<span class="sd">        metrics (dict): dictionary of metrics. If this is not None, then it must include</span>
+<span class="sd">            &quot;energy&quot; and &quot;variance&quot;. Metrics are currently flattened and written to a</span>
+<span class="sd">            row of a text file. See :func:`utils.io.write_metric_to_file`.</span>
+<span class="sd">        nchains (int): number of parallel MCMC chains being run. This can be difficult</span>
+<span class="sd">            to infer from data, depending on the structure of data, whether data has</span>
+<span class="sd">            been pmapped, etc.</span>
+<span class="sd">        running_energy_and_variance (RunningEnergyVariance): running history of energies</span>
+<span class="sd">            and variances</span>
+<span class="sd">        checkpoint_metric (jnp.float32): current best error adjusted running average of</span>
+<span class="sd">            the energy history</span>
+<span class="sd">        best_checkpoint_every (int): limit on how often to save best</span>
+<span class="sd">            checkpoint, even if energy is improving. When the error-adjusted running avg</span>
+<span class="sd">            of the energy improves, instead of immediately saving a checkpoint, we hold</span>
+<span class="sd">            onto the data from that epoch in memory, and if it&#39;s still the best one when</span>
+<span class="sd">            we hit an epoch which is a multiple of `best_checkpoint_every`, we save it</span>
+<span class="sd">            then. This ensures we don&#39;t waste time saving best checkpoints too often</span>
+<span class="sd">            when the energy is on a downward trajectory (as we hope it often is!).</span>
+<span class="sd">            Defaults to 100.</span>
+<span class="sd">        logdir (str, optional): name of parent log directory. If None, no checkpointing</span>
+<span class="sd">            is done. Defaults to None.</span>
+<span class="sd">        variance_scale (float, optional): scale of the variance term in the</span>
+<span class="sd">            error-adjusted running avg of the energy. Higher means the variance is more</span>
+<span class="sd">            important, and lower means the energy is more important. See</span>
+<span class="sd">            :func:`~vmctrain.train.vmc.get_checkpoint_metric`. Defaults to 10.0.</span>
+<span class="sd">        checkpoint_every (int, optional): how often to regularly save checkpoints. If</span>
+<span class="sd">            None, checkpoints are only saved when the error-adjusted running avg of the</span>
+<span class="sd">            energy improves. Defaults to None.</span>
+<span class="sd">        best_checkpoint_data (CheckpointData, optional): the data needed to save a</span>
+<span class="sd">            checkpoint for the best energy observed so far.</span>
+<span class="sd">        checkpoint_dir (str, optional): name of subdirectory to save the regular</span>
+<span class="sd">            checkpoints. These are saved as &quot;logdir/checkpoint_dir/(epoch + 1).npz&quot;.</span>
+<span class="sd">            Defaults to &quot;checkpoints&quot;.</span>
+<span class="sd">        checkpoint_if_nans (bool, optional): whether to save checkpoints when</span>
+<span class="sd">            nan energy values are recorded. Defaults to False.</span>
+<span class="sd">        only_checkpoint_first_nans (bool, optional): whether to checkpoint only the</span>
+<span class="sd">            first time nans are encountered, or every time. Useful to capture a nan</span>
+<span class="sd">            checkpoint without risking writing too many checkpoints if the optimization</span>
+<span class="sd">            starts to hit nans most or every epoch after some point. Only relevant if</span>
+<span class="sd">            checkpoint_if_nans is True. Defaults to True.</span>
+<span class="sd">        saved_nans_checkpoint (bool, optional): whether a nans checkpoint has already</span>
+<span class="sd">            been saved. Only relevant if checkpoint_if_nans and</span>
+<span class="sd">            only_checkpoint_first_nans are both True, and used in that case to decide</span>
+<span class="sd">            whether to save further nans checkpoints or not. Defaults to False.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (jnp.float32, str, CheckpointData, bool): best error-adjusted energy average,</span>
+<span class="sd">        then string indicating if checkpointing has been done, then new best checkpoint</span>
+<span class="sd">        data (or None), then the updated value of saved_nans_checkpoint.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">checkpoint_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">logdir</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">metrics</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># do nothing</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">checkpoint_metric</span><span class="p">,</span>
+            <span class="n">checkpoint_str</span><span class="p">,</span>
+            <span class="n">best_checkpoint_data</span><span class="p">,</span>
+            <span class="n">saved_nans_checkpoint</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="n">_add_amplitude_to_metrics_if_requested</span><span class="p">(</span>
+        <span class="n">metrics</span><span class="p">,</span> <span class="n">new_data</span><span class="p">,</span> <span class="n">record_amplitudes</span><span class="p">,</span> <span class="n">get_amplitude_fn</span>
+    <span class="p">)</span>
+
+    <span class="n">checkpoint_str</span><span class="p">,</span> <span class="n">saved_nans_checkpoint</span> <span class="o">=</span> <span class="n">save_metrics_and_regular_checkpoint</span><span class="p">(</span>
+        <span class="n">epoch</span><span class="p">,</span>
+        <span class="n">old_params</span><span class="p">,</span>
+        <span class="n">new_params</span><span class="p">,</span>
+        <span class="n">optimizer_state</span><span class="p">,</span>
+        <span class="n">old_data</span><span class="p">,</span>
+        <span class="n">key</span><span class="p">,</span>
+        <span class="n">metrics</span><span class="p">,</span>
+        <span class="n">logdir</span><span class="p">,</span>
+        <span class="n">checkpoint_writer</span><span class="p">,</span>
+        <span class="n">metrics_writer</span><span class="p">,</span>
+        <span class="n">checkpoint_dir</span><span class="p">,</span>
+        <span class="n">checkpoint_str</span><span class="p">,</span>
+        <span class="n">checkpoint_every</span><span class="p">,</span>
+        <span class="n">checkpoint_if_nans</span><span class="o">=</span><span class="n">checkpoint_if_nans</span><span class="p">,</span>
+        <span class="n">only_checkpoint_first_nans</span><span class="o">=</span><span class="n">only_checkpoint_first_nans</span><span class="p">,</span>
+        <span class="n">saved_nans_checkpoint</span><span class="o">=</span><span class="n">saved_nans_checkpoint</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="p">(</span>
+        <span class="n">checkpoint_str</span><span class="p">,</span>
+        <span class="n">error_adjusted_running_avg</span><span class="p">,</span>
+        <span class="n">new_best_checkpoint_data</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="n">track_and_save_best_checkpoint</span><span class="p">(</span>
+        <span class="n">epoch</span><span class="p">,</span>
+        <span class="n">old_params</span><span class="p">,</span>
+        <span class="n">optimizer_state</span><span class="p">,</span>
+        <span class="n">old_data</span><span class="p">,</span>
+        <span class="n">key</span><span class="p">,</span>
+        <span class="n">metrics</span><span class="p">,</span>
+        <span class="n">nchains</span><span class="p">,</span>
+        <span class="n">running_energy_and_variance</span><span class="p">,</span>
+        <span class="n">checkpoint_writer</span><span class="p">,</span>
+        <span class="n">checkpoint_metric</span><span class="p">,</span>
+        <span class="n">logdir</span><span class="p">,</span>
+        <span class="n">variance_scale</span><span class="p">,</span>
+        <span class="n">checkpoint_str</span><span class="p">,</span>
+        <span class="n">best_checkpoint_every</span><span class="p">,</span>
+        <span class="n">best_checkpoint_data</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">jnp</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">error_adjusted_running_avg</span><span class="p">,</span> <span class="n">checkpoint_metric</span><span class="p">),</span>
+        <span class="n">checkpoint_str</span><span class="p">,</span>
+        <span class="n">new_best_checkpoint_data</span><span class="p">,</span>
+        <span class="n">saved_nans_checkpoint</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="vmcnet.utils.checkpoint.track_and_save_best_checkpoint" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">track_and_save_best_checkpoint</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="n">old_params</span><span class="p">,</span> <span class="n">optimizer_state</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">metrics</span><span class="p">,</span> <span class="n">nchains</span><span class="p">,</span> <span class="n">running_energy_and_variance</span><span class="p">,</span> <span class="n">checkpoint_writer</span><span class="p">,</span> <span class="n">checkpoint_metric</span><span class="p">,</span> <span class="n">logdir</span><span class="p">,</span> <span class="n">variance_scale</span><span class="p">,</span> <span class="n">checkpoint_str</span><span class="p">,</span> <span class="n">best_checkpoint_every</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">best_checkpoint_data</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Update running avgs and checkpoint if the error-adjusted energy avg improves.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>epoch</code></td>
+        <td><code>int</code></td>
+        <td><p>current epoch number</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>old_params</code></td>
+        <td><code>pytree-like</code></td>
+        <td><p>model parameters, from before the update function.
+Needs to be serializable via <code>np.savez</code>.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>optimizer_state</code></td>
+        <td><code>pytree-like</code></td>
+        <td><p>running state of the optimizer other than the
+trainable parameters. Needs to be serialiable via <code>np.savez</code></p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>data</code></td>
+        <td><code>pytree-like</code></td>
+        <td><p>current mcmc data (e.g. position and amplitude data). Needs
+to be serializable via <code>np.savez</code></p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>metrics</code></td>
+        <td><code>dict</code></td>
+        <td><p>dictionary of metrics. If this is not None, then it must include
+"energy" and "variance". Metrics are currently flattened and written to a
+row of a text file. See :func:<code>utils.io.write_metric_to_file</code>.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>nchains</code></td>
+        <td><code>int</code></td>
+        <td><p>number of parallel MCMC chains being run. This can be difficult
+to infer from data, depending on the structure of data, whether data has
+been pmapped, etc.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>running_energy_and_variance</code></td>
+        <td><code>RunningEnergyVariance</code></td>
+        <td><p>running history of energies
+and variances</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>checkpoint_metric</code></td>
+        <td><code>jnp.float32</code></td>
+        <td><p>current best error adjusted running average of
+the energy history</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>logdir</code></td>
+        <td><code>str</code></td>
+        <td><p>name of parent log directory. If None, no checkpointing
+is done. Defaults to None.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>variance_scale</code></td>
+        <td><code>float</code></td>
+        <td><p>scale of the variance term in the
+error-adjusted running avg of the energy. Higher means the variance is more
+important, and lower means the energy is more important. See
+:func:<code>~vmctrain.train.vmc.get_checkpoint_metric</code>.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>checkpoint_str</code></td>
+        <td><code>str</code></td>
+        <td><p>string indicating whether checkpointing has previously
+occurred</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>best_checkpoint_every</code></td>
+        <td><code>int</code></td>
+        <td><p>limit on how often to save best
+checkpoint, even if energy is improving. When the error-adjusted running avg
+of the energy improves, instead of immediately saving a checkpoint, we hold
+onto the data from that epoch in memory, and if it's still the best one when
+we hit an epoch which is a multiple of <code>best_checkpoint_every</code>, we save it
+then. This ensures we don't waste time saving best checkpoints too often
+when the energy is on a downward trajectory (as we hope it often is!).
+Defaults to 100.</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>best_checkpoint_data</code></td>
+        <td><code>CheckpointData</code></td>
+        <td><p>the data needed to save a
+checkpoint for the best energy observed so far.</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>(str, jnp.float32, CheckpointData)</code></td>
+      <td><p>previous checkpointing string with
+additional info if this function did checkpointing, then best error-adjusted
+energy average, then new best checkpoint data, or None.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/utils/checkpoint.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">track_and_save_best_checkpoint</span><span class="p">(</span>
+    <span class="n">epoch</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">old_params</span><span class="p">:</span> <span class="n">P</span><span class="p">,</span>
+    <span class="n">optimizer_state</span><span class="p">:</span> <span class="n">S</span><span class="p">,</span>
+    <span class="n">data</span><span class="p">:</span> <span class="n">D</span><span class="p">,</span>
+    <span class="n">key</span><span class="p">:</span> <span class="n">PRNGKey</span><span class="p">,</span>
+    <span class="n">metrics</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span>
+    <span class="n">nchains</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">running_energy_and_variance</span><span class="p">:</span> <span class="n">RunningEnergyVariance</span><span class="p">,</span>
+    <span class="n">checkpoint_writer</span><span class="p">:</span> <span class="n">CheckpointWriter</span><span class="p">,</span>
+    <span class="n">checkpoint_metric</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span>
+    <span class="n">logdir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">variance_scale</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">checkpoint_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">best_checkpoint_every</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">best_checkpoint_data</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CheckpointData</span><span class="p">[</span><span class="n">D</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">S</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CheckpointData</span><span class="p">[</span><span class="n">D</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">S</span><span class="p">]]]:</span>
+    <span class="sd">&quot;&quot;&quot;Update running avgs and checkpoint if the error-adjusted energy avg improves.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        epoch (int): current epoch number</span>
+<span class="sd">        old_params (pytree-like): model parameters, from before the update function.</span>
+<span class="sd">            Needs to be serializable via `np.savez`.</span>
+<span class="sd">        optimizer_state (pytree-like): running state of the optimizer other than the</span>
+<span class="sd">            trainable parameters. Needs to be serialiable via `np.savez`</span>
+<span class="sd">        data (pytree-like): current mcmc data (e.g. position and amplitude data). Needs</span>
+<span class="sd">            to be serializable via `np.savez`</span>
+<span class="sd">        metrics (dict): dictionary of metrics. If this is not None, then it must include</span>
+<span class="sd">            &quot;energy&quot; and &quot;variance&quot;. Metrics are currently flattened and written to a</span>
+<span class="sd">            row of a text file. See :func:`utils.io.write_metric_to_file`.</span>
+<span class="sd">        nchains (int): number of parallel MCMC chains being run. This can be difficult</span>
+<span class="sd">            to infer from data, depending on the structure of data, whether data has</span>
+<span class="sd">            been pmapped, etc.</span>
+<span class="sd">        running_energy_and_variance (RunningEnergyVariance): running history of energies</span>
+<span class="sd">            and variances</span>
+<span class="sd">        checkpoint_metric (jnp.float32): current best error adjusted running average of</span>
+<span class="sd">            the energy history</span>
+<span class="sd">        logdir (str): name of parent log directory. If None, no checkpointing</span>
+<span class="sd">            is done. Defaults to None.</span>
+<span class="sd">        variance_scale (float): scale of the variance term in the</span>
+<span class="sd">            error-adjusted running avg of the energy. Higher means the variance is more</span>
+<span class="sd">            important, and lower means the energy is more important. See</span>
+<span class="sd">            :func:`~vmctrain.train.vmc.get_checkpoint_metric`.</span>
+<span class="sd">        checkpoint_str (str): string indicating whether checkpointing has previously</span>
+<span class="sd">            occurred</span>
+<span class="sd">        best_checkpoint_every (int, optional): limit on how often to save best</span>
+<span class="sd">            checkpoint, even if energy is improving. When the error-adjusted running avg</span>
+<span class="sd">            of the energy improves, instead of immediately saving a checkpoint, we hold</span>
+<span class="sd">            onto the data from that epoch in memory, and if it&#39;s still the best one when</span>
+<span class="sd">            we hit an epoch which is a multiple of `best_checkpoint_every`, we save it</span>
+<span class="sd">            then. This ensures we don&#39;t waste time saving best checkpoints too often</span>
+<span class="sd">            when the energy is on a downward trajectory (as we hope it often is!).</span>
+<span class="sd">            Defaults to 100.</span>
+<span class="sd">        best_checkpoint_data (CheckpointData, optional): the data needed to save a</span>
+<span class="sd">            checkpoint for the best energy observed so far.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (str, jnp.float32, CheckpointData): previous checkpointing string with</span>
+<span class="sd">        additional info if this function did checkpointing, then best error-adjusted</span>
+<span class="sd">        energy average, then new best checkpoint data, or None.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">best_checkpoint_every</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">energy</span><span class="p">,</span> <span class="n">variance</span> <span class="o">=</span> <span class="n">running_energy_and_variance</span>
+
+        <span class="n">energy</span><span class="o">.</span><span class="n">move_history_window</span><span class="p">(</span><span class="n">metrics</span><span class="p">[</span><span class="s2">&quot;energy&quot;</span><span class="p">])</span>
+        <span class="n">variance</span><span class="o">.</span><span class="n">move_history_window</span><span class="p">(</span><span class="n">metrics</span><span class="p">[</span><span class="s2">&quot;variance&quot;</span><span class="p">])</span>
+        <span class="n">error_adjusted_running_avg</span> <span class="o">=</span> <span class="n">get_checkpoint_metric</span><span class="p">(</span>
+            <span class="n">energy</span><span class="o">.</span><span class="n">avg</span><span class="p">,</span> <span class="n">variance</span><span class="o">.</span><span class="n">avg</span><span class="p">,</span> <span class="n">nchains</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">energy</span><span class="o">.</span><span class="n">history</span><span class="p">),</span> <span class="n">variance_scale</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">error_adjusted_running_avg</span> <span class="o">&lt;</span> <span class="n">checkpoint_metric</span><span class="p">:</span>
+            <span class="n">best_checkpoint_data</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">epoch</span><span class="p">,</span>
+                <span class="n">data</span><span class="p">,</span>
+                <span class="n">old_params</span><span class="p">,</span>
+                <span class="n">optimizer_state</span><span class="p">,</span>
+                <span class="n">key</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="n">should_save_best_checkpoint</span> <span class="o">=</span> <span class="p">(</span><span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">best_checkpoint_every</span> <span class="o">==</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">should_save_best_checkpoint</span> <span class="ow">and</span> <span class="n">best_checkpoint_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">checkpoint_writer</span><span class="o">.</span><span class="n">save_data</span><span class="p">(</span>
+                <span class="n">logdir</span><span class="p">,</span> <span class="n">CHECKPOINT_FILE_NAME</span><span class="p">,</span> <span class="n">best_checkpoint_data</span>
+            <span class="p">)</span>
+            <span class="n">checkpoint_str</span> <span class="o">=</span> <span class="n">checkpoint_str</span> <span class="o">+</span> <span class="s2">&quot;, best weights saved&quot;</span>
+            <span class="n">best_checkpoint_data</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">error_adjusted_running_avg</span> <span class="o">=</span> <span class="n">checkpoint_metric</span>
+
+    <span class="k">return</span> <span class="n">checkpoint_str</span><span class="p">,</span> <span class="n">error_adjusted_running_avg</span><span class="p">,</span> <span class="n">best_checkpoint_data</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="vmcnet.utils.checkpoint.save_metrics_and_regular_checkpoint" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">save_metrics_and_regular_checkpoint</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="n">old_params</span><span class="p">,</span> <span class="n">new_params</span><span class="p">,</span> <span class="n">optimizer_state</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">metrics</span><span class="p">,</span> <span class="n">logdir</span><span class="p">,</span> <span class="n">checkpoint_writer</span><span class="p">,</span> <span class="n">metrics_writer</span><span class="p">,</span> <span class="n">checkpoint_dir</span><span class="p">,</span> <span class="n">checkpoint_str</span><span class="p">,</span> <span class="n">checkpoint_every</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">checkpoint_if_nans</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">only_checkpoint_first_nans</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">saved_nans_checkpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Save current metrics to file, and save model state regularly.</p>
+<p>This currently touches the disk repeatedly, once for each metric, which is probably
+fairly inefficient, especially if called every epoch (as it currently is in
+:func:<code>~vmcnet.train.vmc.vmc_loop</code>).</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>epoch</code></td>
+        <td><code>int</code></td>
+        <td><p>current epoch number</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>old_params</code></td>
+        <td><code>pytree-like</code></td>
+        <td><p>model parameters, from before the update function.
+Needs to be serializable via <code>np.savez</code>.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>new_params</code></td>
+        <td><code>pytree-like</code></td>
+        <td><p>model parameters, from after the update function.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>optimizer_state</code></td>
+        <td><code>pytree-like</code></td>
+        <td><p>running state of the optimizer other than the
+trainable parameters. Needs to be serialiable via <code>np.savez</code></p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>data</code></td>
+        <td><code>pytree-like</code></td>
+        <td><p>current mcmc data (e.g. position and amplitude data). Needs
+to be serializable via <code>np.savez</code></p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>metrics</code></td>
+        <td><code>dict</code></td>
+        <td><p>dictionary of metrics. If this is not None, then it must include
+"energy" and "variance". Metrics are currently flattened and written to a
+row of a text file. See :func:<code>utils.io.write_metric_to_file</code>.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>checkpoint_str</code></td>
+        <td><code>str</code></td>
+        <td><p>string indicating whether checkpointing has previously
+occurred</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>logdir</code></td>
+        <td><code>str</code></td>
+        <td><p>name of parent log directory. If None, no checkpointing
+is done. Defaults to None.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>checkpoint_dir</code></td>
+        <td><code>str</code></td>
+        <td><p>name of subdirectory to save the regular
+checkpoints. These are saved as "logdir/checkpoint_dir/(epoch + 1).npz".
+Defaults to "checkpoints".</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>checkpoint_every</code></td>
+        <td><code>int</code></td>
+        <td><p>how often to regularly save checkpoints. If
+None, this function doesn't save the model state. Defaults to None.</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>checkpoint_if_nans</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to save checkpoints when
+nan energy values are recorded. Defaults to False.</p></td>
+        <td><code>False</code></td>
+      </tr>
+      <tr>
+        <td><code>only_checkpoint_first_nans</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to checkpoint only the
+first time nans are encountered, or every time. Useful to capture a nan
+checkpoint without risking writing too many checkpoints if the optimization
+starts to hit nans most or every epoch after some point. Only relevant if
+checkpoint_if_nans is True. Defaults to True.</p></td>
+        <td><code>True</code></td>
+      </tr>
+      <tr>
+        <td><code>saved_nans_checkpoint</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether a nans checkpoint has already
+been saved. Only relevant if checkpoint_if_nans and
+only_checkpoint_first_nans are both True, and used in that case to decide
+whether to save further nans checkpoints or not. Defaults to False.</p></td>
+        <td><code>False</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>(str, bool)</code></td>
+      <td><p>previous checkpointing string, with additional info if this
+function did checkpointing; followed by updated value of saved_nans_checkpoint.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/utils/checkpoint.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">save_metrics_and_regular_checkpoint</span><span class="p">(</span>
+    <span class="n">epoch</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">old_params</span><span class="p">:</span> <span class="n">P</span><span class="p">,</span>
+    <span class="n">new_params</span><span class="p">:</span> <span class="n">P</span><span class="p">,</span>
+    <span class="n">optimizer_state</span><span class="p">:</span> <span class="n">S</span><span class="p">,</span>
+    <span class="n">data</span><span class="p">:</span> <span class="n">D</span><span class="p">,</span>
+    <span class="n">key</span><span class="p">:</span> <span class="n">PRNGKey</span><span class="p">,</span>
+    <span class="n">metrics</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span>
+    <span class="n">logdir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">checkpoint_writer</span><span class="p">:</span> <span class="n">CheckpointWriter</span><span class="p">,</span>
+    <span class="n">metrics_writer</span><span class="p">:</span> <span class="n">MetricsWriter</span><span class="p">,</span>
+    <span class="n">checkpoint_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">checkpoint_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">checkpoint_every</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">checkpoint_if_nans</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">only_checkpoint_first_nans</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">saved_nans_checkpoint</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Save current metrics to file, and save model state regularly.</span>
+
+<span class="sd">    This currently touches the disk repeatedly, once for each metric, which is probably</span>
+<span class="sd">    fairly inefficient, especially if called every epoch (as it currently is in</span>
+<span class="sd">    :func:`~vmcnet.train.vmc.vmc_loop`).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        epoch (int): current epoch number</span>
+<span class="sd">        old_params (pytree-like): model parameters, from before the update function.</span>
+<span class="sd">            Needs to be serializable via `np.savez`.</span>
+<span class="sd">        new_params (pytree-like): model parameters, from after the update function.</span>
+<span class="sd">        optimizer_state (pytree-like): running state of the optimizer other than the</span>
+<span class="sd">            trainable parameters. Needs to be serialiable via `np.savez`</span>
+<span class="sd">        data (pytree-like): current mcmc data (e.g. position and amplitude data). Needs</span>
+<span class="sd">            to be serializable via `np.savez`</span>
+<span class="sd">        metrics (dict): dictionary of metrics. If this is not None, then it must include</span>
+<span class="sd">            &quot;energy&quot; and &quot;variance&quot;. Metrics are currently flattened and written to a</span>
+<span class="sd">            row of a text file. See :func:`utils.io.write_metric_to_file`.</span>
+<span class="sd">        checkpoint_str (str): string indicating whether checkpointing has previously</span>
+<span class="sd">            occurred</span>
+<span class="sd">        logdir (str): name of parent log directory. If None, no checkpointing</span>
+<span class="sd">            is done. Defaults to None.</span>
+<span class="sd">        checkpoint_dir (str): name of subdirectory to save the regular</span>
+<span class="sd">            checkpoints. These are saved as &quot;logdir/checkpoint_dir/(epoch + 1).npz&quot;.</span>
+<span class="sd">            Defaults to &quot;checkpoints&quot;.</span>
+<span class="sd">        checkpoint_every (int, optional): how often to regularly save checkpoints. If</span>
+<span class="sd">            None, this function doesn&#39;t save the model state. Defaults to None.</span>
+<span class="sd">        checkpoint_if_nans (bool, optional): whether to save checkpoints when</span>
+<span class="sd">            nan energy values are recorded. Defaults to False.</span>
+<span class="sd">        only_checkpoint_first_nans (bool, optional): whether to checkpoint only the</span>
+<span class="sd">            first time nans are encountered, or every time. Useful to capture a nan</span>
+<span class="sd">            checkpoint without risking writing too many checkpoints if the optimization</span>
+<span class="sd">            starts to hit nans most or every epoch after some point. Only relevant if</span>
+<span class="sd">            checkpoint_if_nans is True. Defaults to True.</span>
+<span class="sd">        saved_nans_checkpoint (bool, optional): whether a nans checkpoint has already</span>
+<span class="sd">            been saved. Only relevant if checkpoint_if_nans and</span>
+<span class="sd">            only_checkpoint_first_nans are both True, and used in that case to decide</span>
+<span class="sd">            whether to save further nans checkpoints or not. Defaults to False.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (str, bool): previous checkpointing string, with additional info if this</span>
+<span class="sd">        function did checkpointing; followed by updated value of saved_nans_checkpoint.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">metrics_writer</span><span class="o">.</span><span class="n">save_data</span><span class="p">(</span><span class="n">logdir</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">metrics</span><span class="p">)</span>
+    <span class="n">checkpoint_data</span> <span class="o">=</span> <span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">old_params</span><span class="p">,</span> <span class="n">optimizer_state</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">checkpoint_every</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">checkpoint_every</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">checkpoint_writer</span><span class="o">.</span><span class="n">save_data</span><span class="p">(</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">logdir</span><span class="p">,</span> <span class="n">checkpoint_dir</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.npz&quot;</span><span class="p">,</span>
+                <span class="n">checkpoint_data</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">checkpoint_str</span> <span class="o">=</span> <span class="n">checkpoint_str</span> <span class="o">+</span> <span class="s2">&quot;, regular ckpt saved&quot;</span>
+
+    <span class="n">save_nans_checkpoint</span> <span class="o">=</span> <span class="n">_should_save_nans_checkpoint</span><span class="p">(</span>
+        <span class="n">metrics</span><span class="p">,</span>
+        <span class="n">new_params</span><span class="p">,</span>
+        <span class="n">checkpoint_if_nans</span><span class="p">,</span>
+        <span class="n">only_checkpoint_first_nans</span><span class="p">,</span>
+        <span class="n">saved_nans_checkpoint</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">save_nans_checkpoint</span><span class="p">:</span>
+        <span class="n">checkpoint_writer</span><span class="o">.</span><span class="n">save_data</span><span class="p">(</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">logdir</span><span class="p">,</span> <span class="n">checkpoint_dir</span><span class="p">),</span>
+            <span class="s2">&quot;nans_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.npz&quot;</span><span class="p">,</span>
+            <span class="n">checkpoint_data</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">checkpoint_str</span> <span class="o">=</span> <span class="n">checkpoint_str</span> <span class="o">+</span> <span class="s2">&quot;, nans ckpt saved&quot;</span>
+        <span class="n">saved_nans_checkpoint</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">return</span> <span class="n">checkpoint_str</span><span class="p">,</span> <span class="n">saved_nans_checkpoint</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="vmcnet.utils.checkpoint.log_vmc_loop_state" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">log_vmc_loop_state</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="n">metrics</span><span class="p">,</span> <span class="n">checkpoint_str</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Log current energy, variance, and accept ratio, w/ optional unclipped values.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/utils/checkpoint.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">log_vmc_loop_state</span><span class="p">(</span><span class="n">epoch</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">metrics</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">checkpoint_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Log current energy, variance, and accept ratio, w/ optional unclipped values.&quot;&quot;&quot;</span>
+    <span class="n">epoch_str</span> <span class="o">=</span> <span class="s2">&quot;Epoch </span><span class="si">%(epoch)5d</span><span class="s2">&quot;</span>
+    <span class="n">energy_str</span> <span class="o">=</span> <span class="s2">&quot;Energy: </span><span class="si">%(energy).5e</span><span class="s2">&quot;</span>
+    <span class="n">variance_str</span> <span class="o">=</span> <span class="s2">&quot;Variance: </span><span class="si">%(variance).5e</span><span class="s2">&quot;</span>
+    <span class="n">accept_ratio_str</span> <span class="o">=</span> <span class="s2">&quot;Accept ratio: </span><span class="si">%(accept_ratio).5f</span><span class="s2">&quot;</span>
+    <span class="n">amplitude_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="s2">&quot;energy_noclip&quot;</span> <span class="ow">in</span> <span class="n">metrics</span><span class="p">:</span>
+        <span class="n">energy_str</span> <span class="o">=</span> <span class="n">energy_str</span> <span class="o">+</span> <span class="s2">&quot; (</span><span class="si">%(energy_noclip).5e</span><span class="s2">)&quot;</span>
+
+    <span class="k">if</span> <span class="s2">&quot;variance_noclip&quot;</span> <span class="ow">in</span> <span class="n">metrics</span><span class="p">:</span>
+        <span class="n">variance_str</span> <span class="o">=</span> <span class="n">variance_str</span> <span class="o">+</span> <span class="s2">&quot; (</span><span class="si">%(variance_noclip).5e</span><span class="s2">)&quot;</span>
+
+    <span class="k">if</span> <span class="s2">&quot;amplitude_min&quot;</span> <span class="ow">in</span> <span class="n">metrics</span><span class="p">:</span>
+        <span class="n">amplitude_str</span> <span class="o">=</span> <span class="s2">&quot;Min/max amplitude: </span><span class="si">%(amplitude_min).2f</span><span class="s2">/</span><span class="si">%(amplitude_max).2f</span><span class="s2">&quot;</span>
+
+    <span class="n">info_out</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">epoch_str</span><span class="p">,</span> <span class="n">energy_str</span><span class="p">,</span> <span class="n">variance_str</span><span class="p">,</span> <span class="n">accept_ratio_str</span><span class="p">,</span> <span class="n">amplitude_str</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="n">info_out</span> <span class="o">=</span> <span class="n">info_out</span> <span class="o">+</span> <span class="n">checkpoint_str</span>
+
+    <span class="n">logged_metrics</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;epoch&quot;</span><span class="p">:</span> <span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">}</span>
+    <span class="n">logged_metrics</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">metrics</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">info_out</span><span class="p">,</span> <span class="n">logged_metrics</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../updates/sr/" class="md-footer__link md-footer__link--prev" aria-label="Previous: sr" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              sr
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../distribute/" class="md-footer__link md-footer__link--next" aria-label="Next: distribute" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              distribute
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.tracking"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.cefbb252.min.js", "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a5f8ea78.min.js"></script>
+      
+    
+  </body>
+</html>

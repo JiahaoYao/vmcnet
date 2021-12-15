@@ -1,0 +1,2241 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.5">
+    
+    
+      
+        <title>jastrow - vmcnet</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a617204b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9204c3b2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/docstrings.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/sidebar.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/content.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vmcnet.models.jastrow" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        <aside class="md-banner md-banner--warning">
+          
+        </aside>
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="vmcnet" class="md-header__button md-logo" aria-label="vmcnet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            vmcnet
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              jastrow
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/jeffminlin/vmcnet" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jeffminlin/vmcnet
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../examples/harmonic_oscillator/" class="md-tabs__link md-tabs__link--active">
+        API Reference
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../CONTRIBUTING/" class="md-tabs__link">
+      Contributing
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="vmcnet" class="md-nav__button md-logo" aria-label="vmcnet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    vmcnet
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/jeffminlin/vmcnet" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jeffminlin/vmcnet
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          API Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          API Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="examples" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/harmonic_oscillator/" class="md-nav__link">
+        harmonic_oscillator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/hydrogen_like_atom/" class="md-nav__link">
+        hydrogen_like_atom
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          mcmc
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="mcmc" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          mcmc
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mcmc/dynamic_width_position_amplitude/" class="md-nav__link">
+        dynamic_width_position_amplitude
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mcmc/metropolis/" class="md-nav__link">
+        metropolis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mcmc/position_amplitude_core/" class="md-nav__link">
+        position_amplitude_core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mcmc/simple_position_amplitude/" class="md-nav__link">
+        simple_position_amplitude
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mcmc/statistics/" class="md-nav__link">
+        statistics
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3">
+          models
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="models" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          models
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../antiequivariance/" class="md-nav__link">
+        antiequivariance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../antisymmetry/" class="md-nav__link">
+        antisymmetry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../construct/" class="md-nav__link">
+        construct
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../core/" class="md-nav__link">
+        core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../equivariance/" class="md-nav__link">
+        equivariance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          jastrow
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        jastrow
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.jastrow" class="md-nav__link">
+    vmcnet.models.jastrow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.jastrow.BackflowJastrow" class="md-nav__link">
+    BackflowJastrow
+  </a>
+  
+    <nav class="md-nav" aria-label="BackflowJastrow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.jastrow.BackflowJastrow.setup" class="md-nav__link">
+    setup()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.jastrow.BackflowJastrow.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.jastrow.OneBodyExpDecay" class="md-nav__link">
+    OneBodyExpDecay
+  </a>
+  
+    <nav class="md-nav" aria-label="OneBodyExpDecay">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.jastrow.OneBodyExpDecay.setup" class="md-nav__link">
+    setup()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.jastrow.OneBodyExpDecay.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.jastrow.TwoBodyExpDecay" class="md-nav__link">
+    TwoBodyExpDecay
+  </a>
+  
+    <nav class="md-nav" aria-label="TwoBodyExpDecay">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.jastrow.TwoBodyExpDecay.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.jastrow.get_two_body_decay_scaled_for_chargeless_molecules" class="md-nav__link">
+    get_two_body_decay_scaled_for_chargeless_molecules()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sign_symmetry/" class="md-nav__link">
+        sign_symmetry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../weights/" class="md-nav__link">
+        weights
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4">
+          physics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="physics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          physics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../physics/core/" class="md-nav__link">
+        core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../physics/kinetic/" class="md-nav__link">
+        kinetic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../physics/potential/" class="md-nav__link">
+        potential
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          train
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="train" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          train
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../train/default_config/" class="md-nav__link">
+        default_config
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../train/parse_config_flags/" class="md-nav__link">
+        parse_config_flags
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../train/runners/" class="md-nav__link">
+        runners
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../train/vmc/" class="md-nav__link">
+        vmc
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6">
+          updates
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="updates" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          updates
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../updates/params/" class="md-nav__link">
+        params
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../updates/parse_config/" class="md-nav__link">
+        parse_config
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../updates/sr/" class="md-nav__link">
+        sr
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          utils
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="utils" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          utils
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/checkpoint/" class="md-nav__link">
+        checkpoint
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/distribute/" class="md-nav__link">
+        distribute
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/kfac/" class="md-nav__link">
+        kfac
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/log_linear_exp/" class="md-nav__link">
+        log_linear_exp
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/pytree_helpers/" class="md-nav__link">
+        pytree_helpers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/slog_helpers/" class="md-nav__link">
+        slog_helpers
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CONTRIBUTING/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.jastrow" class="md-nav__link">
+    vmcnet.models.jastrow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.jastrow.BackflowJastrow" class="md-nav__link">
+    BackflowJastrow
+  </a>
+  
+    <nav class="md-nav" aria-label="BackflowJastrow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.jastrow.BackflowJastrow.setup" class="md-nav__link">
+    setup()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.jastrow.BackflowJastrow.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.jastrow.OneBodyExpDecay" class="md-nav__link">
+    OneBodyExpDecay
+  </a>
+  
+    <nav class="md-nav" aria-label="OneBodyExpDecay">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.jastrow.OneBodyExpDecay.setup" class="md-nav__link">
+    setup()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.jastrow.OneBodyExpDecay.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.jastrow.TwoBodyExpDecay" class="md-nav__link">
+    TwoBodyExpDecay
+  </a>
+  
+    <nav class="md-nav" aria-label="TwoBodyExpDecay">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.jastrow.TwoBodyExpDecay.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.jastrow.get_two_body_decay_scaled_for_chargeless_molecules" class="md-nav__link">
+    get_two_body_decay_scaled_for_chargeless_molecules()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+  <h1>jastrow</h1>
+
+<div class="doc doc-object doc-module">
+
+<a id="vmcnet.models.jastrow"></a>
+    <div class="doc doc-contents first">
+
+      <p>Jastrow factors.</p>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="vmcnet.models.jastrow.BackflowJastrow" class="doc doc-heading">
+        <code>
+BackflowJastrow            (<span title="vmcnet.models.core.Module">Module</span>)
+        </code>
+
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-dataclass"><code>dataclass</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Backflow-based general permutation invariant Jastrow.</p>
+
+<p><strong>Attributes:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>backflow</code></td>
+        <td><code>Callable or None</code></td>
+        <td><p>function which computes position features from the
+electron positions. Has the signature
+(
+    stream_1e of shape (..., n, d'),
+    optional stream_2e of shape (..., nelec, nelec, d2),
+) -&gt; stream_1e of shape (..., n, d').
+Can pass None here to use a stream_1e from an already computed backflow.</p></td>
+      </tr>
+      <tr>
+        <td><code>logabs</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to return the log jastrow (True) or the jastrow
+(False). Defaults to True.</p></td>
+      </tr>
+  </tbody>
+</table>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.models.jastrow.BackflowJastrow.setup" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Set up the dense layers for each split.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/jastrow.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Set up the dense layers for each split.&quot;&quot;&quot;</span>
+    <span class="c1"># workaround MyPy&#39;s typing error for callable attribute, see</span>
+    <span class="c1"># https://github.com/python/mypy/issues/708</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_backflow</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backflow</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.models.jastrow.BackflowJastrow.__call__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_stream_1e</span><span class="p">,</span> <span class="n">input_stream_2e</span><span class="p">,</span> <span class="n">stream_1e</span><span class="p">,</span> <span class="n">r_ei</span><span class="p">,</span> <span class="n">r_ee</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Compute backflow-based general permutation invariant Jastrow.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>input_stream_1e</code></td>
+        <td><code>Array</code></td>
+        <td><p>input one-electron stream</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>input_stream_2e</code></td>
+        <td><code>Array</code></td>
+        <td><p>input two-electron stream</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>stream_1e</code></td>
+        <td><code>Array</code></td>
+        <td><p>one-electron stream, post-backflow</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>r_ei</code></td>
+        <td><code>Array</code></td>
+        <td><p>electron-ion displacements with shape
+(..., nelec, nion, d); unused</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>r_ee</code></td>
+        <td><code>Array</code></td>
+        <td><p>electron-electron displacements with shape
+(..., nelec, nelec, d); unused</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Array</code></td>
+      <td><p>-mean_i ||Backflow_i||, or exp(-mean_i ||Backflow_i||) if
+logabs is False</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/jastrow.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@flax</span><span class="o">.</span><span class="n">linen</span><span class="o">.</span><span class="n">compact</span>
+<span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>  <span class="c1"># type: ignore[override]</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">input_stream_1e</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span>
+    <span class="n">input_stream_2e</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span>
+    <span class="n">stream_1e</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span>
+    <span class="n">r_ei</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span>
+    <span class="n">r_ee</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Array</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Compute backflow-based general permutation invariant Jastrow.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        input_stream_1e (Array): input one-electron stream</span>
+<span class="sd">        input_stream_2e (Array): input two-electron stream</span>
+<span class="sd">        stream_1e (Array): one-electron stream, post-backflow</span>
+<span class="sd">        r_ei (Array): electron-ion displacements with shape</span>
+<span class="sd">            (..., nelec, nion, d); unused</span>
+<span class="sd">        r_ee (Array): electron-electron displacements with shape</span>
+<span class="sd">            (..., nelec, nelec, d); unused</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Array: -mean_i ||Backflow_i||, or exp(-mean_i ||Backflow_i||) if</span>
+<span class="sd">        logabs is False</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">del</span> <span class="n">r_ei</span><span class="p">,</span> <span class="n">r_ee</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backflow</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">stream_1e</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backflow</span><span class="p">(</span><span class="n">input_stream_1e</span><span class="p">,</span> <span class="n">input_stream_2e</span><span class="p">)</span>
+
+    <span class="n">log_jastrow</span> <span class="o">=</span> <span class="o">-</span><span class="n">jnp</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">stream_1e</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">logabs</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">log_jastrow</span>
+
+    <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">log_jastrow</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="vmcnet.models.jastrow.OneBodyExpDecay" class="doc doc-heading">
+        <code>
+OneBodyExpDecay            (<span title="vmcnet.models.core.Module">Module</span>)
+        </code>
+
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-dataclass"><code>dataclass</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Creates an isotropic exponential decay one-body Jastrow model.</p>
+<p>The decay is centered at the coordinates of the nuclei, and the electron-nuclei
+displacements are multiplied by trainable params before a sum and exp(-x). The decay
+is isotropic and equal for all electrons, so it computes</p>
+<div class="highlight"><pre><span></span><code>-sum_ij ||a_j * (elec_i - ion_j)||
+</code></pre></div>
+<p>or the exponential if logabs is False. The tensor a_j * (elec_i - ion_j) is computed
+with a split dense operation.</p>
+
+<p><strong>Attributes:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>kernel_initializer</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>kernel initializer for the decay rates
+a_j. This initializes a single decay rate number per ion. Has signature
+(key, shape, dtype) -&gt; Array</p></td>
+      </tr>
+      <tr>
+        <td><code>logabs</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to compute -sum_ij ||a_j * (elec_i - ion_j)||,
+when logabs is True, or exp of that expression when logabs is False.
+Defaults to True.</p></td>
+      </tr>
+  </tbody>
+</table>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.models.jastrow.OneBodyExpDecay.setup" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Setup the kernel initializer.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/jastrow.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Setup the kernel initializer.&quot;&quot;&quot;</span>
+    <span class="c1"># workaround MyPy&#39;s typing error for callable attribute, see</span>
+    <span class="c1"># https://github.com/python/mypy/issues/708</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_kernel_initializer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel_initializer</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.models.jastrow.OneBodyExpDecay.__call__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_stream_1e</span><span class="p">,</span> <span class="n">input_stream_2e</span><span class="p">,</span> <span class="n">stream_1e</span><span class="p">,</span> <span class="n">r_ei</span><span class="p">,</span> <span class="n">r_ee</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Transform electron-ion displacements into an exp decay one-body Jastrow.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>input_stream_1e</code></td>
+        <td><code>Array</code></td>
+        <td><p>input one-electron stream; unused</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>input_stream_2e</code></td>
+        <td><code>Array</code></td>
+        <td><p>input two-electron stream; unused</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>stream_1e</code></td>
+        <td><code>Array</code></td>
+        <td><p>one-electron stream, post-backflow; unused</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>r_ei</code></td>
+        <td><code>Array</code></td>
+        <td><p>electron-ion displacements of shape
+(..., nelec, nion, d)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>r_ee</code></td>
+        <td><code>Array</code></td>
+        <td><p>electron-electron displacements of shape
+(..., nelec, nelec, d); unused</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Array</code></td>
+      <td><p>-sum_ij ||a_j * (elec_i - ion_j)||, when self.logabs is True,
+or exp of that expression when self.logabs is False. If the input has shape
+(batch_dims, nelec, nion, d), then the output has shape (batch_dims,)</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/jastrow.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@flax</span><span class="o">.</span><span class="n">linen</span><span class="o">.</span><span class="n">compact</span>
+<span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>  <span class="c1"># type: ignore[override]</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">input_stream_1e</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span>
+    <span class="n">input_stream_2e</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span>
+    <span class="n">stream_1e</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span>
+    <span class="n">r_ei</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span>
+    <span class="n">r_ee</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Array</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Transform electron-ion displacements into an exp decay one-body Jastrow.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        input_stream_1e (Array): input one-electron stream; unused</span>
+<span class="sd">        input_stream_2e (Array): input two-electron stream; unused</span>
+<span class="sd">        stream_1e (Array): one-electron stream, post-backflow; unused</span>
+<span class="sd">        r_ei (Array): electron-ion displacements of shape</span>
+<span class="sd">            (..., nelec, nion, d)</span>
+<span class="sd">        r_ee (Array): electron-electron displacements of shape</span>
+<span class="sd">            (..., nelec, nelec, d); unused</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Array: -sum_ij ||a_j * (elec_i - ion_j)||, when self.logabs is True,</span>
+<span class="sd">        or exp of that expression when self.logabs is False. If the input has shape</span>
+<span class="sd">        (batch_dims, nelec, nion, d), then the output has shape (batch_dims,)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">del</span> <span class="n">input_stream_1e</span><span class="p">,</span> <span class="n">input_stream_2e</span><span class="p">,</span> <span class="n">stream_1e</span><span class="p">,</span> <span class="n">r_ee</span>
+    <span class="c1"># scale_out has shape (..., nelec, 1, nion, d)</span>
+    <span class="n">scale_out</span> <span class="o">=</span> <span class="n">_isotropy_on_leaf</span><span class="p">(</span>
+        <span class="n">r_ei</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_kernel_initializer</span><span class="p">,</span> <span class="n">register_kfac</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="n">scaled_distances</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">scale_out</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">abs_lin_comb_distances</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">scaled_distances</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">logabs</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">abs_lin_comb_distances</span>
+
+    <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">abs_lin_comb_distances</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="vmcnet.models.jastrow.TwoBodyExpDecay" class="doc doc-heading">
+        <code>
+TwoBodyExpDecay            (<span title="vmcnet.models.core.Module">Module</span>)
+        </code>
+
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-dataclass"><code>dataclass</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Isotropic exponential decay two-body Jastrow model.</p>
+<p>The decay is isotropic in the sense that each electron-nuclei and electron-electron
+term is isotropic, i.e. radially symmetric. The computed interactions are:</p>
+<div class="highlight"><pre><span></span><code>sum_i(-sum_j Z_j ||elec_i - ion_j|| + sum_k Q ||elec_i - elec_k||)
+</code></pre></div>
+<p>or the exponential if logabs is False. Z_j and Q are initialized to init_ei_strength
+and init_ee_strength, respectively, and are trainable if trainable is True.</p>
+
+<p><strong>Attributes:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>init_ei_strength</code></td>
+        <td><code>Array or Sequence[float]</code></td>
+        <td><p>1-d array or sequence of
+length nion which gives the initial strength of the electron-nucleus
+interaction per ion</p></td>
+      </tr>
+      <tr>
+        <td><code>init_ee_strength</code></td>
+        <td><code>float</code></td>
+        <td><p>initial strength of the electron-electron
+interaction. Defaults to 1.0.</p></td>
+      </tr>
+      <tr>
+        <td><code>log_scale_factor</code></td>
+        <td><code>float</code></td>
+        <td><p>Amount to add to the log jastrow (amounts to
+a multiplicative factor after exponentiation). Defaults to 0.0.</p></td>
+      </tr>
+      <tr>
+        <td><code>register_kfac</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to register the computation with KFAC.
+Defaults to True.</p></td>
+      </tr>
+      <tr>
+        <td><code>logabs</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to return the log jastrow (True) or the jastrow
+(False). Defaults to True.</p></td>
+      </tr>
+      <tr>
+        <td><code>trainable</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to allow the jastrow to be trainable.
+Defaults to True.</p></td>
+      </tr>
+  </tbody>
+</table>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.models.jastrow.TwoBodyExpDecay.__call__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_stream_1e</span><span class="p">,</span> <span class="n">input_stream_2e</span><span class="p">,</span> <span class="n">stream_1e</span><span class="p">,</span> <span class="n">r_ei</span><span class="p">,</span> <span class="n">r_ee</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Compute jastrow with both electron-ion and electron-electron effects.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>input_stream_1e</code></td>
+        <td><code>Array</code></td>
+        <td><p>input one-electron stream; unused</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>input_stream_2e</code></td>
+        <td><code>Array</code></td>
+        <td><p>input two-electron stream; unused</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>stream_1e</code></td>
+        <td><code>Array</code></td>
+        <td><p>one-electron stream, post-backflow; unused</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>r_ei</code></td>
+        <td><code>Array</code></td>
+        <td><p>electron-ion displacements with shape
+(..., nelec, nion, d)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>r_ee</code></td>
+        <td><code>Array</code></td>
+        <td><p>electron-electron displacements with shape
+(..., nelec, nelec, d)</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Array</code></td>
+      <td><p>sum_i(-sum_j Z_j ||elec_i - ion_j|| + sum_k Q ||elec_i - elec_k||),</p>
+<p>where Z_j and Q are trainable if trainable is true, and an exponential is
+taken if logabs is False</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/jastrow.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@flax</span><span class="o">.</span><span class="n">linen</span><span class="o">.</span><span class="n">compact</span>
+<span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>  <span class="c1"># type: ignore[override]</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">input_stream_1e</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span>
+    <span class="n">input_stream_2e</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span>
+    <span class="n">stream_1e</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span>
+    <span class="n">r_ei</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span>
+    <span class="n">r_ee</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Array</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Compute jastrow with both electron-ion and electron-electron effects.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        input_stream_1e (Array): input one-electron stream; unused</span>
+<span class="sd">        input_stream_2e (Array): input two-electron stream; unused</span>
+<span class="sd">        stream_1e (Array): one-electron stream, post-backflow; unused</span>
+<span class="sd">        r_ei (Array): electron-ion displacements with shape</span>
+<span class="sd">            (..., nelec, nion, d)</span>
+<span class="sd">        r_ee (Array): electron-electron displacements with shape</span>
+<span class="sd">            (..., nelec, nelec, d)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Array:</span>
+
+<span class="sd">            sum_i(-sum_j Z_j ||elec_i - ion_j|| + sum_k Q ||elec_i - elec_k||),</span>
+
+<span class="sd">        where Z_j and Q are trainable if trainable is true, and an exponential is</span>
+<span class="sd">        taken if logabs is False</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">del</span> <span class="n">input_stream_1e</span><span class="p">,</span> <span class="n">input_stream_2e</span><span class="p">,</span> <span class="n">stream_1e</span>
+    <span class="n">ei_distances</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">r_ei</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ee_distances</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">compute_ee_norm_with_safe_diag</span><span class="p">(</span><span class="n">r_ee</span><span class="p">),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">sum_ee_effect</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">ee_distances</span><span class="p">),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">trainable</span><span class="p">:</span>
+        <span class="n">split_over_ions</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">ei_distances</span><span class="p">,</span> <span class="n">ei_distances</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># TODO: potentially add support for this to SplitDense or otherwise?</span>
+        <span class="n">split_scaled_ei_distances</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">Dense</span><span class="p">(</span>
+                <span class="mi">1</span><span class="p">,</span>
+                <span class="n">kernel_init</span><span class="o">=</span><span class="n">get_constant_init</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">init_ei_strength</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>
+                <span class="n">use_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">register_kfac</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">register_kfac</span><span class="p">,</span>
+            <span class="p">)(</span><span class="n">single_ion_displacement</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">single_ion_displacement</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">split_over_ions</span><span class="p">)</span>
+        <span class="p">]</span>
+        <span class="n">scaled_ei_distances</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">split_scaled_ei_distances</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">sum_ee_effect</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span>
+            <span class="mi">1</span><span class="p">,</span>
+            <span class="n">kernel_init</span><span class="o">=</span><span class="n">get_constant_init</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">init_ee_strength</span><span class="p">),</span>
+            <span class="n">use_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">register_kfac</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">register_kfac</span><span class="p">,</span>
+        <span class="p">)(</span><span class="n">sum_ee_effect</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">scaled_ei_distances</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">init_ei_strength</span> <span class="o">*</span> <span class="n">ei_distances</span>
+        <span class="n">sum_ee_effect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">init_ee_strength</span> <span class="o">*</span> <span class="n">sum_ee_effect</span>
+
+    <span class="n">sum_ee_effect</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">sum_ee_effect</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">sum_ei_effect</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">scaled_ei_distances</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">unscaled_interaction</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sum_ee_effect</span> <span class="o">-</span> <span class="n">sum_ei_effect</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">interaction</span> <span class="o">=</span> <span class="n">unscaled_interaction</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">log_scale_factor</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">logabs</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">interaction</span>
+
+    <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">interaction</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="vmcnet.models.jastrow.get_two_body_decay_scaled_for_chargeless_molecules" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_two_body_decay_scaled_for_chargeless_molecules</span><span class="p">(</span><span class="n">ion_pos</span><span class="p">,</span> <span class="n">ion_charges</span><span class="p">,</span> <span class="n">init_ee_strength</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">register_kfac</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">logabs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">trainable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Make molecular decay jastrow, scaled for chargeless molecules.</p>
+<p>The scale factor is chosen so that the log jastrow is initialized to 0 when
+electrons are at ion positions.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ion_pos</code></td>
+        <td><code>Array</code></td>
+        <td><p>an (nion, d) array of ion positions.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>ion_charges</code></td>
+        <td><code>Array</code></td>
+        <td><p>an (nion,) array of ion charges, in units of one
+elementary charge (the charge of one electron)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>init_ee_strength</code></td>
+        <td><code>float</code></td>
+        <td><p>the initial strength of the
+electron-electron interaction. Defaults to 1.0.</p></td>
+        <td><code>1.0</code></td>
+      </tr>
+      <tr>
+        <td><code>register_kfac</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to register the computation with KFAC.
+Defaults to True.</p></td>
+        <td><code>True</code></td>
+      </tr>
+      <tr>
+        <td><code>logabs</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to return the log jastrow (True) or the jastrow
+(False). Defaults to True.</p></td>
+        <td><code>True</code></td>
+      </tr>
+      <tr>
+        <td><code>trainable</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to allow the jastrow to be trainable.
+Defaults to True.</p></td>
+        <td><code>True</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Callable</code></td>
+      <td><p>a flax Module with signature (r_ei, r_ee) -&gt; jastrow or log jastrow</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/jastrow.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_two_body_decay_scaled_for_chargeless_molecules</span><span class="p">(</span>
+    <span class="n">ion_pos</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span>
+    <span class="n">ion_charges</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span>
+    <span class="n">init_ee_strength</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">register_kfac</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">logabs</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">trainable</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Jastrow</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Make molecular decay jastrow, scaled for chargeless molecules.</span>
+
+<span class="sd">    The scale factor is chosen so that the log jastrow is initialized to 0 when</span>
+<span class="sd">    electrons are at ion positions.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ion_pos (Array): an (nion, d) array of ion positions.</span>
+<span class="sd">        ion_charges (Array): an (nion,) array of ion charges, in units of one</span>
+<span class="sd">            elementary charge (the charge of one electron)</span>
+<span class="sd">        init_ee_strength (float, optional): the initial strength of the</span>
+<span class="sd">            electron-electron interaction. Defaults to 1.0.</span>
+<span class="sd">        register_kfac (bool, optional): whether to register the computation with KFAC.</span>
+<span class="sd">            Defaults to True.</span>
+<span class="sd">        logabs (bool, optional): whether to return the log jastrow (True) or the jastrow</span>
+<span class="sd">            (False). Defaults to True.</span>
+<span class="sd">        trainable (bool, optional): whether to allow the jastrow to be trainable.</span>
+<span class="sd">            Defaults to True.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Callable: a flax Module with signature (r_ei, r_ee) -&gt; jastrow or log jastrow</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">r_ii</span><span class="p">,</span> <span class="n">charge_charge_prods</span> <span class="o">=</span> <span class="n">physics</span><span class="o">.</span><span class="n">potential</span><span class="o">.</span><span class="n">_get_ion_ion_info</span><span class="p">(</span>
+        <span class="n">ion_pos</span><span class="p">,</span> <span class="n">ion_charges</span>
+    <span class="p">)</span>
+    <span class="n">jastrow_scale_factor</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">jnp</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+        <span class="n">jnp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">r_ii</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">charge_charge_prods</span>
+    <span class="p">)</span>
+    <span class="n">jastrow</span> <span class="o">=</span> <span class="n">TwoBodyExpDecay</span><span class="p">(</span>
+        <span class="n">ion_charges</span><span class="p">,</span>
+        <span class="n">init_ee_strength</span><span class="p">,</span>
+        <span class="n">log_scale_factor</span><span class="o">=</span><span class="n">jastrow_scale_factor</span><span class="p">,</span>
+        <span class="n">register_kfac</span><span class="o">=</span><span class="n">register_kfac</span><span class="p">,</span>
+        <span class="n">logabs</span><span class="o">=</span><span class="n">logabs</span><span class="p">,</span>
+        <span class="n">trainable</span><span class="o">=</span><span class="n">trainable</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">jastrow</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../equivariance/" class="md-footer__link md-footer__link--prev" aria-label="Previous: equivariance" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              equivariance
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../sign_symmetry/" class="md-footer__link md-footer__link--next" aria-label="Next: sign_symmetry" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              sign_symmetry
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.tracking"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.cefbb252.min.js", "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a5f8ea78.min.js"></script>
+      
+    
+  </body>
+</html>

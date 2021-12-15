@@ -1,0 +1,3719 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.5">
+    
+    
+      
+        <title>equivariance - vmcnet</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a617204b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9204c3b2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/docstrings.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/sidebar.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/content.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vmcnet.models.equivariance" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        <aside class="md-banner md-banner--warning">
+          
+        </aside>
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="vmcnet" class="md-header__button md-logo" aria-label="vmcnet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            vmcnet
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              equivariance
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/jeffminlin/vmcnet" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jeffminlin/vmcnet
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../examples/harmonic_oscillator/" class="md-tabs__link md-tabs__link--active">
+        API Reference
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../CONTRIBUTING/" class="md-tabs__link">
+      Contributing
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="vmcnet" class="md-nav__button md-logo" aria-label="vmcnet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    vmcnet
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/jeffminlin/vmcnet" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jeffminlin/vmcnet
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          API Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          API Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="examples" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/harmonic_oscillator/" class="md-nav__link">
+        harmonic_oscillator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/hydrogen_like_atom/" class="md-nav__link">
+        hydrogen_like_atom
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          mcmc
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="mcmc" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          mcmc
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mcmc/dynamic_width_position_amplitude/" class="md-nav__link">
+        dynamic_width_position_amplitude
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mcmc/metropolis/" class="md-nav__link">
+        metropolis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mcmc/position_amplitude_core/" class="md-nav__link">
+        position_amplitude_core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mcmc/simple_position_amplitude/" class="md-nav__link">
+        simple_position_amplitude
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mcmc/statistics/" class="md-nav__link">
+        statistics
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3">
+          models
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="models" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          models
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../antiequivariance/" class="md-nav__link">
+        antiequivariance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../antisymmetry/" class="md-nav__link">
+        antisymmetry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../construct/" class="md-nav__link">
+        construct
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../core/" class="md-nav__link">
+        core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          equivariance
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        equivariance
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance" class="md-nav__link">
+    vmcnet.models.equivariance
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.DoublyEquivariantOrbitalLayer" class="md-nav__link">
+    DoublyEquivariantOrbitalLayer
+  </a>
+  
+    <nav class="md-nav" aria-label="DoublyEquivariantOrbitalLayer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.DoublyEquivariantOrbitalLayer.setup" class="md-nav__link">
+    setup()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.DoublyEquivariantOrbitalLayer.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetBackflow" class="md-nav__link">
+    FermiNetBackflow
+  </a>
+  
+    <nav class="md-nav" aria-label="FermiNetBackflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetBackflow.setup" class="md-nav__link">
+    setup()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetBackflow.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetOneElectronLayer" class="md-nav__link">
+    FermiNetOneElectronLayer
+  </a>
+  
+    <nav class="md-nav" aria-label="FermiNetOneElectronLayer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetOneElectronLayer.setup" class="md-nav__link">
+    setup()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetOneElectronLayer.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetOrbitalLayer" class="md-nav__link">
+    FermiNetOrbitalLayer
+  </a>
+  
+    <nav class="md-nav" aria-label="FermiNetOrbitalLayer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetOrbitalLayer.setup" class="md-nav__link">
+    setup()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetOrbitalLayer.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetResidualBlock" class="md-nav__link">
+    FermiNetResidualBlock
+  </a>
+  
+    <nav class="md-nav" aria-label="FermiNetResidualBlock">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetResidualBlock.setup" class="md-nav__link">
+    setup()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetResidualBlock.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetTwoElectronLayer" class="md-nav__link">
+    FermiNetTwoElectronLayer
+  </a>
+  
+    <nav class="md-nav" aria-label="FermiNetTwoElectronLayer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetTwoElectronLayer.setup" class="md-nav__link">
+    setup()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetTwoElectronLayer.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.SplitDense" class="md-nav__link">
+    SplitDense
+  </a>
+  
+    <nav class="md-nav" aria-label="SplitDense">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.SplitDense.setup" class="md-nav__link">
+    setup()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.SplitDense.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.compute_input_streams" class="md-nav__link">
+    compute_input_streams()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.compute_electron_ion" class="md-nav__link">
+    compute_electron_ion()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.compute_electron_electron" class="md-nav__link">
+    compute_electron_electron()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jastrow/" class="md-nav__link">
+        jastrow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sign_symmetry/" class="md-nav__link">
+        sign_symmetry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../weights/" class="md-nav__link">
+        weights
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4">
+          physics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="physics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          physics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../physics/core/" class="md-nav__link">
+        core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../physics/kinetic/" class="md-nav__link">
+        kinetic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../physics/potential/" class="md-nav__link">
+        potential
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          train
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="train" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          train
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../train/default_config/" class="md-nav__link">
+        default_config
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../train/parse_config_flags/" class="md-nav__link">
+        parse_config_flags
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../train/runners/" class="md-nav__link">
+        runners
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../train/vmc/" class="md-nav__link">
+        vmc
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6">
+          updates
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="updates" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          updates
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../updates/params/" class="md-nav__link">
+        params
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../updates/parse_config/" class="md-nav__link">
+        parse_config
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../updates/sr/" class="md-nav__link">
+        sr
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          utils
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="utils" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          utils
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/checkpoint/" class="md-nav__link">
+        checkpoint
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/distribute/" class="md-nav__link">
+        distribute
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/kfac/" class="md-nav__link">
+        kfac
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/log_linear_exp/" class="md-nav__link">
+        log_linear_exp
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/pytree_helpers/" class="md-nav__link">
+        pytree_helpers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/slog_helpers/" class="md-nav__link">
+        slog_helpers
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CONTRIBUTING/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance" class="md-nav__link">
+    vmcnet.models.equivariance
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.DoublyEquivariantOrbitalLayer" class="md-nav__link">
+    DoublyEquivariantOrbitalLayer
+  </a>
+  
+    <nav class="md-nav" aria-label="DoublyEquivariantOrbitalLayer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.DoublyEquivariantOrbitalLayer.setup" class="md-nav__link">
+    setup()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.DoublyEquivariantOrbitalLayer.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetBackflow" class="md-nav__link">
+    FermiNetBackflow
+  </a>
+  
+    <nav class="md-nav" aria-label="FermiNetBackflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetBackflow.setup" class="md-nav__link">
+    setup()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetBackflow.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetOneElectronLayer" class="md-nav__link">
+    FermiNetOneElectronLayer
+  </a>
+  
+    <nav class="md-nav" aria-label="FermiNetOneElectronLayer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetOneElectronLayer.setup" class="md-nav__link">
+    setup()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetOneElectronLayer.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetOrbitalLayer" class="md-nav__link">
+    FermiNetOrbitalLayer
+  </a>
+  
+    <nav class="md-nav" aria-label="FermiNetOrbitalLayer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetOrbitalLayer.setup" class="md-nav__link">
+    setup()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetOrbitalLayer.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetResidualBlock" class="md-nav__link">
+    FermiNetResidualBlock
+  </a>
+  
+    <nav class="md-nav" aria-label="FermiNetResidualBlock">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetResidualBlock.setup" class="md-nav__link">
+    setup()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetResidualBlock.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetTwoElectronLayer" class="md-nav__link">
+    FermiNetTwoElectronLayer
+  </a>
+  
+    <nav class="md-nav" aria-label="FermiNetTwoElectronLayer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetTwoElectronLayer.setup" class="md-nav__link">
+    setup()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.FermiNetTwoElectronLayer.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.SplitDense" class="md-nav__link">
+    SplitDense
+  </a>
+  
+    <nav class="md-nav" aria-label="SplitDense">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.SplitDense.setup" class="md-nav__link">
+    setup()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.SplitDense.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.compute_input_streams" class="md-nav__link">
+    compute_input_streams()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.compute_electron_ion" class="md-nav__link">
+    compute_electron_ion()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.models.equivariance.compute_electron_electron" class="md-nav__link">
+    compute_electron_electron()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+  <h1>equivariance</h1>
+
+<div class="doc doc-object doc-module">
+
+<a id="vmcnet.models.equivariance"></a>
+    <div class="doc doc-contents first">
+
+      <p>Permutation equivariant functions.</p>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="vmcnet.models.equivariance.DoublyEquivariantOrbitalLayer" class="doc doc-heading">
+        <code>
+DoublyEquivariantOrbitalLayer            (<span title="vmcnet.models.core.Module">Module</span>)
+        </code>
+
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-dataclass"><code>dataclass</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Equivariantly generate an orbital matrix corresponding to each input stream.</p>
+<p>The calculation being done here is a bit subtle, so it's worth explaining here
+in some detail. Let the equivariant input vectors to this layer be y_i. Then, this
+layer will generate an orbital matrix M_p for each particle P, such that the
+(i,j)th element of M_p satisfies M_(p,i,j) = phi_j(y_p, y_i). This is essentially
+the usual orbital matrix formula M_(i,j) = phi_j(y_i), except with an added
+dependence on the particle index p which allows us to generate a distinct matrix
+for each input particle. This construction allows us to generate a unique
+antisymmetric determinant D_p = det(M_p) for each input particle, which can then
+be the basis for an expressive antiequivariant layer.</p>
+<p>If r_ei is provided in addition to the main inputs y_i, then an exponentially
+decaying envelope is also applied equally to every orbital matrix M_p in order to
+ensure that the orbital values decay to zero far from the ions.</p>
+
+<p><strong>Attributes:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>orbitals_split</code></td>
+        <td><code>ParticleSplit</code></td>
+        <td><p>number of pieces to split the input equally,
+or specified sequence of locations to split along the 2nd-to-last axis.
+E.g., if nelec = 10, and <code>orbitals_split</code> = 2, then the input is split
+(5, 5). If nelec = 10, and <code>orbitals_split</code> = (2, 4), then the input is
+split into (2, 4, 4) -- note when <code>orbitals_split</code> is a sequence, there will
+be one more split than the length of the sequence. In the original use-case
+of spin-1/2 particles, <code>split</code> should be either the number 2 (for
+closed-shell systems) or should be a Sequence with length 1 whose element is
+less than the total number of electrons.</p></td>
+      </tr>
+      <tr>
+        <td><code>norbitals_per_split</code></td>
+        <td><code>Sequence[int]</code></td>
+        <td><p>sequence of integers specifying the number
+of orbitals to create for each split. This determines the output shapes for
+each split, i.e. the outputs are shaped (..., split_size[i], norbitals[i])</p></td>
+      </tr>
+      <tr>
+        <td><code>kernel_initializer_linear</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>kernel initializer for the linear
+part of the orbitals. Has signature (key, shape, dtype) -&gt; Array</p></td>
+      </tr>
+      <tr>
+        <td><code>kernel_initializer_envelope_dim</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>kernel initializer for the
+decay rate in the exponential envelopes. If <code>isotropic_decay</code> is True, then
+this initializes a single decay rate number per ion and orbital. If
+<code>isotropic_decay</code> is False, then this initializes a 3x3 matrix per ion and
+orbital. Has signature (key, shape, dtype) -&gt; Array</p></td>
+      </tr>
+      <tr>
+        <td><code>kernel_initializer_envelope_ion</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>kernel initializer for the
+linear combination over the ions of exponential envelopes. Has signature
+(key, shape, dtype) -&gt; Array</p></td>
+      </tr>
+      <tr>
+        <td><code>bias_initializer_linear</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>bias initializer for the linear
+part of the orbitals. Has signature (key, shape, dtype) -&gt; Array</p></td>
+      </tr>
+      <tr>
+        <td><code>use_bias</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to add a bias term to the linear part of the
+orbitals. Defaults to True.</p></td>
+      </tr>
+      <tr>
+        <td><code>isotropic_decay</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether the decay for each ion should be
+anisotropic (w.r.t. the dimensions of the input), giving envelopes of the
+form exp(-||A(r - R)||) for a dxd matrix A or isotropic, giving
+exp(-||a(r - R||)) for a number a.</p></td>
+      </tr>
+  </tbody>
+</table>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.models.equivariance.DoublyEquivariantOrbitalLayer.setup" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Setup envelope kernel initializers.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/equivariance.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Setup envelope kernel initializers.&quot;&quot;&quot;</span>
+    <span class="c1"># workaround MyPy&#39;s typing error for callable attribute, see</span>
+    <span class="c1"># https://github.com/python/mypy/issues/708</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_kernel_initializer_envelope_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel_initializer_envelope_dim</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_kernel_initializer_envelope_ion</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel_initializer_envelope_ion</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.models.equivariance.DoublyEquivariantOrbitalLayer.__call__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">r_ei</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Calculate an equivariant orbital matrix for each input particle.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>x</code></td>
+        <td><code>Array</code></td>
+        <td><p>array of shape (..., nelec, d)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>r_ei</code></td>
+        <td><code>Array</code></td>
+        <td><p>array of shape (..., nelec, nion, d)</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>(ArrayList)</code></td>
+      <td><p>list of length nsplits of arrays of shape
+(..., nelec[i], nelec[i], self.norbitals_per_split[i]). Here nelec[i] is the
+number of particles in the ith split. The output arrays have both their -2
+and -3 axes equivariant with respect to the input particles. The exponential
+envelopes are computed only when r_ei is not None (so, when connected to
+FermiNetBackflow, when ion locations are specified). To output square
+matrices, say in order to be able to take antiequivariant per-particle
+determinants, nelec[i] should be equal to self.norbitals_per_split[i].</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/equivariance.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@flax</span><span class="o">.</span><span class="n">linen</span><span class="o">.</span><span class="n">compact</span>
+<span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>  <span class="c1"># type: ignore[override]</span>
+    <span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span> <span class="n">r_ei</span><span class="p">:</span> <span class="n">Array</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ArrayList</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Calculate an equivariant orbital matrix for each input particle.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        x (Array): array of shape (..., nelec, d)</span>
+<span class="sd">        r_ei (Array): array of shape (..., nelec, nion, d)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (ArrayList): list of length nsplits of arrays of shape</span>
+<span class="sd">        (..., nelec[i], nelec[i], self.norbitals_per_split[i]). Here nelec[i] is the</span>
+<span class="sd">        number of particles in the ith split. The output arrays have both their -2</span>
+<span class="sd">        and -3 axes equivariant with respect to the input particles. The exponential</span>
+<span class="sd">        envelopes are computed only when r_ei is not None (so, when connected to</span>
+<span class="sd">        FermiNetBackflow, when ion locations are specified). To output square</span>
+<span class="sd">        matrices, say in order to be able to take antiequivariant per-particle</span>
+<span class="sd">        determinants, nelec[i] should be equal to self.norbitals_per_split[i].</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># split_x is a list of nsplits arrays of shape (..., nelec[i], d)]</span>
+    <span class="n">split_x</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">orbitals_split</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+    <span class="c1"># orbs is a list of nsplits arrays of shape</span>
+    <span class="c1"># (..., nelec[i], nelec[i], norbitals[i])</span>
+    <span class="n">orbs</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_get_orbital_matrices_one_split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">norbitals_per_split</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">split_x</span><span class="p">)</span>
+    <span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">r_ei</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">exp_envelopes</span> <span class="o">=</span> <span class="n">_compute_exponential_envelopes_all_splits</span><span class="p">(</span>
+            <span class="n">r_ei</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">orbitals_split</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">norbitals_per_split</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_kernel_initializer_envelope_dim</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_kernel_initializer_envelope_ion</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">isotropic_decay</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="c1"># Envelope must be expanded to apply equally to each per-particle matrix.</span>
+        <span class="n">exp_envelopes</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">tree_map</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">3</span><span class="p">),</span> <span class="n">exp_envelopes</span>
+        <span class="p">)</span>
+        <span class="n">orbs</span> <span class="o">=</span> <span class="n">tree_prod</span><span class="p">(</span><span class="n">orbs</span><span class="p">,</span> <span class="n">exp_envelopes</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">orbs</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="vmcnet.models.equivariance.FermiNetBackflow" class="doc doc-heading">
+        <code>
+FermiNetBackflow            (<span title="vmcnet.models.core.Module">Module</span>)
+        </code>
+
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-dataclass"><code>dataclass</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>The FermiNet equivariant part up until, but not including, the orbitals.</p>
+<p>Repeated composition of the residual blocks in the parallel one-electron and
+two-electron streams.</p>
+
+<p><strong>Attributes:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>residual_blocks</code></td>
+        <td><code>Sequence</code></td>
+        <td><p>sequence of callable residual blocks which apply
+the one- and two- electron layers. Each residual block has the signature
+(in_1e, optional in_2e) -&gt; (out_1e, optional out_2e), where
+    in_1e has shape (..., n, d_1e)
+    out_1e has shape (..., n, d_1e')
+    in_2e has shape (..., n, n, d_2e)
+    out_2d has shape (..., n, n, d_2e')</p></td>
+      </tr>
+  </tbody>
+</table>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.models.equivariance.FermiNetBackflow.setup" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Setup called residual blocks.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/equivariance.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Setup called residual blocks.&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_residual_block_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">block</span> <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">residual_blocks</span><span class="p">]</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.models.equivariance.FermiNetBackflow.__call__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stream_1e</span><span class="p">,</span> <span class="n">stream_2e</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Iteratively apply residual blocks to Ferminet input streams.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>stream_1e</code></td>
+        <td><code>Array</code></td>
+        <td><p>one-electron input stream of shape
+(..., nelec, d1).</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>stream_2e</code></td>
+        <td><code>Array</code></td>
+        <td><p>two-electron input of shape
+(..., nelec, nelec, d2).</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>(Array)</code></td>
+      <td><p>the output of the one-electron stream after applying
+self.residual_blocks to the initial input streams.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/equivariance.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>  <span class="c1"># type: ignore[override]</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">stream_1e</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span>
+    <span class="n">stream_2e</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Array</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Array</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Iteratively apply residual blocks to Ferminet input streams.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        stream_1e (Array): one-electron input stream of shape</span>
+<span class="sd">            (..., nelec, d1).</span>
+<span class="sd">        stream_2e (Array, optional): two-electron input of shape</span>
+<span class="sd">            (..., nelec, nelec, d2).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (Array): the output of the one-electron stream after applying</span>
+<span class="sd">        self.residual_blocks to the initial input streams.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_residual_block_list</span><span class="p">:</span>
+        <span class="n">stream_1e</span><span class="p">,</span> <span class="n">stream_2e</span> <span class="o">=</span> <span class="n">block</span><span class="p">(</span><span class="n">stream_1e</span><span class="p">,</span> <span class="n">stream_2e</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">stream_1e</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="vmcnet.models.equivariance.FermiNetOneElectronLayer" class="doc doc-heading">
+        <code>
+FermiNetOneElectronLayer            (<span title="vmcnet.models.core.Module">Module</span>)
+        </code>
+
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-dataclass"><code>dataclass</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>A single layer in the one-electron stream of the FermiNet equivariant part.</p>
+
+<p><strong>Attributes:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>spin_split</code></td>
+        <td><code>ParticleSplit</code></td>
+        <td><p>number of spins to split the input equally,
+or specified sequence of locations to split along the 2nd-to-last axis.
+E.g., if nelec = 10, and <code>spin_split</code> = 2, then the input is split (5, 5).
+If nelec = 10, and <code>spin_split</code> = (2, 4), then the input is split into
+(2, 4, 4) -- note when <code>spin_split</code> is a sequence, there will be one more
+spin than the length of the sequence. In the original use-case of spin-1/2
+particles, <code>spin_split</code> should be either the number 2 (for closed-shell
+systems) or should be a Sequence with length 1 whose element is less than
+the total number of electrons.</p></td>
+      </tr>
+      <tr>
+        <td><code>ndense</code></td>
+        <td><code>int</code></td>
+        <td><p>number of dense nodes</p></td>
+      </tr>
+      <tr>
+        <td><code>kernel_initializer_unmixed</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>kernel initializer for the
+unmixed part of the one-electron stream. This initializes the part of the
+dense kernel which multiplies the previous one-electron stream output. Has
+signature (key, shape, dtype) -&gt; Array</p></td>
+      </tr>
+      <tr>
+        <td><code>kernel_initializer_mixed</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>kernel initializer for the
+mixed part of the one-electron stream. This initializes the part of the
+dense kernel which multiplies the average of the previous one-electron
+stream output. Has signature (key, shape, dtype) -&gt; Array</p></td>
+      </tr>
+      <tr>
+        <td><code>kernel_initializer_2e</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>kernel initializer for the
+two-electron part of the one-electron stream. This initializes the part of
+the dense kernel which multiplies the average of the previous two-electron
+stream which is mixed into the one-electron stream. Has signature
+(key, shape, dtype) -&gt; Array</p></td>
+      </tr>
+      <tr>
+        <td><code>bias_initializer</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>bias initializer. Has signature
+(key, shape, dtype) -&gt; Array</p></td>
+      </tr>
+      <tr>
+        <td><code>activation_fn</code></td>
+        <td><code>Activation</code></td>
+        <td><p>activation function. Has the signature
+Array -&gt; Array (shape is preserved)</p></td>
+      </tr>
+      <tr>
+        <td><code>use_bias</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to add a bias term. Defaults to True.</p></td>
+      </tr>
+      <tr>
+        <td><code>skip_connection</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to add residual skip connections
+whenever the shapes of the input and output match. Defaults to True.</p></td>
+      </tr>
+      <tr>
+        <td><code>skip_connection_scale</code></td>
+        <td><code>float</code></td>
+        <td><p>quantity to scale the final output by
+if a skip connection is added. Defaults to 1.0.</p></td>
+      </tr>
+      <tr>
+        <td><code>cyclic_spins</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether the the concatenation in the one-electron
+stream should satisfy a cyclic equivariance structure, i.e. if there are
+three spins (1, 2, 3), then in the mixed part of the stream, after averaging
+but before the linear transformation, cyclic equivariance means the inputs
+are [(1, 2, 3), (2, 3, 1), (3, 1, 2)]. If False, then the inputs are
+[(1, 2, 3), (1, 2, 3), (1, 2, 3)] (as in the original FermiNet).
+When there are only two spins (spin-1/2 case), then this is equivalent to
+true spin equivariance. Defaults to False (original FermiNet).</p></td>
+      </tr>
+  </tbody>
+</table>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.models.equivariance.FermiNetOneElectronLayer.setup" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Setup Dense layers.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/equivariance.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Setup Dense layers.&quot;&quot;&quot;</span>
+    <span class="c1"># workaround MyPy&#39;s typing error for callable attribute, see</span>
+    <span class="c1"># https://github.com/python/mypy/issues/708</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_activation_fn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation_fn</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">_unmixed_dense</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ndense</span><span class="p">,</span>
+        <span class="n">kernel_init</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kernel_initializer_unmixed</span><span class="p">,</span>
+        <span class="n">bias_init</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">bias_initializer</span><span class="p">,</span>
+        <span class="n">use_bias</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">use_bias</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_mixed_dense</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ndense</span><span class="p">,</span> <span class="n">kernel_init</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kernel_initializer_mixed</span><span class="p">,</span> <span class="n">use_bias</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_dense_2e</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ndense</span><span class="p">,</span> <span class="n">kernel_init</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kernel_initializer_2e</span><span class="p">,</span> <span class="n">use_bias</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.models.equivariance.FermiNetOneElectronLayer.__call__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">in_1e</span><span class="p">,</span> <span class="n">in_2e</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Add dense outputs on unmixed, mixed, and 2e terms to get the 1e output.</p>
+<p>This implementation breaks the one-electron stream into three parts:
+    1) the unmixed one-particle part, which is a linear transformation applied
+        in parallel for each particle to the inputs
+    2) the mixed one-particle part, which is a linear transformation applied to
+        the averages of the inputs (concatenated over spin)
+    3) the two-particle part, which is a linear transformation applied in
+        parallel for each particle to the average of the input interactions
+        between that particle and all the other particles.</p>
+<p>For 1), we take <code>in_1e</code> of shape (..., n_total, d_1e), batch apply a linear
+transformation to get (..., n_total, d'), and split over the spins i to get
+[i: (..., n[i], d')].</p>
+<p>For 2), we split <code>in_1e</code> over the spins along the particle axis to get
+[i: (..., n[i], d_1e)], average over each spin to get [i: (..., 1, d_1e)],
+concatenate all averages for each spin to get [i: (..., 1, d_1e * nspins)], and
+apply a linear transformation to get [i: (..., 1, d')].</p>
+<p>For 3) we split in_2e of shape (..., n_total, n_total, d_2e) over the spins
+along a particle axis to get [i: (..., n[i], n_total, d_2e)], average over the
+other particle axis to get [i: [j: (..., n[i], d_2e)]], concatenate the averages
+for each spin to get [i: (..., n[i], d_2e * nspins)], and apply a linear
+transformation to get [i: (..., n[i], d')].</p>
+<p>Finally, for each spin, we add the three parts, each equivariant or symmetric,
+to get a final equivariant linear transformation of the inputs, to which a
+non-linearity is then applied and a skip connection optionally added.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>in_1e</code></td>
+        <td><code>Array</code></td>
+        <td><p>array of shape (..., n_total, d_1e)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>in_2e</code></td>
+        <td><code>Array</code></td>
+        <td><p>array of shape (..., n_total, n_total, d_2e).
+Defaults to None.</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>ndarray</code></td>
+      <td><p>Array of shape (..., n_total, self.ndense), the output one-electron
+stream</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/equivariance.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>  <span class="c1"># type: ignore[override]</span>
+    <span class="bp">self</span><span class="p">,</span> <span class="n">in_1e</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span> <span class="n">in_2e</span><span class="p">:</span> <span class="n">Array</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Array</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Add dense outputs on unmixed, mixed, and 2e terms to get the 1e output.</span>
+
+<span class="sd">    This implementation breaks the one-electron stream into three parts:</span>
+<span class="sd">        1) the unmixed one-particle part, which is a linear transformation applied</span>
+<span class="sd">            in parallel for each particle to the inputs</span>
+<span class="sd">        2) the mixed one-particle part, which is a linear transformation applied to</span>
+<span class="sd">            the averages of the inputs (concatenated over spin)</span>
+<span class="sd">        3) the two-particle part, which is a linear transformation applied in</span>
+<span class="sd">            parallel for each particle to the average of the input interactions</span>
+<span class="sd">            between that particle and all the other particles.</span>
+
+<span class="sd">    For 1), we take `in_1e` of shape (..., n_total, d_1e), batch apply a linear</span>
+<span class="sd">    transformation to get (..., n_total, d&#39;), and split over the spins i to get</span>
+<span class="sd">    [i: (..., n[i], d&#39;)].</span>
+
+<span class="sd">    For 2), we split `in_1e` over the spins along the particle axis to get</span>
+<span class="sd">    [i: (..., n[i], d_1e)], average over each spin to get [i: (..., 1, d_1e)],</span>
+<span class="sd">    concatenate all averages for each spin to get [i: (..., 1, d_1e * nspins)], and</span>
+<span class="sd">    apply a linear transformation to get [i: (..., 1, d&#39;)].</span>
+
+<span class="sd">    For 3) we split in_2e of shape (..., n_total, n_total, d_2e) over the spins</span>
+<span class="sd">    along a particle axis to get [i: (..., n[i], n_total, d_2e)], average over the</span>
+<span class="sd">    other particle axis to get [i: [j: (..., n[i], d_2e)]], concatenate the averages</span>
+<span class="sd">    for each spin to get [i: (..., n[i], d_2e * nspins)], and apply a linear</span>
+<span class="sd">    transformation to get [i: (..., n[i], d&#39;)].</span>
+
+<span class="sd">    Finally, for each spin, we add the three parts, each equivariant or symmetric,</span>
+<span class="sd">    to get a final equivariant linear transformation of the inputs, to which a</span>
+<span class="sd">    non-linearity is then applied and a skip connection optionally added.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        in_1e (Array): array of shape (..., n_total, d_1e)</span>
+<span class="sd">        in_2e (Array, optional): array of shape (..., n_total, n_total, d_2e).</span>
+<span class="sd">            Defaults to None.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Array of shape (..., n_total, self.ndense), the output one-electron</span>
+<span class="sd">        stream</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dense_unmixed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unmixed_dense</span><span class="p">(</span><span class="n">in_1e</span><span class="p">)</span>
+    <span class="n">dense_unmixed_split</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">dense_unmixed</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">spin_split</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">split_1e_means</span> <span class="o">=</span> <span class="n">_split_mean</span><span class="p">(</span><span class="n">in_1e</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">spin_split</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">dense_mixed_split</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_transformed_1e_means</span><span class="p">(</span><span class="n">split_1e_means</span><span class="p">)</span>
+
+    <span class="c1"># adds the unmixed [i: (..., n[i], d&#39;)] to the mixed [i: (..., 1, d&#39;)] to get</span>
+    <span class="c1"># an equivariant function. Without the two-electron mixing, this is a spinful</span>
+    <span class="c1"># version of DeepSet&#39;s Lemma 3: https://arxiv.org/pdf/1703.06114.pdf</span>
+    <span class="n">dense_out</span> <span class="o">=</span> <span class="n">tree_sum</span><span class="p">(</span><span class="n">dense_unmixed_split</span><span class="p">,</span> <span class="n">dense_mixed_split</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">in_2e</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">dense_2e_split</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_transformed_2e_means</span><span class="p">(</span><span class="n">in_2e</span><span class="p">)</span>
+        <span class="n">dense_out</span> <span class="o">=</span> <span class="n">tree_sum</span><span class="p">(</span><span class="n">dense_out</span><span class="p">,</span> <span class="n">dense_2e_split</span><span class="p">)</span>
+
+    <span class="n">dense_out_concat</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">dense_out</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">nonlinear_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_activation_fn</span><span class="p">(</span><span class="n">dense_out_concat</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">skip_connection</span> <span class="ow">and</span> <span class="n">_valid_skip</span><span class="p">(</span><span class="n">in_1e</span><span class="p">,</span> <span class="n">nonlinear_out</span><span class="p">):</span>
+        <span class="n">nonlinear_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">skip_connection_scale</span> <span class="o">*</span> <span class="p">(</span><span class="n">nonlinear_out</span> <span class="o">+</span> <span class="n">in_1e</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">nonlinear_out</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="vmcnet.models.equivariance.FermiNetOrbitalLayer" class="doc doc-heading">
+        <code>
+FermiNetOrbitalLayer            (<span title="vmcnet.models.core.Module">Module</span>)
+        </code>
+
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-dataclass"><code>dataclass</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Make the FermiNet orbitals (parallel linear layers with exp decay envelopes).</p>
+
+<p><strong>Attributes:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>orbitals_split</code></td>
+        <td><code>ParticleSplit</code></td>
+        <td><p>number of pieces to split the input equally,
+or specified sequence of locations to split along the 2nd-to-last axis.
+E.g., if nelec = 10, and <code>orbitals_split</code> = 2, then the input is split
+(5, 5). If nelec = 10, and <code>orbitals_split</code> = (2, 4), then the input is
+split into (2, 4, 4) -- note when <code>orbitals_split</code> is a sequence, there will
+be one more split than the length of the sequence. In the original use-case
+of spin-1/2 particles, <code>split</code> should be either the number 2 (for
+closed-shell systems) or should be a Sequence with length 1 whose element is
+less than the total number of electrons.</p></td>
+      </tr>
+      <tr>
+        <td><code>norbitals_per_split</code></td>
+        <td><code>Sequence[int]</code></td>
+        <td><p>sequence of integers specifying the number
+of orbitals to create for each split. This determines the output shapes for
+each split, i.e. the outputs are shaped (..., split_size[i], norbitals[i])</p></td>
+      </tr>
+      <tr>
+        <td><code>kernel_initializer_linear</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>kernel initializer for the linear
+part of the orbitals. Has signature (key, shape, dtype) -&gt; Array</p></td>
+      </tr>
+      <tr>
+        <td><code>kernel_initializer_envelope_dim</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>kernel initializer for the
+decay rate in the exponential envelopes. If <code>isotropic_decay</code> is True, then
+this initializes a single decay rate number per ion and orbital. If
+<code>isotropic_decay</code> is False, then this initializes a 3x3 matrix per ion and
+orbital. Has signature (key, shape, dtype) -&gt; Array</p></td>
+      </tr>
+      <tr>
+        <td><code>kernel_initializer_envelope_ion</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>kernel initializer for the
+linear combination over the ions of exponential envelopes. Has signature
+(key, shape, dtype) -&gt; Array</p></td>
+      </tr>
+      <tr>
+        <td><code>bias_initializer_linear</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>bias initializer for the linear
+part of the orbitals. Has signature (key, shape, dtype) -&gt; Array</p></td>
+      </tr>
+      <tr>
+        <td><code>use_bias</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to add a bias term to the linear part of the
+orbitals. Defaults to True.</p></td>
+      </tr>
+      <tr>
+        <td><code>isotropic_decay</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether the decay for each ion should be
+anisotropic (w.r.t. the dimensions of the input), giving envelopes of the
+form exp(-||A(r - R)||) for a dxd matrix A or isotropic, giving
+exp(-||a(r - R||)) for a number a.</p></td>
+      </tr>
+  </tbody>
+</table>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.models.equivariance.FermiNetOrbitalLayer.setup" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Setup envelope kernel initializers.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/equivariance.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Setup envelope kernel initializers.&quot;&quot;&quot;</span>
+    <span class="c1"># workaround MyPy&#39;s typing error for callable attribute, see</span>
+    <span class="c1"># https://github.com/python/mypy/issues/708</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_kernel_initializer_envelope_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel_initializer_envelope_dim</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_kernel_initializer_envelope_ion</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel_initializer_envelope_ion</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.models.equivariance.FermiNetOrbitalLayer.__call__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">r_ei</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Apply a dense layer R -&gt; R^n for each split and multiply by exp envelopes.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>x</code></td>
+        <td><code>Array</code></td>
+        <td><p>array of shape (..., nelec, d)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>r_ei</code></td>
+        <td><code>Array</code></td>
+        <td><p>array of shape (..., nelec, nion, d)</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>[(..., nelec[i], self.norbitals_per_split[i])]</code></td>
+      <td><p>list of FermiNet orbital
+matrices computed from an output stream x and the electron-ion displacements
+r_ei. Here n[i] is the number of particles in the ith split. The exponential
+envelopes are computed only when r_ei is not None (so, when connected to
+FermiNetBackflow, when ion locations are specified). To output square
+matrices, say for composing with the determinant anti-symmetry,
+nelec[i] should be equal to self.norbitals_per_split[i].</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/equivariance.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@flax</span><span class="o">.</span><span class="n">linen</span><span class="o">.</span><span class="n">compact</span>
+<span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>  <span class="c1"># type: ignore[override]</span>
+    <span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span> <span class="n">r_ei</span><span class="p">:</span> <span class="n">Array</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ArrayList</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Apply a dense layer R -&gt; R^n for each split and multiply by exp envelopes.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        x (Array): array of shape (..., nelec, d)</span>
+<span class="sd">        r_ei (Array): array of shape (..., nelec, nion, d)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        [(..., nelec[i], self.norbitals_per_split[i])]: list of FermiNet orbital</span>
+<span class="sd">        matrices computed from an output stream x and the electron-ion displacements</span>
+<span class="sd">        r_ei. Here n[i] is the number of particles in the ith split. The exponential</span>
+<span class="sd">        envelopes are computed only when r_ei is not None (so, when connected to</span>
+<span class="sd">        FermiNetBackflow, when ion locations are specified). To output square</span>
+<span class="sd">        matrices, say for composing with the determinant anti-symmetry,</span>
+<span class="sd">        nelec[i] should be equal to self.norbitals_per_split[i].</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">orbs</span> <span class="o">=</span> <span class="n">SplitDense</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">orbitals_split</span><span class="p">,</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">norbitals_per_split</span><span class="p">,</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kernel_initializer_linear</span><span class="p">,</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bias_initializer_linear</span><span class="p">,</span>
+        <span class="n">use_bias</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">use_bias</span><span class="p">,</span>
+    <span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">r_ei</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">exp_envelopes</span> <span class="o">=</span> <span class="n">_compute_exponential_envelopes_all_splits</span><span class="p">(</span>
+            <span class="n">r_ei</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">orbitals_split</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">norbitals_per_split</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_kernel_initializer_envelope_dim</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_kernel_initializer_envelope_ion</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">isotropic_decay</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">orbs</span> <span class="o">=</span> <span class="n">tree_prod</span><span class="p">(</span><span class="n">orbs</span><span class="p">,</span> <span class="n">exp_envelopes</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">orbs</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="vmcnet.models.equivariance.FermiNetResidualBlock" class="doc doc-heading">
+        <code>
+FermiNetResidualBlock            (<span title="vmcnet.models.core.Module">Module</span>)
+        </code>
+
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-dataclass"><code>dataclass</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>A single residual block in the FermiNet equivariant part.</p>
+<p>Combines the one-electron and two-electron streams.</p>
+
+<p><strong>Attributes:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>one_electron_layer</code></td>
+        <td><code>Callable</code></td>
+        <td><p>function which takes in a previous one-electron
+stream output and two-electron stream output and mixes/transforms them to
+create a new one-electron stream output. Has the signature:
+(array of shape (..., n, d_1e), optional array of shape (..., n, n, d_2e))
+-&gt; array of shape (..., n, d_1e')</p></td>
+      </tr>
+      <tr>
+        <td><code>two_electron_layer</code></td>
+        <td><code>Callable</code></td>
+        <td><p>function which takes in a previous two-electron
+stream output and batch applies a Dense layer along the last axis. Has the
+signature:
+array of shape (..., n, n, d_2e) -&gt; array of shape (..., n, n, d_2e')</p></td>
+      </tr>
+  </tbody>
+</table>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.models.equivariance.FermiNetResidualBlock.setup" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Setup called one- and two- electron layers.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/equivariance.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Setup called one- and two- electron layers.&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_one_electron_layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">one_electron_layer</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_two_electron_layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">two_electron_layer</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.models.equivariance.FermiNetResidualBlock.__call__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">in_1e</span><span class="p">,</span> <span class="n">in_2e</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Apply the one-electron layer and optionally the two-electron layer.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>in_1e</code></td>
+        <td><code>Array</code></td>
+        <td><p>array of shape (..., n_total, d_1e)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>in_2e</code></td>
+        <td><code>Array</code></td>
+        <td><p>array of shape (..., n_total, n_total, d_2e).
+Defaults to None.</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>(Array, optional Array)</code></td>
+      <td><p>tuple of (out_1e, out_2e) where out_1e
+is the output from the one-electron layer and out_2e is the output of the
+two-electron stream</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/equivariance.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>  <span class="c1"># type: ignore[override]</span>
+    <span class="bp">self</span><span class="p">,</span> <span class="n">in_1e</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span> <span class="n">in_2e</span><span class="p">:</span> <span class="n">Array</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Array</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Array</span><span class="p">]]:</span>
+    <span class="sd">&quot;&quot;&quot;Apply the one-electron layer and optionally the two-electron layer.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        in_1e (Array): array of shape (..., n_total, d_1e)</span>
+<span class="sd">        in_2e (Array, optional): array of shape (..., n_total, n_total, d_2e).</span>
+<span class="sd">            Defaults to None.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (Array, optional Array): tuple of (out_1e, out_2e) where out_1e</span>
+<span class="sd">        is the output from the one-electron layer and out_2e is the output of the</span>
+<span class="sd">        two-electron stream</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">out_1e</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_one_electron_layer</span><span class="p">(</span><span class="n">in_1e</span><span class="p">,</span> <span class="n">in_2e</span><span class="p">)</span>
+
+    <span class="n">out_2e</span> <span class="o">=</span> <span class="n">in_2e</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">two_electron_layer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">in_2e</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">out_2e</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_two_electron_layer</span><span class="p">(</span><span class="n">in_2e</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">out_1e</span><span class="p">,</span> <span class="n">out_2e</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="vmcnet.models.equivariance.FermiNetTwoElectronLayer" class="doc doc-heading">
+        <code>
+FermiNetTwoElectronLayer            (<span title="vmcnet.models.core.Module">Module</span>)
+        </code>
+
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-dataclass"><code>dataclass</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>A single layer in the two-electron stream of the FermiNet equivariance.</p>
+
+<p><strong>Attributes:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ndense</code></td>
+        <td><code>int</code></td>
+        <td><p>number of dense nodes</p></td>
+      </tr>
+      <tr>
+        <td><code>kernel_initializer</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>kernel initializer. Has signature
+(key, shape, dtype) -&gt; Array</p></td>
+      </tr>
+      <tr>
+        <td><code>bias_initializer</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>bias initializer. Has signature
+(key, shape, dtype) -&gt; Array</p></td>
+      </tr>
+      <tr>
+        <td><code>activation_fn</code></td>
+        <td><code>Activation</code></td>
+        <td><p>activation function. Has the signature
+Array -&gt; Array (shape is preserved)</p></td>
+      </tr>
+      <tr>
+        <td><code>use_bias</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to add a bias term. Defaults to True.</p></td>
+      </tr>
+      <tr>
+        <td><code>skip_connection</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to add residual skip connections
+whenever the shapes of the input and output match. Defaults to True.</p></td>
+      </tr>
+      <tr>
+        <td><code>skip_connection_scale</code></td>
+        <td><code>float</code></td>
+        <td><p>quantity to scale the final output by
+if a skip connection is added. Defaults to 1.0.</p></td>
+      </tr>
+  </tbody>
+</table>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.models.equivariance.FermiNetTwoElectronLayer.setup" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Setup Dense layer.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/equivariance.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Setup Dense layer.&quot;&quot;&quot;</span>
+    <span class="c1"># workaround MyPy&#39;s typing error for callable attribute, see</span>
+    <span class="c1"># https://github.com/python/mypy/issues/708</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_activation_fn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation_fn</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_dense</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ndense</span><span class="p">,</span>
+        <span class="n">kernel_init</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kernel_initializer</span><span class="p">,</span>
+        <span class="n">bias_init</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">bias_initializer</span><span class="p">,</span>
+        <span class="n">use_bias</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">use_bias</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.models.equivariance.FermiNetTwoElectronLayer.__call__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Apply a Dense layer in parallel to all electron pairs.</p>
+<p>The expected use-case of this is to batch apply a dense layer to an input x of
+shape (..., n_total, n_total, d), getting an output of shape
+(..., n_total, n_total, d'), and optionally adding a skip connection. The
+function itself is just a standard residual network layer.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/equivariance.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Array</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Array</span><span class="p">:</span>  <span class="c1"># type: ignore[override]</span>
+    <span class="sd">&quot;&quot;&quot;Apply a Dense layer in parallel to all electron pairs.</span>
+
+<span class="sd">    The expected use-case of this is to batch apply a dense layer to an input x of</span>
+<span class="sd">    shape (..., n_total, n_total, d), getting an output of shape</span>
+<span class="sd">    (..., n_total, n_total, d&#39;), and optionally adding a skip connection. The</span>
+<span class="sd">    function itself is just a standard residual network layer.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dense_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dense</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">nonlinear_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_activation_fn</span><span class="p">(</span><span class="n">dense_out</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">skip_connection</span> <span class="ow">and</span> <span class="n">_valid_skip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">nonlinear_out</span><span class="p">):</span>
+        <span class="n">nonlinear_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">skip_connection_scale</span> <span class="o">*</span> <span class="p">(</span><span class="n">nonlinear_out</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">nonlinear_out</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="vmcnet.models.equivariance.SplitDense" class="doc doc-heading">
+        <code>
+SplitDense            (<span title="vmcnet.models.core.Module">Module</span>)
+        </code>
+
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-dataclass"><code>dataclass</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Split input on the 2nd-to-last axis and apply unique Dense layers to each split.</p>
+
+<p><strong>Attributes:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>split</code></td>
+        <td><code>ParticleSplit</code></td>
+        <td><p>number of pieces to split the input equally,
+or specified sequence of locations to split along the 2nd-to-last axis.
+E.g., if nelec = 10, and <code>split</code> = 2, then the input is split (5, 5).
+If nelec = 10, and <code>split</code> = (2, 4), then the input is split into
+(2, 4, 4) -- note when <code>split</code> is a sequence, there will be one more
+split than the length of the sequence. In the original use-case of spin-1/2
+particles, <code>split</code> should be either the number 2 (for closed-shell
+systems) or should be a Sequence with length 1 whose element is less than
+the total number of electrons.</p></td>
+      </tr>
+      <tr>
+        <td><code>ndense_per_split</code></td>
+        <td><code>Sequence[int]</code></td>
+        <td><p>sequence of integers specifying the number of
+dense nodes in the unique dense layer applied to each split of the input.
+This determines the output shapes for each split, i.e. the outputs are
+shaped (..., split_size[i], ndense[i])</p></td>
+      </tr>
+      <tr>
+        <td><code>kernel_initializer</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>kernel initializer. Has signature
+(key, shape, dtype) -&gt; Array</p></td>
+      </tr>
+      <tr>
+        <td><code>bias_initializer</code></td>
+        <td><code>WeightInitializer</code></td>
+        <td><p>bias initializer. Has signature
+(key, shape, dtype) -&gt; Array. Defaults to random normal
+initialization.</p></td>
+      </tr>
+      <tr>
+        <td><code>use_bias</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to add a bias term. Defaults to True.</p></td>
+      </tr>
+      <tr>
+        <td><code>register_kfac</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to register the dense computations with
+KFAC. Defaults to True.</p></td>
+      </tr>
+  </tbody>
+</table>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.models.equivariance.SplitDense.setup" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Set up the dense layers for each split.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/equivariance.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Set up the dense layers for each split.&quot;&quot;&quot;</span>
+    <span class="n">nsplits</span> <span class="o">=</span> <span class="n">get_nsplits</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">split</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ndense_per_split</span><span class="p">)</span> <span class="o">!=</span> <span class="n">nsplits</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Incorrect number of dense output shapes specified for number of &quot;</span>
+            <span class="s2">&quot;splits, should be one shape per split: shapes </span><span class="si">{}</span><span class="s2"> specified for the &quot;</span>
+            <span class="s2">&quot;given split </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ndense_per_split</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">split</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">_dense_layers</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">Dense</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ndense_per_split</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+            <span class="n">kernel_init</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kernel_initializer</span><span class="p">,</span>
+            <span class="n">bias_init</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">bias_initializer</span><span class="p">,</span>
+            <span class="n">use_bias</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">use_bias</span><span class="p">,</span>
+            <span class="n">register_kfac</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">register_kfac</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nsplits</span><span class="p">)</span>
+    <span class="p">]</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="vmcnet.models.equivariance.SplitDense.__call__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Split the input and apply a dense layer to each split.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>x</code></td>
+        <td><code>Array</code></td>
+        <td><p>array of shape (..., n, d)</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>[(..., n[i], self.ndense_per_split[i])]</code></td>
+      <td><p>list of length nsplits, where
+nsplits is the number of splits created by
+jnp.split(x, self.split, axis=-2), and the ith entry of the output is the
+ith split transformed by a dense layer with self.ndense_per_split[i] nodes.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/equivariance.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Array</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ArrayList</span><span class="p">:</span>  <span class="c1"># type: ignore[override]</span>
+    <span class="sd">&quot;&quot;&quot;Split the input and apply a dense layer to each split.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        x (Array): array of shape (..., n, d)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        [(..., n[i], self.ndense_per_split[i])]: list of length nsplits, where</span>
+<span class="sd">        nsplits is the number of splits created by</span>
+<span class="sd">        jnp.split(x, self.split, axis=-2), and the ith entry of the output is the</span>
+<span class="sd">        ith split transformed by a dense layer with self.ndense_per_split[i] nodes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x_split</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">split</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_dense_layers</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">split</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">split</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">x_split</span><span class="p">)]</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="vmcnet.models.equivariance.compute_input_streams" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">compute_input_streams</span><span class="p">(</span><span class="n">elec_pos</span><span class="p">,</span> <span class="n">ion_pos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">include_2e_stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">include_ei_norm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">include_ee_norm</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Create input streams with electron and optionally ion data.</p>
+<p>If <code>ion_pos</code> is given, computes the electron-ion displacements (i.e. nuclear
+coordinates) and concatenates/flattens them along the ion dimension. If
+<code>include_ei_norm</code> is True, then the distances are also concatenated, so the map is
+elec_pos = (..., nelec, d) -&gt; input_1e = (..., nelec, nion * (d + 1)).</p>
+<p>If <code>include_2e_stream</code> is True, then a two-electron stream of shape
+(..., nelec, nelec, d) is also computed and returned (otherwise None is returned).
+If <code>include_ee_norm</code> is True, then this becomes (..., nelec, nelec, d + 1) by
+concatenating pairwise distances onto the stream.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>elec_pos</code></td>
+        <td><code>Array</code></td>
+        <td><p>electron positions of shape (..., nelec, d)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>ion_pos</code></td>
+        <td><code>Array</code></td>
+        <td><p>locations of (stationary) ions to compute
+relative electron positions, 2-d array of shape (nion, d). Defaults to None.</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>include_2e_stream</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to compute pairwise electron
+displacements/distances. Defaults to True.</p></td>
+        <td><code>True</code></td>
+      </tr>
+      <tr>
+        <td><code>include_ei_norm</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to include electron-ion distances in
+the one-electron input. Defaults to True.</p></td>
+        <td><code>True</code></td>
+      </tr>
+      <tr>
+        <td><code>include_ee_norm</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to include electron-electron distances
+in the two-electron input. Defaults to True.</p></td>
+        <td><code>True</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>(
+    Array,
+    Optional[Array],
+    Optional[Array],
+    Optional[Array],
+)</code></td>
+      <td><p>first output: one-electron input of shape (..., nelec, d'), where
+    d' = d if <code>ion_pos</code> is None,
+    d' = nion * d if <code>ion_pos</code> is given and <code>include_ei_norm</code> is False, and
+    d' = nion * (d + 1) if <code>ion_pos</code> is given and <code>include_ei_norm</code> is True.</p>
+<p>second output: two-electron input of shape (..., nelec, nelec, d'), where
+    d' = d if <code>include_ee_norm</code> is False, and
+    d' = d + 1 if <code>include_ee_norm</code> is True</p>
+<p>third output: electron-ion displacements of shape (..., nelec, nion, d)</p>
+<p>fourth output: electron-electron displacements of shape (..., nelec, nelec, d)</p>
+<p>If <code>include_2e_stream</code> is False, then the second and fourth outputs are None. If
+<code>ion_pos</code> is None, then the third output is None.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/equivariance.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">compute_input_streams</span><span class="p">(</span>
+    <span class="n">elec_pos</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span>
+    <span class="n">ion_pos</span><span class="p">:</span> <span class="n">Array</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">include_2e_stream</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">include_ei_norm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">include_ee_norm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">InputStreams</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Create input streams with electron and optionally ion data.</span>
+
+<span class="sd">    If `ion_pos` is given, computes the electron-ion displacements (i.e. nuclear</span>
+<span class="sd">    coordinates) and concatenates/flattens them along the ion dimension. If</span>
+<span class="sd">    `include_ei_norm` is True, then the distances are also concatenated, so the map is</span>
+<span class="sd">    elec_pos = (..., nelec, d) -&gt; input_1e = (..., nelec, nion * (d + 1)).</span>
+
+<span class="sd">    If `include_2e_stream` is True, then a two-electron stream of shape</span>
+<span class="sd">    (..., nelec, nelec, d) is also computed and returned (otherwise None is returned).</span>
+<span class="sd">    If `include_ee_norm` is True, then this becomes (..., nelec, nelec, d + 1) by</span>
+<span class="sd">    concatenating pairwise distances onto the stream.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        elec_pos (Array): electron positions of shape (..., nelec, d)</span>
+<span class="sd">        ion_pos (Array, optional): locations of (stationary) ions to compute</span>
+<span class="sd">            relative electron positions, 2-d array of shape (nion, d). Defaults to None.</span>
+<span class="sd">        include_2e_stream (bool, optional): whether to compute pairwise electron</span>
+<span class="sd">            displacements/distances. Defaults to True.</span>
+<span class="sd">        include_ei_norm (bool, optional): whether to include electron-ion distances in</span>
+<span class="sd">            the one-electron input. Defaults to True.</span>
+<span class="sd">        include_ee_norm (bool, optional): whether to include electron-electron distances</span>
+<span class="sd">            in the two-electron input. Defaults to True.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (</span>
+<span class="sd">            Array,</span>
+<span class="sd">            Optional[Array],</span>
+<span class="sd">            Optional[Array],</span>
+<span class="sd">            Optional[Array],</span>
+<span class="sd">        ):</span>
+
+<span class="sd">        first output: one-electron input of shape (..., nelec, d&#39;), where</span>
+<span class="sd">            d&#39; = d if `ion_pos` is None,</span>
+<span class="sd">            d&#39; = nion * d if `ion_pos` is given and `include_ei_norm` is False, and</span>
+<span class="sd">            d&#39; = nion * (d + 1) if `ion_pos` is given and `include_ei_norm` is True.</span>
+
+<span class="sd">        second output: two-electron input of shape (..., nelec, nelec, d&#39;), where</span>
+<span class="sd">            d&#39; = d if `include_ee_norm` is False, and</span>
+<span class="sd">            d&#39; = d + 1 if `include_ee_norm` is True</span>
+
+<span class="sd">        third output: electron-ion displacements of shape (..., nelec, nion, d)</span>
+
+<span class="sd">        fourth output: electron-electron displacements of shape (..., nelec, nelec, d)</span>
+
+<span class="sd">        If `include_2e_stream` is False, then the second and fourth outputs are None. If</span>
+<span class="sd">        `ion_pos` is None, then the third output is None.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">input_1e</span><span class="p">,</span> <span class="n">r_ei</span> <span class="o">=</span> <span class="n">compute_electron_ion</span><span class="p">(</span><span class="n">elec_pos</span><span class="p">,</span> <span class="n">ion_pos</span><span class="p">,</span> <span class="n">include_ei_norm</span><span class="p">)</span>
+    <span class="n">input_2e</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">r_ee</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">include_2e_stream</span><span class="p">:</span>
+        <span class="n">input_2e</span><span class="p">,</span> <span class="n">r_ee</span> <span class="o">=</span> <span class="n">compute_electron_electron</span><span class="p">(</span><span class="n">elec_pos</span><span class="p">,</span> <span class="n">include_ee_norm</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">input_1e</span><span class="p">,</span> <span class="n">input_2e</span><span class="p">,</span> <span class="n">r_ei</span><span class="p">,</span> <span class="n">r_ee</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="vmcnet.models.equivariance.compute_electron_ion" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">compute_electron_ion</span><span class="p">(</span><span class="n">elec_pos</span><span class="p">,</span> <span class="n">ion_pos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">include_ei_norm</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Compute electron-ion displacements and optionally add on the distances.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>elec_pos</code></td>
+        <td><code>Array</code></td>
+        <td><p>electron positions of shape (..., nelec, d)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>ion_pos</code></td>
+        <td><code>Array</code></td>
+        <td><p>locations of (stationary) ions to compute
+relative electron positions, 2-d array of shape (nion, d). Defaults to None.</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>include_ei_norm</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to include electron-ion distances in
+the one-electron input. Defaults to True.</p></td>
+        <td><code>True</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>(Array, Optional[Array])</code></td>
+      <td><p>first output: one-electron input of shape (..., nelec, d'), where
+    d' = d if <code>ion_pos</code> is None,
+    d' = nion * d if <code>ion_pos</code> is given and <code>include_ei_norm</code> is False, and
+    d' = nion * (d + 1) if <code>ion_pos</code> is given and <code>include_ei_norm</code> is True.</p>
+<p>second output: electron-ion displacements of shape (..., nelec, nion, d)</p>
+<p>If <code>ion_pos</code> is None, then the second output is None.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/equivariance.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">compute_electron_ion</span><span class="p">(</span>
+    <span class="n">elec_pos</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span> <span class="n">ion_pos</span><span class="p">:</span> <span class="n">Array</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">include_ei_norm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Array</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Array</span><span class="p">]]:</span>
+    <span class="sd">&quot;&quot;&quot;Compute electron-ion displacements and optionally add on the distances.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        elec_pos (Array): electron positions of shape (..., nelec, d)</span>
+<span class="sd">        ion_pos (Array, optional): locations of (stationary) ions to compute</span>
+<span class="sd">            relative electron positions, 2-d array of shape (nion, d). Defaults to None.</span>
+<span class="sd">        include_ei_norm (bool, optional): whether to include electron-ion distances in</span>
+<span class="sd">            the one-electron input. Defaults to True.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (Array, Optional[Array]):</span>
+
+<span class="sd">        first output: one-electron input of shape (..., nelec, d&#39;), where</span>
+<span class="sd">            d&#39; = d if `ion_pos` is None,</span>
+<span class="sd">            d&#39; = nion * d if `ion_pos` is given and `include_ei_norm` is False, and</span>
+<span class="sd">            d&#39; = nion * (d + 1) if `ion_pos` is given and `include_ei_norm` is True.</span>
+
+<span class="sd">        second output: electron-ion displacements of shape (..., nelec, nion, d)</span>
+
+<span class="sd">        If `ion_pos` is None, then the second output is None.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">r_ei</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">input_1e</span> <span class="o">=</span> <span class="n">elec_pos</span>
+    <span class="k">if</span> <span class="n">ion_pos</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">r_ei</span> <span class="o">=</span> <span class="n">_compute_displacements</span><span class="p">(</span><span class="n">input_1e</span><span class="p">,</span> <span class="n">ion_pos</span><span class="p">)</span>
+        <span class="n">input_1e</span> <span class="o">=</span> <span class="n">r_ei</span>
+        <span class="k">if</span> <span class="n">include_ei_norm</span><span class="p">:</span>
+            <span class="n">input_norm</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">input_1e</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">input_with_norm</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">input_1e</span><span class="p">,</span> <span class="n">input_norm</span><span class="p">],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">input_1e</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">input_with_norm</span><span class="p">,</span> <span class="n">input_with_norm</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,))</span>
+    <span class="k">return</span> <span class="n">input_1e</span><span class="p">,</span> <span class="n">r_ei</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="vmcnet.models.equivariance.compute_electron_electron" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">compute_electron_electron</span><span class="p">(</span><span class="n">elec_pos</span><span class="p">,</span> <span class="n">include_ee_norm</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Compute electron-electron displacements and optionally add on the distances.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>elec_pos</code></td>
+        <td><code>Array</code></td>
+        <td><p>electron positions of shape (..., nelec, d)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>include_ee_norm</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to include electron-electron distances
+in the two-electron input. Defaults to True.</p></td>
+        <td><code>True</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>(Array, Array)</code></td>
+      <td><p>first output: two-electron input of shape (..., nelec, nelec, d'), where
+    d' = d if <code>include_ee_norm</code> is False, and
+    d' = d + 1 if <code>include_ee_norm</code> is True</p>
+<p>second output: two-electron displacements of shape (..., nelec, nelec, d)</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/models/equivariance.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">compute_electron_electron</span><span class="p">(</span>
+    <span class="n">elec_pos</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span> <span class="n">include_ee_norm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Array</span><span class="p">,</span> <span class="n">Array</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Compute electron-electron displacements and optionally add on the distances.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        elec_pos (Array): electron positions of shape (..., nelec, d)</span>
+<span class="sd">        include_ee_norm (bool, optional): whether to include electron-electron distances</span>
+<span class="sd">            in the two-electron input. Defaults to True.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (Array, Array):</span>
+
+<span class="sd">        first output: two-electron input of shape (..., nelec, nelec, d&#39;), where</span>
+<span class="sd">            d&#39; = d if `include_ee_norm` is False, and</span>
+<span class="sd">            d&#39; = d + 1 if `include_ee_norm` is True</span>
+
+<span class="sd">        second output: two-electron displacements of shape (..., nelec, nelec, d)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">r_ee</span> <span class="o">=</span> <span class="n">_compute_displacements</span><span class="p">(</span><span class="n">elec_pos</span><span class="p">,</span> <span class="n">elec_pos</span><span class="p">)</span>
+    <span class="n">input_2e</span> <span class="o">=</span> <span class="n">r_ee</span>
+    <span class="k">if</span> <span class="n">include_ee_norm</span><span class="p">:</span>
+        <span class="n">r_ee_norm</span> <span class="o">=</span> <span class="n">compute_ee_norm_with_safe_diag</span><span class="p">(</span><span class="n">r_ee</span><span class="p">)</span>
+        <span class="n">input_2e</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">input_2e</span><span class="p">,</span> <span class="n">r_ee_norm</span><span class="p">],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">input_2e</span><span class="p">,</span> <span class="n">r_ee</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../core/" class="md-footer__link md-footer__link--prev" aria-label="Previous: core" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              core
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../jastrow/" class="md-footer__link md-footer__link--next" aria-label="Next: jastrow" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              jastrow
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.tracking"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.cefbb252.min.js", "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a5f8ea78.min.js"></script>
+      
+    
+  </body>
+</html>

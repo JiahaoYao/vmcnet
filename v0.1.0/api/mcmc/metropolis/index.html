@@ -1,0 +1,2156 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.5">
+    
+    
+      
+        <title>metropolis - vmcnet</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a617204b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9204c3b2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/docstrings.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/sidebar.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/content.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vmcnet.mcmc.metropolis" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        <aside class="md-banner md-banner--warning">
+          
+        </aside>
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="vmcnet" class="md-header__button md-logo" aria-label="vmcnet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            vmcnet
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              metropolis
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/jeffminlin/vmcnet" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jeffminlin/vmcnet
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../examples/harmonic_oscillator/" class="md-tabs__link md-tabs__link--active">
+        API Reference
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../CONTRIBUTING/" class="md-tabs__link">
+      Contributing
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="vmcnet" class="md-nav__button md-logo" aria-label="vmcnet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    vmcnet
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/jeffminlin/vmcnet" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jeffminlin/vmcnet
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          API Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          API Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="examples" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/harmonic_oscillator/" class="md-nav__link">
+        harmonic_oscillator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/hydrogen_like_atom/" class="md-nav__link">
+        hydrogen_like_atom
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          mcmc
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="mcmc" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          mcmc
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dynamic_width_position_amplitude/" class="md-nav__link">
+        dynamic_width_position_amplitude
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          metropolis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        metropolis
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.mcmc.metropolis" class="md-nav__link">
+    vmcnet.mcmc.metropolis
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.mcmc.metropolis.make_metropolis_step" class="md-nav__link">
+    make_metropolis_step()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.mcmc.metropolis.walk_data" class="md-nav__link">
+    walk_data()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.mcmc.metropolis.make_jitted_burning_step" class="md-nav__link">
+    make_jitted_burning_step()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.mcmc.metropolis.make_jitted_walker_fn" class="md-nav__link">
+    make_jitted_walker_fn()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.mcmc.metropolis.burn_data" class="md-nav__link">
+    burn_data()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.mcmc.metropolis.gaussian_proposal" class="md-nav__link">
+    gaussian_proposal()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.mcmc.metropolis.metropolis_symmetric_acceptance" class="md-nav__link">
+    metropolis_symmetric_acceptance()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../position_amplitude_core/" class="md-nav__link">
+        position_amplitude_core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../simple_position_amplitude/" class="md-nav__link">
+        simple_position_amplitude
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../statistics/" class="md-nav__link">
+        statistics
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3">
+          models
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="models" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          models
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../models/antiequivariance/" class="md-nav__link">
+        antiequivariance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../models/antisymmetry/" class="md-nav__link">
+        antisymmetry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../models/construct/" class="md-nav__link">
+        construct
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../models/core/" class="md-nav__link">
+        core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../models/equivariance/" class="md-nav__link">
+        equivariance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../models/jastrow/" class="md-nav__link">
+        jastrow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../models/sign_symmetry/" class="md-nav__link">
+        sign_symmetry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../models/weights/" class="md-nav__link">
+        weights
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4">
+          physics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="physics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          physics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../physics/core/" class="md-nav__link">
+        core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../physics/kinetic/" class="md-nav__link">
+        kinetic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../physics/potential/" class="md-nav__link">
+        potential
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          train
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="train" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          train
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../train/default_config/" class="md-nav__link">
+        default_config
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../train/parse_config_flags/" class="md-nav__link">
+        parse_config_flags
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../train/runners/" class="md-nav__link">
+        runners
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../train/vmc/" class="md-nav__link">
+        vmc
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6">
+          updates
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="updates" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          updates
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../updates/params/" class="md-nav__link">
+        params
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../updates/parse_config/" class="md-nav__link">
+        parse_config
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../updates/sr/" class="md-nav__link">
+        sr
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          utils
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="utils" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          utils
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/checkpoint/" class="md-nav__link">
+        checkpoint
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/distribute/" class="md-nav__link">
+        distribute
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/kfac/" class="md-nav__link">
+        kfac
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/log_linear_exp/" class="md-nav__link">
+        log_linear_exp
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/pytree_helpers/" class="md-nav__link">
+        pytree_helpers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/slog_helpers/" class="md-nav__link">
+        slog_helpers
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CONTRIBUTING/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.mcmc.metropolis" class="md-nav__link">
+    vmcnet.mcmc.metropolis
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.mcmc.metropolis.make_metropolis_step" class="md-nav__link">
+    make_metropolis_step()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.mcmc.metropolis.walk_data" class="md-nav__link">
+    walk_data()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.mcmc.metropolis.make_jitted_burning_step" class="md-nav__link">
+    make_jitted_burning_step()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.mcmc.metropolis.make_jitted_walker_fn" class="md-nav__link">
+    make_jitted_walker_fn()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.mcmc.metropolis.burn_data" class="md-nav__link">
+    burn_data()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.mcmc.metropolis.gaussian_proposal" class="md-nav__link">
+    gaussian_proposal()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmcnet.mcmc.metropolis.metropolis_symmetric_acceptance" class="md-nav__link">
+    metropolis_symmetric_acceptance()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+  <h1>metropolis</h1>
+
+<div class="doc doc-object doc-module">
+
+<a id="vmcnet.mcmc.metropolis"></a>
+    <div class="doc doc-contents first">
+
+      <p>Proposal and acceptance fns for Metropolis-Hastings Markov-Chain Monte Carlo.</p>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="vmcnet.mcmc.metropolis.make_metropolis_step" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">make_metropolis_step</span><span class="p">(</span><span class="n">proposal_fn</span><span class="p">,</span> <span class="n">acceptance_fn</span><span class="p">,</span> <span class="n">update_data_fn</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Factory to create a function which takes a single metropolis step.</p>
+<p>Following Metropolis-Hastings Markov Chain Monte Carlo, a transition from one data
+state to another is split into proposal and acceptance. When used in a Metropolis
+routine to approximate a stationary distribution P, the proposal and acceptance
+functions should satisfy detailed balance, i.e.,</p>
+<div class="highlight"><pre><span></span><code>proposal_prob_ij * acceptance_ij * P_i = proposal_prob_ji * acceptance_ji * P_j,
+</code></pre></div>
+<p>where proposal_prob_ij is the likelihood of proposing the transition from state i to
+state j, acceptance_ij is the likelihood of accepting a transition from state i
+to state j, and P_i is the probability of being in state i.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>proposal_fn</code></td>
+        <td><code>Callable</code></td>
+        <td><p>proposal function which produces new proposed data. Has
+the signature (params, data, key) -&gt; proposed_data, key</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>acceptance_fn</code></td>
+        <td><code>Callable</code></td>
+        <td><p>acceptance function which produces a vector of numbers
+used to create a mask for accepting the proposals. Has the signature
+(params, data, proposed_data) -&gt; Array: acceptance probabilities</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>update_data_fn</code></td>
+        <td><code>Callable</code></td>
+        <td><p>function used to update the data given the original
+data, the proposed data, and the array mask identifying which proposals to
+accept. Has the signature
+(data, proposed_data, mask) -&gt; new_data</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Callable</code></td>
+      <td><p>function which takes in (data, params, key) and outputs
+(mean acceptance probability, new data, new jax PRNG key split from previous
+one)</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/mcmc/metropolis.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">make_metropolis_step</span><span class="p">(</span>
+    <span class="n">proposal_fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">P</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">PRNGKey</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">D</span><span class="p">,</span> <span class="n">PRNGKey</span><span class="p">]],</span>
+    <span class="n">acceptance_fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">P</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">D</span><span class="p">],</span> <span class="n">Array</span><span class="p">],</span>
+    <span class="n">update_data_fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">D</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">Array</span><span class="p">],</span> <span class="n">D</span><span class="p">],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MetropolisStep</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">D</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Factory to create a function which takes a single metropolis step.</span>
+
+<span class="sd">    Following Metropolis-Hastings Markov Chain Monte Carlo, a transition from one data</span>
+<span class="sd">    state to another is split into proposal and acceptance. When used in a Metropolis</span>
+<span class="sd">    routine to approximate a stationary distribution P, the proposal and acceptance</span>
+<span class="sd">    functions should satisfy detailed balance, i.e.,</span>
+
+<span class="sd">        proposal_prob_ij * acceptance_ij * P_i = proposal_prob_ji * acceptance_ji * P_j,</span>
+
+<span class="sd">    where proposal_prob_ij is the likelihood of proposing the transition from state i to</span>
+<span class="sd">    state j, acceptance_ij is the likelihood of accepting a transition from state i</span>
+<span class="sd">    to state j, and P_i is the probability of being in state i.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        proposal_fn (Callable): proposal function which produces new proposed data. Has</span>
+<span class="sd">            the signature (params, data, key) -&gt; proposed_data, key</span>
+<span class="sd">        acceptance_fn (Callable): acceptance function which produces a vector of numbers</span>
+<span class="sd">            used to create a mask for accepting the proposals. Has the signature</span>
+<span class="sd">            (params, data, proposed_data) -&gt; Array: acceptance probabilities</span>
+<span class="sd">        update_data_fn (Callable): function used to update the data given the original</span>
+<span class="sd">            data, the proposed data, and the array mask identifying which proposals to</span>
+<span class="sd">            accept. Has the signature</span>
+<span class="sd">            (data, proposed_data, mask) -&gt; new_data</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Callable: function which takes in (data, params, key) and outputs</span>
+<span class="sd">        (mean acceptance probability, new data, new jax PRNG key split from previous</span>
+<span class="sd">        one)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">metrop_step_fn</span><span class="p">(</span>
+        <span class="n">params</span><span class="p">:</span> <span class="n">P</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">D</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">PRNGKey</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">jnp</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">PRNGKey</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Take a single metropolis step.&quot;&quot;&quot;</span>
+        <span class="n">key</span><span class="p">,</span> <span class="n">subkey</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="n">proposed_data</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="n">proposal_fn</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+        <span class="n">accept_prob</span> <span class="o">=</span> <span class="n">acceptance_fn</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">proposed_data</span><span class="p">)</span>
+        <span class="n">move_mask</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span>
+            <span class="n">Array</span><span class="p">,</span>
+            <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">subkey</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">accept_prob</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">accept_prob</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">new_data</span> <span class="o">=</span> <span class="n">update_data_fn</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">proposed_data</span><span class="p">,</span> <span class="n">move_mask</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">accept_prob</span><span class="p">),</span> <span class="n">new_data</span><span class="p">,</span> <span class="n">key</span>
+
+    <span class="k">return</span> <span class="n">metrop_step_fn</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="vmcnet.mcmc.metropolis.walk_data" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">walk_data</span><span class="p">(</span><span class="n">nsteps</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">metrop_step_fn</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Take multiple Metropolis-Hastings steps.</p>
+<p>This function is roughly equivalent to:
+<div class="highlight"><pre><span></span><code>accept_sum = 0.0
+for _ in range(nsteps):
+    accept_prob, data, key = metropolis_step_fn(data, params, key)
+    accept_sum += accept_prob
+return accept_sum / nsteps, data, key
+</code></pre></div></p>
+<p>but has better tracing/pmap behavior due to the use of jax.lax.scan instead of a
+python for loop. See :func:<code>~vmcnet.train.vmc.take_metropolis_step</code>.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>nsteps</code></td>
+        <td><code>int</code></td>
+        <td><p>number of steps to take</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>data</code></td>
+        <td><code>pytree-like</code></td>
+        <td><p>data to walk (update) with each step</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>params</code></td>
+        <td><code>pytree-like</code></td>
+        <td><p>parameters passed to proposal_fn and acceptance_fn, e.g.
+model params</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>key</code></td>
+        <td><code>PRNGKey</code></td>
+        <td><p>an array with shape (2,) representing a jax PRNG key passed
+to proposal_fn and used to randomly accept proposals with probabilities
+output by acceptance_fn</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>metrop_step_fn</code></td>
+        <td><code>Callable</code></td>
+        <td><p>function which does a metropolis step. Has the
+signature (data, params, key) -&gt; (mean accept prob, new data, new key)</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>(jnp.float32, pytree-like, PRNGKey)</code></td>
+      <td><p>acceptance probability, new data,
+    new jax PRNG key split (possibly multiple times) from previous one</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/mcmc/metropolis.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">walk_data</span><span class="p">(</span>
+    <span class="n">nsteps</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">params</span><span class="p">:</span> <span class="n">P</span><span class="p">,</span>
+    <span class="n">data</span><span class="p">:</span> <span class="n">D</span><span class="p">,</span>
+    <span class="n">key</span><span class="p">:</span> <span class="n">PRNGKey</span><span class="p">,</span>
+    <span class="n">metrop_step_fn</span><span class="p">:</span> <span class="n">MetropolisStep</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">D</span><span class="p">],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">jnp</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">PRNGKey</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Take multiple Metropolis-Hastings steps.</span>
+
+<span class="sd">    This function is roughly equivalent to:</span>
+<span class="sd">    ```</span>
+<span class="sd">    accept_sum = 0.0</span>
+<span class="sd">    for _ in range(nsteps):</span>
+<span class="sd">        accept_prob, data, key = metropolis_step_fn(data, params, key)</span>
+<span class="sd">        accept_sum += accept_prob</span>
+<span class="sd">    return accept_sum / nsteps, data, key</span>
+<span class="sd">    ```</span>
+
+<span class="sd">    but has better tracing/pmap behavior due to the use of jax.lax.scan instead of a</span>
+<span class="sd">    python for loop. See :func:`~vmcnet.train.vmc.take_metropolis_step`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        nsteps (int): number of steps to take</span>
+<span class="sd">        data (pytree-like): data to walk (update) with each step</span>
+<span class="sd">        params (pytree-like): parameters passed to proposal_fn and acceptance_fn, e.g.</span>
+<span class="sd">            model params</span>
+<span class="sd">        key (PRNGKey): an array with shape (2,) representing a jax PRNG key passed</span>
+<span class="sd">            to proposal_fn and used to randomly accept proposals with probabilities</span>
+<span class="sd">            output by acceptance_fn</span>
+<span class="sd">        metrop_step_fn (Callable): function which does a metropolis step. Has the</span>
+<span class="sd">            signature (data, params, key) -&gt; (mean accept prob, new data, new key)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (jnp.float32, pytree-like, PRNGKey): acceptance probability, new data,</span>
+<span class="sd">            new jax PRNG key split (possibly multiple times) from previous one</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">step_fn</span><span class="p">(</span><span class="n">carry</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">del</span> <span class="n">x</span>
+        <span class="n">accept_prob</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="n">metrop_step_fn</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">carry</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">carry</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">carry</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">accept_prob</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">),</span> <span class="kc">None</span>
+
+    <span class="n">out</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">lax</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="n">step_fn</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">),</span> <span class="n">xs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="n">nsteps</span><span class="p">)</span>
+    <span class="n">accept_sum</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">accept_sum</span> <span class="o">/</span> <span class="n">nsteps</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="vmcnet.mcmc.metropolis.make_jitted_burning_step" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">make_jitted_burning_step</span><span class="p">(</span><span class="n">metrop_step_fn</span><span class="p">,</span> <span class="n">apply_pmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Factory to create a burning step, which is an optionally pmapped Metropolis step.</p>
+<p>This provides the functionality to optionally apply jax.pmap to a single Metropolis
+step. Only one step is traced so that the first burning step is traced but
+subsequent steps are properly jit-compiled. The acceptance probabilities (which
+typically don't mean much during burning) are thrown away.</p>
+<p>For more about the Metropolis step itself, see
+:func:<code>~vmcnet.mcmc.metropolis.make_metropolis_step</code>.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>metrop_step_fn</code></td>
+        <td><code>Callable</code></td>
+        <td><p>function which does a metropolis step. Has the
+signature (data, params, key) -&gt; (mean accept prob, new data, new key)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>apply_pmap</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to apply jax.pmap to the burning step. If
+False, applies jax.jit. Defaults to True.</p></td>
+        <td><code>True</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Callable</code></td>
+      <td><p>function with signature
+    (data, params, key) -&gt; (data, key),
+with jax.pmap optionally applied if apply_pmap is True.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/mcmc/metropolis.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">make_jitted_burning_step</span><span class="p">(</span>
+    <span class="n">metrop_step_fn</span><span class="p">:</span> <span class="n">MetropolisStep</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">D</span><span class="p">],</span>
+    <span class="n">apply_pmap</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BurningStep</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">D</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Factory to create a burning step, which is an optionally pmapped Metropolis step.</span>
+
+<span class="sd">    This provides the functionality to optionally apply jax.pmap to a single Metropolis</span>
+<span class="sd">    step. Only one step is traced so that the first burning step is traced but</span>
+<span class="sd">    subsequent steps are properly jit-compiled. The acceptance probabilities (which</span>
+<span class="sd">    typically don&#39;t mean much during burning) are thrown away.</span>
+
+<span class="sd">    For more about the Metropolis step itself, see</span>
+<span class="sd">    :func:`~vmcnet.mcmc.metropolis.make_metropolis_step`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        metrop_step_fn (Callable): function which does a metropolis step. Has the</span>
+<span class="sd">            signature (data, params, key) -&gt; (mean accept prob, new data, new key)</span>
+<span class="sd">        apply_pmap (bool, optional): whether to apply jax.pmap to the burning step. If</span>
+<span class="sd">            False, applies jax.jit. Defaults to True.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Callable: function with signature</span>
+<span class="sd">            (data, params, key) -&gt; (data, key),</span>
+<span class="sd">        with jax.pmap optionally applied if apply_pmap is True.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">burning_step</span><span class="p">(</span><span class="n">params</span><span class="p">:</span> <span class="n">P</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">D</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">PRNGKey</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">D</span><span class="p">,</span> <span class="n">PRNGKey</span><span class="p">]:</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="n">metrop_step_fn</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">apply_pmap</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">burning_step</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">utils</span><span class="o">.</span><span class="n">distribute</span><span class="o">.</span><span class="n">pmap</span><span class="p">(</span><span class="n">burning_step</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="vmcnet.mcmc.metropolis.make_jitted_walker_fn" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">make_jitted_walker_fn</span><span class="p">(</span><span class="n">nsteps</span><span class="p">,</span> <span class="n">metrop_step_fn</span><span class="p">,</span> <span class="n">apply_pmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Factory to create a function which takes multiple Metropolis steps.</p>
+<p>This provides the functionality to optionally apply jax.pmap to a jax.lax.scan loop
+of multiple metropolis steps. A typical use case would be to run this function
+between parameter updates in a VMC loop. An accumulated mean acceptance probability
+statistic is returned from this walker function.</p>
+<p>See :func:<code>~vmcnet.train.vmc.vmc_loop</code> for usage.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>nsteps</code></td>
+        <td><code>int</code></td>
+        <td><p>number of metropolis steps to take in each call</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>metrop_step_fn</code></td>
+        <td><code>Callable</code></td>
+        <td><p>function which does a metropolis step. Has the
+signature (data, params, key) -&gt; (mean accept probl, new data, new key)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>apply_pmap</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to apply jax.pmap to the walker function.
+If False, applies jax.jit. Defaults to True.</p></td>
+        <td><code>True</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Callable</code></td>
+      <td><p>funciton with signature
+    (params, data, key) -&gt; (mean accept prob, new data, new key)
+with jax.pmap optionally applied if pmapped is True, and jax.jit applied if
+apply_pmap is False.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/mcmc/metropolis.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">make_jitted_walker_fn</span><span class="p">(</span>
+    <span class="n">nsteps</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">metrop_step_fn</span><span class="p">:</span> <span class="n">MetropolisStep</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">D</span><span class="p">],</span>
+    <span class="n">apply_pmap</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">WalkerFn</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">D</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Factory to create a function which takes multiple Metropolis steps.</span>
+
+<span class="sd">    This provides the functionality to optionally apply jax.pmap to a jax.lax.scan loop</span>
+<span class="sd">    of multiple metropolis steps. A typical use case would be to run this function</span>
+<span class="sd">    between parameter updates in a VMC loop. An accumulated mean acceptance probability</span>
+<span class="sd">    statistic is returned from this walker function.</span>
+
+<span class="sd">    See :func:`~vmcnet.train.vmc.vmc_loop` for usage.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        nsteps (int): number of metropolis steps to take in each call</span>
+<span class="sd">        metrop_step_fn (Callable): function which does a metropolis step. Has the</span>
+<span class="sd">            signature (data, params, key) -&gt; (mean accept probl, new data, new key)</span>
+<span class="sd">        apply_pmap (bool, optional): whether to apply jax.pmap to the walker function.</span>
+<span class="sd">            If False, applies jax.jit. Defaults to True.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Callable: funciton with signature</span>
+<span class="sd">            (params, data, key) -&gt; (mean accept prob, new data, new key)</span>
+<span class="sd">        with jax.pmap optionally applied if pmapped is True, and jax.jit applied if</span>
+<span class="sd">        apply_pmap is False.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">walker_fn</span><span class="p">(</span><span class="n">params</span><span class="p">:</span> <span class="n">P</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">D</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">PRNGKey</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">jnp</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">PRNGKey</span><span class="p">]:</span>
+        <span class="n">accept_ratio</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="n">walk_data</span><span class="p">(</span><span class="n">nsteps</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">metrop_step_fn</span><span class="p">)</span>
+        <span class="n">accept_ratio</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">distribute</span><span class="o">.</span><span class="n">pmean_if_pmap</span><span class="p">(</span><span class="n">accept_ratio</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">accept_ratio</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">apply_pmap</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">walker_fn</span><span class="p">)</span>
+
+    <span class="n">pmapped_walker_fn</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">distribute</span><span class="o">.</span><span class="n">pmap</span><span class="p">(</span><span class="n">walker_fn</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">pmapped_walker_fn_with_single_accept_ratio</span><span class="p">(</span>
+        <span class="n">params</span><span class="p">:</span> <span class="n">P</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">D</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">PRNGKey</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">jnp</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">PRNGKey</span><span class="p">]:</span>
+        <span class="n">accept_ratio</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="n">pmapped_walker_fn</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+        <span class="n">accept_ratio</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">distribute</span><span class="o">.</span><span class="n">get_first</span><span class="p">(</span><span class="n">accept_ratio</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">accept_ratio</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span>
+
+    <span class="k">return</span> <span class="n">pmapped_walker_fn_with_single_accept_ratio</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="vmcnet.mcmc.metropolis.burn_data" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">burn_data</span><span class="p">(</span><span class="n">burning_step</span><span class="p">,</span> <span class="n">nsteps_to_burn</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Repeatedly apply a burning step.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>burning_step</code></td>
+        <td><code>BurningStep</code></td>
+        <td><p>function which does a burning step. Has the
+signature (data, params, key) -&gt; (new data, new key)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>nsteps_to_burn</code></td>
+        <td><code>int</code></td>
+        <td><p>number of times to call burning_step</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>data</code></td>
+        <td><code>pytree-like</code></td>
+        <td><p>initial data</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>params</code></td>
+        <td><code>pytree-like</code></td>
+        <td><p>parameters passed to the burning step</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>key</code></td>
+        <td><code>PRNGKey</code></td>
+        <td><p>an array with shape (2,) representing a jax PRNG key passed
+to proposal_fn and used to randomly accept proposals with probabilities
+output by acceptance_fn</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>(pytree-like, PRNGKey)</code></td>
+      <td><p>new data, new key</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/mcmc/metropolis.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">burn_data</span><span class="p">(</span>
+    <span class="n">burning_step</span><span class="p">:</span> <span class="n">BurningStep</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">D</span><span class="p">],</span>
+    <span class="n">nsteps_to_burn</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">params</span><span class="p">:</span> <span class="n">P</span><span class="p">,</span>
+    <span class="n">data</span><span class="p">:</span> <span class="n">D</span><span class="p">,</span>
+    <span class="n">key</span><span class="p">:</span> <span class="n">PRNGKey</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">D</span><span class="p">,</span> <span class="n">PRNGKey</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Repeatedly apply a burning step.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        burning_step (BurningStep): function which does a burning step. Has the</span>
+<span class="sd">            signature (data, params, key) -&gt; (new data, new key)</span>
+<span class="sd">        nsteps_to_burn (int): number of times to call burning_step</span>
+<span class="sd">        data (pytree-like): initial data</span>
+<span class="sd">        params (pytree-like): parameters passed to the burning step</span>
+<span class="sd">        key (PRNGKey): an array with shape (2,) representing a jax PRNG key passed</span>
+<span class="sd">            to proposal_fn and used to randomly accept proposals with probabilities</span>
+<span class="sd">            output by acceptance_fn</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (pytree-like, PRNGKey): new data, new key</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Burning data for </span><span class="si">%d</span><span class="s2"> steps&quot;</span><span class="p">,</span> <span class="n">nsteps_to_burn</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nsteps_to_burn</span><span class="p">):</span>
+        <span class="n">data</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="n">burning_step</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="vmcnet.mcmc.metropolis.gaussian_proposal" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">gaussian_proposal</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">std_move</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Simple symmetric gaussian proposal in all positions at once.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>positions</code></td>
+        <td><code>Array</code></td>
+        <td><p>original positions</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>std_move</code></td>
+        <td><code>jnp.float32</code></td>
+        <td><p>standard deviation of the moves</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>key</code></td>
+        <td><code>PRNGKey</code></td>
+        <td><p>an array with shape (2,) representing a jax PRNG key</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>(Array, Array)</code></td>
+      <td><p>(new positions, new key split from previous)</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/mcmc/metropolis.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">gaussian_proposal</span><span class="p">(</span>
+    <span class="n">positions</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span> <span class="n">std_move</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">PRNGKey</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Array</span><span class="p">,</span> <span class="n">PRNGKey</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Simple symmetric gaussian proposal in all positions at once.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        positions (Array): original positions</span>
+<span class="sd">        std_move (jnp.float32): standard deviation of the moves</span>
+<span class="sd">        key (PRNGKey): an array with shape (2,) representing a jax PRNG key</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (Array, Array): (new positions, new key split from previous)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">key</span><span class="p">,</span> <span class="n">subkey</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">positions</span> <span class="o">+</span> <span class="n">std_move</span> <span class="o">*</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">subkey</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">positions</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span> <span class="n">key</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="vmcnet.mcmc.metropolis.metropolis_symmetric_acceptance" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">metropolis_symmetric_acceptance</span><span class="p">(</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">proposed_amplitude</span><span class="p">,</span> <span class="n">logabs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Standard Metropolis acceptance ratio for a symmetric proposal function.</p>
+<p>The general Metropolis-Hastings choice of acceptance ratio for moves from state i to
+state j is given by</p>
+<div class="highlight"><pre><span></span><code>accept_ij = min(1, (P_j * proposal_prob_ji) / (P_i * proposal_prob_ij)).
+</code></pre></div>
+<p>When proposal_prob is symmetric (assumed in this function), this simply reduces to
+accept_ij = min(1, P_j / P_i). Some care is taken to avoid numerical overflow and
+division by zero.</p>
+<p>The inputs are wavefunction amplitudes psi or log(|psi|), so the probability P_i
+refers to |psi(i)|^2.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>amplitude</code></td>
+        <td><code>Array</code></td>
+        <td><p>one-dimensional array of wavefunction amplitudes for
+the current state, or log wavefunction amplitudes if logabs is True</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>proposed_amplitude</code></td>
+        <td><code>Array</code></td>
+        <td><p>one-dimensional array of wavefunction
+amplitudes for the proposed state, or log wavefunction amplitudes if logabs
+is True</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>logabs</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether the provided amplitudes represent psi
+(logabs = False) or log|psi| (logabs = True). Defaults to True.</p></td>
+        <td><code>True</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Array</code></td>
+      <td><p>one-dimensional array of acceptance ratios for the Metropolis
+algorithm</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>vmcnet/mcmc/metropolis.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">metropolis_symmetric_acceptance</span><span class="p">(</span>
+    <span class="n">amplitude</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span> <span class="n">proposed_amplitude</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span> <span class="n">logabs</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Array</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Standard Metropolis acceptance ratio for a symmetric proposal function.</span>
+
+<span class="sd">    The general Metropolis-Hastings choice of acceptance ratio for moves from state i to</span>
+<span class="sd">    state j is given by</span>
+
+<span class="sd">        accept_ij = min(1, (P_j * proposal_prob_ji) / (P_i * proposal_prob_ij)).</span>
+
+<span class="sd">    When proposal_prob is symmetric (assumed in this function), this simply reduces to</span>
+<span class="sd">    accept_ij = min(1, P_j / P_i). Some care is taken to avoid numerical overflow and</span>
+<span class="sd">    division by zero.</span>
+
+<span class="sd">    The inputs are wavefunction amplitudes psi or log(|psi|), so the probability P_i</span>
+<span class="sd">    refers to |psi(i)|^2.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        amplitude (Array): one-dimensional array of wavefunction amplitudes for</span>
+<span class="sd">            the current state, or log wavefunction amplitudes if logabs is True</span>
+<span class="sd">        proposed_amplitude (Array): one-dimensional array of wavefunction</span>
+<span class="sd">            amplitudes for the proposed state, or log wavefunction amplitudes if logabs</span>
+<span class="sd">            is True</span>
+<span class="sd">        logabs (bool, optional): whether the provided amplitudes represent psi</span>
+<span class="sd">            (logabs = False) or log|psi| (logabs = True). Defaults to True.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Array: one-dimensional array of acceptance ratios for the Metropolis</span>
+<span class="sd">        algorithm</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">logabs</span><span class="p">:</span>
+        <span class="n">prob_old</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">amplitude</span><span class="p">)</span>
+        <span class="n">prob_new</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">proposed_amplitude</span><span class="p">)</span>
+        <span class="n">ratio</span> <span class="o">=</span> <span class="n">prob_new</span> <span class="o">/</span> <span class="n">prob_old</span>
+        <span class="c1"># safe division by zero</span>
+        <span class="n">ratio</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+            <span class="n">jnp</span><span class="o">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">prob_old</span> <span class="o">&lt;</span> <span class="n">prob_new</span><span class="p">,</span> <span class="n">prob_old</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">),</span>
+            <span class="n">jnp</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">ratio</span><span class="p">),</span>
+            <span class="n">ratio</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">ratio</span>
+
+    <span class="n">log_prob_old</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">amplitude</span>
+    <span class="n">log_prob_new</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">proposed_amplitude</span>
+    <span class="c1"># avoid overflow if log_prob_new - log_prob_old is large</span>
+    <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+        <span class="n">log_prob_new</span> <span class="o">&gt;</span> <span class="n">log_prob_old</span><span class="p">,</span>
+        <span class="n">jnp</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">log_prob_new</span><span class="p">),</span>
+        <span class="n">jnp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">log_prob_new</span> <span class="o">-</span> <span class="n">log_prob_old</span><span class="p">),</span>
+    <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../dynamic_width_position_amplitude/" class="md-footer__link md-footer__link--prev" aria-label="Previous: dynamic_width_position_amplitude" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              dynamic_width_position_amplitude
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../position_amplitude_core/" class="md-footer__link md-footer__link--next" aria-label="Next: position_amplitude_core" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              position_amplitude_core
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.tracking"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.cefbb252.min.js", "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a5f8ea78.min.js"></script>
+      
+    
+  </body>
+</html>
