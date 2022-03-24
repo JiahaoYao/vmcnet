@@ -379,9 +379,9 @@ class FermiNetOneElectronLayer(Module):
             split_1e_means = _split_mean(in_1e, self.spin_split, axis=-2, keepdims=True)
             dense_mixed_split = self._compute_transformed_1e_means(split_1e_means)
 
-            # adds the unmixed [i: (..., n[i], d')] to the mixed [i: (..., 1, d')] to get
-            # an equivariant function. Without the two-electron mixing, this is a spinful
-            # version of DeepSet's Lemma 3: https://arxiv.org/pdf/1703.06114.pdf
+            # adds the unmixed [i: (..., n[i], d')] to the mixed [i: (..., 1, d')] to
+            # get an equivariant function. Without the two-electron mixing, this is a
+            # spinful version of DeepSet's Lemma 3: https://arxiv.org/pdf/1703.06114.pdf
             dense_out = tree_sum(dense_unmixed_split, dense_mixed_split)
 
             if in_2e is not None:
