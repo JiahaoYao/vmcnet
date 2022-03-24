@@ -562,17 +562,28 @@ def run_molecule() -> None:
             reload_config.logdir, reload_config.checkpoint_relative_file_path
         )
         directory, filename = os.path.split(checkpoint_file_path)
-        _, data, params, optimizer_state, key = utils.io.reload_vmc_state(
-            directory, filename
-        )
         (
-            data,
-            params,
-            optimizer_state,
-            key,
+            _,
+            reloaded_data,
+            reloaded_params,
+            reloaded_optimizer_state,
+            reloaded_key,
+        ) = utils.io.reload_vmc_state(directory, filename)
+        (
+            reloaded_data,
+            reloaded_params,
+            reloaded_optimizer_state,
+            reloaded_key,
         ) = utils.distribute.distribute_vmc_state_from_checkpoint(
-            data, params, optimizer_state, key
+            reloaded_data, reloaded_params, reloaded_optimizer_state, reloaded_key
         )
+        if reload_config.use_data_and_params:
+            data = reloaded_data
+            params = reloaded_params
+        if reload_config.use_optimizer_state:
+            optimizer_state = reloaded_optimizer_state
+        if reload_config.use_key:
+            key = reloaded_key
 
     params, optimizer_state, data, key = _burn_and_run_vmc(
         config.vmc,

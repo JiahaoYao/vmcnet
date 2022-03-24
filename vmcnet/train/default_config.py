@@ -53,6 +53,12 @@ def get_default_reload_config() -> ConfigDict:
             "config_relative_file_path": DEFAULT_CONFIG_FILE_NAME,
             "use_checkpoint_file": True,
             "checkpoint_relative_file_path": CHECKPOINT_FILE_NAME,
+            # if logdir is set and use_checkpoint_file is True, then the following
+            # options can be used; when False, the corresponding part of the checkpoint
+            # is replaced with the non-checkpointed version
+            "use_data_and_params": True,
+            "use_optimizer_state": True,
+            "use_key": True,
         }
     )
 
