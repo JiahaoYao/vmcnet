@@ -128,6 +128,7 @@ def get_default_model_config() -> Dict:
         "two_electron_skip": True,
         "two_electron_skip_scale": 1.0,
         "cyclic_spins": cyclic_spins,
+        "no_mixing": False,
     }
 
     ferminet_backflow = {
@@ -250,6 +251,7 @@ def get_default_model_config() -> Dict:
                         "two_electron_skip": True,
                         "two_electron_skip_scale": 1.0,
                         "cyclic_spins": cyclic_spins,
+                        "no_mixing": False,
                     },
                 },
             },

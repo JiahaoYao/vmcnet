@@ -468,6 +468,7 @@ def get_backflow_from_config(
         two_electron_skip=backflow_config.two_electron_skip,
         two_electron_skip_scale=backflow_config.two_electron_skip_scale,
         cyclic_spins=backflow_config.cyclic_spins,
+        no_mixing=backflow_config.no_mixing,
     )
 
     return FermiNetBackflow(residual_blocks)
@@ -520,6 +521,7 @@ def get_residual_blocks_for_ferminet_backflow(
     two_electron_skip: bool = True,
     two_electron_skip_scale: float = 1.0,
     cyclic_spins: bool = True,
+    no_mixing: bool = False,
 ) -> List[FermiNetResidualBlock]:
     """Construct a list of FermiNet residual blocks composed by FermiNetBackflow.
 
@@ -581,6 +583,10 @@ def get_residual_blocks_for_ferminet_backflow(
             [(1, 2, 3), (1, 2, 3), (1, 2, 3)] (as in the original FermiNet).
             When there are only two spins (spin-1/2 case), then this is equivalent to
             true spin equivariance. Defaults to False (original FermiNet).
+        no_mixing (bool, optional): whether all equivariant mixing should be left out of
+            the linear layer before the activation is applied. When True, then the
+            FermiNet backflow will act in parallel on each vector input, and the
+            FermiNet itself will act as a single Slater determinant. Defaults to False.
     """
     residual_blocks = []
     for ndense in ndense_list:
@@ -596,6 +602,7 @@ def get_residual_blocks_for_ferminet_backflow(
             skip_connection=one_electron_skip,
             skip_connection_scale=one_electron_skip_scale,
             cyclic_spins=cyclic_spins,
+            no_mixing=no_mixing,
         )
         two_electron_layer = None
         if len(ndense) > 1:

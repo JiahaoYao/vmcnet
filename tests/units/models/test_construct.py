@@ -62,7 +62,7 @@ def _get_compute_input_streams(ion_pos):
     return functools.partial(models.equivariance.compute_input_streams, ion_pos=ion_pos)
 
 
-def _get_backflow(spin_split, ndense_list, cyclic_spins):
+def _get_backflow(spin_split, ndense_list, cyclic_spins, no_mixing=False):
     residual_blocks = models.construct.get_residual_blocks_for_ferminet_backflow(
         spin_split,
         ndense_list,
@@ -74,6 +74,7 @@ def _get_backflow(spin_split, ndense_list, cyclic_spins):
         models.weights.get_bias_initializer("normal"),
         jnp.tanh,
         cyclic_spins=cyclic_spins,
+        no_mixing=no_mixing,
     )
     return models.construct.FermiNetBackflow(residual_blocks)
 
@@ -86,6 +87,43 @@ def _get_det_resnet_fn():
         models.weights.get_kernel_initializer("orthogonal"),
         models.weights.get_bias_initializer("uniform"),
     )
+
+
+def _make_slaters():
+    (
+        key,
+        ion_pos,
+        _,
+        init_pos,
+        spin_split,
+        ndense_list,
+    ) = _get_initial_pos_and_hyperparams()
+
+    slog_psis = []
+    # when full_det == True, equivalent to GHF
+    # when full_det == False, equivalent to UHF
+    for full_det in [True, False]:
+        compute_input_streams = _get_compute_input_streams(ion_pos)
+        backflow = _get_backflow(spin_split, ndense_list, False, no_mixing=True)
+
+        slog_psi = models.construct.FermiNet(
+            spin_split,
+            compute_input_streams,
+            backflow,
+            1,
+            models.weights.get_kernel_initializer("he_normal"),
+            models.weights.get_kernel_initializer("lecun_normal"),
+            models.weights.get_kernel_initializer("ones"),
+            models.weights.get_bias_initializer("uniform"),
+            orbitals_use_bias=True,
+            isotropic_decay=True,
+            determinant_fn=None,
+            determinant_fn_mode=models.construct.DeterminantFnMode.PARALLEL_EVEN,
+            full_det=full_det,
+        )
+        slog_psis.append(slog_psi)
+
+    return key, init_pos, slog_psis
 
 
 def _make_ferminets():
@@ -430,6 +468,21 @@ def _jit_eval_model_and_verify_output_shape(key, init_pos, slog_psi):
     params = slog_psi.init(subkey, init_pos)
     results = jax.jit(slog_psi.apply)(params, init_pos)
     chex.assert_shape(results, init_pos.shape[:-2])
+
+
+def test_slater_can_be_constructed():
+    """Check construction of FermiNet does not fail."""
+    _make_slaters()
+
+
+@pytest.mark.slow
+def test_slater_can_be_evaluated():
+    """Check evaluation of FermiNet does not fail."""
+    key, init_pos, slog_psis = _make_slaters()
+    [
+        _jit_eval_model_and_verify_output_shape(key, init_pos, slog_psi)
+        for slog_psi in slog_psis
+    ]
 
 
 def test_ferminet_can_be_constructed():

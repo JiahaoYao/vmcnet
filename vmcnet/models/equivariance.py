@@ -199,6 +199,10 @@ class FermiNetOneElectronLayer(Module):
             [(1, 2, 3), (1, 2, 3), (1, 2, 3)] (as in the original FermiNet).
             When there are only two spins (spin-1/2 case), then this is equivalent to
             true spin equivariance. Defaults to False (original FermiNet).
+        no_mixing (bool, optional): whether all equivariant mixing should be left out of
+            the linear layer before the activation is applied. When True, then the
+            FermiNet backflow will act in parallel on each vector input, and the
+            FermiNet itself will act as a single Slater determinant. Defaults to False.
     """
 
     spin_split: ParticleSplit
@@ -212,6 +216,7 @@ class FermiNetOneElectronLayer(Module):
     skip_connection: bool = True
     skip_connection_scale: float = 1.0
     cyclic_spins: bool = True
+    no_mixing: bool = False
 
     def setup(self):
         """Setup Dense layers."""
@@ -365,22 +370,26 @@ class FermiNetOneElectronLayer(Module):
             stream
         """
         dense_unmixed = self._unmixed_dense(in_1e)
-        dense_unmixed_split = jnp.split(dense_unmixed, self.spin_split, axis=-2)
 
-        split_1e_means = _split_mean(in_1e, self.spin_split, axis=-2, keepdims=True)
-        dense_mixed_split = self._compute_transformed_1e_means(split_1e_means)
+        if self.no_mixing:
+            nonlinear_out = self._activation_fn(dense_unmixed)
+        else:
+            dense_unmixed_split = jnp.split(dense_unmixed, self.spin_split, axis=-2)
 
-        # adds the unmixed [i: (..., n[i], d')] to the mixed [i: (..., 1, d')] to get
-        # an equivariant function. Without the two-electron mixing, this is a spinful
-        # version of DeepSet's Lemma 3: https://arxiv.org/pdf/1703.06114.pdf
-        dense_out = tree_sum(dense_unmixed_split, dense_mixed_split)
+            split_1e_means = _split_mean(in_1e, self.spin_split, axis=-2, keepdims=True)
+            dense_mixed_split = self._compute_transformed_1e_means(split_1e_means)
 
-        if in_2e is not None:
-            dense_2e_split = self._compute_transformed_2e_means(in_2e)
-            dense_out = tree_sum(dense_out, dense_2e_split)
+            # adds the unmixed [i: (..., n[i], d')] to the mixed [i: (..., 1, d')] to get
+            # an equivariant function. Without the two-electron mixing, this is a spinful
+            # version of DeepSet's Lemma 3: https://arxiv.org/pdf/1703.06114.pdf
+            dense_out = tree_sum(dense_unmixed_split, dense_mixed_split)
 
-        dense_out_concat = jnp.concatenate(dense_out, axis=-2)
-        nonlinear_out = self._activation_fn(dense_out_concat)
+            if in_2e is not None:
+                dense_2e_split = self._compute_transformed_2e_means(in_2e)
+                dense_out = tree_sum(dense_out, dense_2e_split)
+
+            dense_out_concat = jnp.concatenate(dense_out, axis=-2)
+            nonlinear_out = self._activation_fn(dense_out_concat)
 
         if self.skip_connection and _valid_skip(in_1e, nonlinear_out):
             nonlinear_out = self.skip_connection_scale * (nonlinear_out + in_1e)
