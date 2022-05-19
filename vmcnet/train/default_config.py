@@ -1,5 +1,5 @@
 """Create configuration of hyperparameters."""
-import numpy as np
+import math
 import os
 from typing import Dict
 
@@ -125,9 +125,9 @@ def get_default_model_config() -> Dict:
         "activation_fn": "tanh",
         "use_bias": True,
         "one_electron_skip": True,
-        "one_electron_skip_scale": 1 / np.sqrt(2),
+        "one_electron_skip_scale": 1 / math.sqrt(2),
         "two_electron_skip": True,
-        "two_electron_skip_scale": 1 / np.sqrt(2),
+        "two_electron_skip_scale": 1 / math.sqrt(2),
         "cyclic_spins": cyclic_spins,
     }
 
@@ -247,9 +247,9 @@ def get_default_model_config() -> Dict:
                         "activation_fn": "gelu",
                         "use_bias": True,
                         "one_electron_skip": True,
-                        "one_electron_skip_scale": 1 / np.sqrt(2),
+                        "one_electron_skip_scale": 1 / math.sqrt(2),
                         "two_electron_skip": True,
-                        "two_electron_skip_scale": 1 / np.sqrt(2),
+                        "two_electron_skip_scale": 1 / math.sqrt(2),
                         "cyclic_spins": cyclic_spins,
                     },
                 },
