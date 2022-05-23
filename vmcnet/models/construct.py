@@ -82,8 +82,12 @@ def _get_named_activation_fn(name):
         return jnp.tanh
     elif name == "gelu":
         return jax.nn.gelu
+    elif name == "relu":
+        return jax.nn.relu
     else:
-        raise ValueError("Activations besides tanh and gelu are not yet supported.")
+        raise ValueError(
+            "Activations besides tanh and gelu and relu are not yet supported."
+        )
 
 
 def _get_dtype_init_constructors(dtype):
