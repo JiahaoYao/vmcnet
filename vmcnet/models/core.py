@@ -152,6 +152,32 @@ class ComposedModel(Module):
         return outputs
 
 
+class ElementWiseMultiply(Module):
+    """Element-wise mulitiplication with weights over the last axes of the input.
+
+    Attributes:
+        naxes (int): number of last axes to multiply over.
+        kernel_init (WeightInitializer, optional): initializer function for the weight
+            matrix. Defaults to initializing with an array of ones.
+    """
+
+    naxes: int
+    kernel_init: WeightInitializer = get_kernel_initializer("ones")
+
+    @flax.linen.compact
+    def __call__(self, inputs: Array) -> Array:
+        """Applies element-wise product with weights along the last self.naxes axes.
+
+        Args:
+            inputs (Array): The nd-array to be transformed.
+
+        Returns:
+            Array: The transformed input.
+        """
+        kernel = self.param("kernel", self.kernel_init, inputs.shape[-self.naxes :])
+        return inputs * kernel
+
+
 class Dense(Module):
     """A linear transformation applied over the last dimension of the input.
 

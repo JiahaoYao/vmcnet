@@ -12,6 +12,7 @@ from vmcnet.utils.typing import Array, ArrayList, InputStreams, ParticleSplit
 from .core import (
     Activation,
     Dense,
+    ElementWiseMultiply,
     Module,
     _split_mean,
     _valid_skip,
@@ -199,6 +200,13 @@ class FermiNetOneElectronLayer(Module):
             [(1, 2, 3), (1, 2, 3), (1, 2, 3)] (as in the original FermiNet).
             When there are only two spins (spin-1/2 case), then this is equivalent to
             true spin equivariance. Defaults to False (original FermiNet).
+        use_one_dense (bool, optional): whether all of the weights should be
+            concatenated before being applied to the incoming streams (True) instead of
+            three separate Dense ops applied to the unmixed, mixed, and 2e parts of the
+            one-electron stream (False). When True, uses kernel_initializer_unmixed
+            as the kernel initializer for the entire Dense layer, and cyclic_spins is
+            treated as False. This is more similar to the implementation in the original
+            FermiNet repo. Defaults to True.
     """
 
     spin_split: ParticleSplit
@@ -211,7 +219,8 @@ class FermiNetOneElectronLayer(Module):
     use_bias: bool = True
     skip_connection: bool = True
     skip_connection_scale: float = 1.0
-    cyclic_spins: bool = True
+    cyclic_spins: bool = False
+    use_one_dense: bool = True
 
     def setup(self):
         """Setup Dense layers."""
@@ -219,18 +228,26 @@ class FermiNetOneElectronLayer(Module):
         # https://github.com/python/mypy/issues/708
         self._activation_fn = self.activation_fn
 
-        self._unmixed_dense = Dense(
-            self.ndense,
-            kernel_init=self.kernel_initializer_unmixed,
-            bias_init=self.bias_initializer,
-            use_bias=self.use_bias,
-        )
-        self._mixed_dense = Dense(
-            self.ndense, kernel_init=self.kernel_initializer_mixed, use_bias=False
-        )
-        self._dense_2e = Dense(
-            self.ndense, kernel_init=self.kernel_initializer_2e, use_bias=False
-        )
+        if self.use_one_dense:
+            self._dense_op = Dense(
+                self.ndense,
+                kernel_init=self.kernel_initializer_unmixed,
+                bias_init=self.bias_initializer,
+                use_bias=self.use_bias,
+            )
+        else:
+            self._unmixed_dense = Dense(
+                self.ndense,
+                kernel_init=self.kernel_initializer_unmixed,
+                bias_init=self.bias_initializer,
+                use_bias=self.use_bias,
+            )
+            self._mixed_dense = Dense(
+                self.ndense, kernel_init=self.kernel_initializer_mixed, use_bias=False
+            )
+            self._dense_2e = Dense(
+                self.ndense, kernel_init=self.kernel_initializer_2e, use_bias=False
+            )
 
     def _compute_transformed_1e_means(self, split_means: ArrayList) -> ArrayList:
         """Apply a dense layer to the concatenated averages of the 1e stream.
@@ -364,22 +381,39 @@ class FermiNetOneElectronLayer(Module):
             Array of shape (..., n_total, self.ndense), the output one-electron
             stream
         """
-        dense_unmixed = self._unmixed_dense(in_1e)
-        dense_unmixed_split = jnp.split(dense_unmixed, self.spin_split, axis=-2)
-
         split_1e_means = _split_mean(in_1e, self.spin_split, axis=-2, keepdims=True)
-        dense_mixed_split = self._compute_transformed_1e_means(split_1e_means)
 
-        # adds the unmixed [i: (..., n[i], d')] to the mixed [i: (..., 1, d')] to get
-        # an equivariant function. Without the two-electron mixing, this is a spinful
-        # version of DeepSet's Lemma 3: https://arxiv.org/pdf/1703.06114.pdf
-        dense_out = tree_sum(dense_unmixed_split, dense_mixed_split)
+        if self.use_one_dense:
+            list_in = [in_1e]
+            split_1e_means_repeated = [
+                jnp.repeat(leaf_1e, repeats=in_1e.shape[-2], axis=-2)
+                for leaf_1e in split_1e_means
+            ]
+            list_in.extend(split_1e_means_repeated)
+            if in_2e is not None:
+                split_2e = jnp.split(in_2e, self.spin_split, axis=-3)
+                split_2e_means = [jnp.mean(leaf_2e, axis=-3) for leaf_2e in split_2e]
+                list_in.extend(split_2e_means)
+            concat_in = jnp.concatenate(list_in, axis=-1)
 
-        if in_2e is not None:
-            dense_2e_split = self._compute_transformed_2e_means(in_2e)
-            dense_out = tree_sum(dense_out, dense_2e_split)
+            dense_out_concat = self._dense_op(concat_in)
+        else:
+            dense_unmixed = self._unmixed_dense(in_1e)
+            dense_unmixed_split = jnp.split(dense_unmixed, self.spin_split, axis=-2)
 
-        dense_out_concat = jnp.concatenate(dense_out, axis=-2)
+            dense_mixed_split = self._compute_transformed_1e_means(split_1e_means)
+
+            # adds the unmixed [i: (..., n[i], d')] to the mixed [i: (..., 1, d')] to get
+            # an equivariant function. Without the two-electron mixing, this is a spinful
+            # version of DeepSet's Lemma 3: https://arxiv.org/pdf/1703.06114.pdf
+            dense_out = tree_sum(dense_unmixed_split, dense_mixed_split)
+
+            if in_2e is not None:
+                dense_2e_split = self._compute_transformed_2e_means(in_2e)
+                dense_out = tree_sum(dense_out, dense_2e_split)
+
+            dense_out_concat = jnp.concatenate(dense_out, axis=-2)
+
         nonlinear_out = self._activation_fn(dense_out_concat)
 
         if self.skip_connection and _valid_skip(in_1e, nonlinear_out):
@@ -640,18 +674,12 @@ def _compute_exponential_envelopes_on_leaf(
     distances = jnp.linalg.norm(scale_out, axis=-1)
     inv_exp_distances = jnp.exp(-distances)  # (..., nelec, norbitals, nion)
 
-    # norbitals parallel maps return shape [norbitals: (..., nelec, 1, 1)]
-    lin_comb_nion = SplitDense(
-        norbitals,
-        (1,) * norbitals,
-        kernel_initializer=kernel_initializer_ion,
-        use_bias=False,
-        register_kfac=False,
-    )(inv_exp_distances)
-    # Concatenate to shape (..., nelec, norbitals, 1)
-    lin_comb_nion = jnp.concatenate(lin_comb_nion, axis=-2)
+    # norbitals * nion parallel maps return shape (..., nelec, norbitals, nion)
+    lin_comb_nion = ElementWiseMultiply(2, kernel_init=kernel_initializer_ion)(
+        inv_exp_distances
+    )
 
-    return jnp.squeeze(lin_comb_nion, axis=-1)  # (..., nelec, norbitals)
+    return jnp.sum(lin_comb_nion, axis=-1)  # (..., nelec, norbitals)
 
 
 def _compute_exponential_envelopes_all_splits(

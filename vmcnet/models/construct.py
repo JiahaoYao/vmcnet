@@ -468,6 +468,7 @@ def get_backflow_from_config(
         two_electron_skip=backflow_config.two_electron_skip,
         two_electron_skip_scale=backflow_config.two_electron_skip_scale,
         cyclic_spins=backflow_config.cyclic_spins,
+        use_one_dense=backflow_config.use_one_dense,
     )
 
     return FermiNetBackflow(residual_blocks)
@@ -519,7 +520,8 @@ def get_residual_blocks_for_ferminet_backflow(
     one_electron_skip_scale: float = 1.0,
     two_electron_skip: bool = True,
     two_electron_skip_scale: float = 1.0,
-    cyclic_spins: bool = True,
+    cyclic_spins: bool = False,
+    use_one_dense: bool = True,
 ) -> List[FermiNetResidualBlock]:
     """Construct a list of FermiNet residual blocks composed by FermiNetBackflow.
 
@@ -581,6 +583,13 @@ def get_residual_blocks_for_ferminet_backflow(
             [(1, 2, 3), (1, 2, 3), (1, 2, 3)] (as in the original FermiNet).
             When there are only two spins (spin-1/2 case), then this is equivalent to
             true spin equivariance. Defaults to False (original FermiNet).
+        use_one_dense (bool, optional): whether all of the weights should be
+            concatenated before being applied to the incoming one-electron streams
+            (True) instead of three separate Dense ops applied to the unmixed, mixed,
+            and 2e parts of the one-electron stream (False). When True, uses
+            kernel_initializer_unmixed as the kernel initializer for the entire Dense
+            layer, and cyclic_spins is treated as False. This is more similar to the
+            implementation in the original FermiNet repo. Defaults to True.
     """
     residual_blocks = []
     for ndense in ndense_list:
@@ -596,6 +605,7 @@ def get_residual_blocks_for_ferminet_backflow(
             skip_connection=one_electron_skip,
             skip_connection_scale=one_electron_skip_scale,
             cyclic_spins=cyclic_spins,
+            use_one_dense=use_one_dense,
         )
         two_electron_layer = None
         if len(ndense) > 1:

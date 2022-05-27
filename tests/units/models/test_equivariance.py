@@ -57,18 +57,21 @@ def test_ferminet_one_electron_layer_shape_and_equivariance():
     activation_fn = jnp.tanh
 
     cyclic_spins_options = [False, True]
+    use_one_dense_options = [False, True]
 
     for cyclic_spin in cyclic_spins_options:
-        one_elec_layer = models.equivariance.FermiNetOneElectronLayer(
-            spin_split,
-            ndense,
-            kernel_initializer_unmixed,
-            kernel_initializer_mixed,
-            kernel_initializer_2e,
-            bias_initializer,
-            activation_fn,
-            cyclic_spins=cyclic_spin,
-        )
+        for use_one_dense in use_one_dense_options:
+            one_elec_layer = models.equivariance.FermiNetOneElectronLayer(
+                spin_split,
+                ndense,
+                kernel_initializer_unmixed,
+                kernel_initializer_mixed,
+                kernel_initializer_2e,
+                bias_initializer,
+                activation_fn,
+                cyclic_spins=cyclic_spin,
+                use_one_dense=use_one_dense,
+            )
 
         key, subkey = jax.random.split(key)
         params = one_elec_layer.init(subkey, input_1e, input_2e)
