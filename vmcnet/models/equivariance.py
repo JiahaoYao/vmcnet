@@ -673,13 +673,14 @@ def _compute_exponential_envelopes_on_leaf(
     # scale_out has shape (..., nelec, norbitals, nion, d)
     distances = jnp.linalg.norm(scale_out, axis=-1)
     inv_exp_distances = jnp.exp(-distances)  # (..., nelec, norbitals, nion)
+    inv_exp_distances = jnp.swapaxes(inv_exp_distances, -1, -2)  # swap because of KFAC
 
-    # norbitals * nion parallel maps return shape (..., nelec, norbitals, nion)
+    # norbitals * nion parallel maps return shape (..., nelec, nion, norbitals)
     lin_comb_nion = ElementWiseMultiply(2, kernel_init=kernel_initializer_ion)(
         inv_exp_distances
     )
 
-    return jnp.sum(lin_comb_nion, axis=-1)  # (..., nelec, norbitals)
+    return jnp.sum(lin_comb_nion, axis=-2)  # (..., nelec, norbitals)
 
 
 def _compute_exponential_envelopes_all_splits(
