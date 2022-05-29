@@ -315,8 +315,12 @@ class FermiNetOneElectronLayer(Module):
         particle ordering and the specified spin split.
         """
         # split to get [i: (..., n[i], n_total, d)]
-        split_2e = jnp.split(in_2e, self.spin_split, axis=-3)
+        dense_in = self.compute_2e_dense_in(in_2e)
+        dense_2e = self._dense_2e(dense_in)
+        return jnp.split(dense_2e, self.spin_split, axis=-2)
 
+    def compute_2e_dense_in(self, in_2e):
+        split_2e = jnp.split(in_2e, self.spin_split, axis=-3)
         # for each i, do a split and average along axis=-2, then concatenate
         concat_2e = []
         for spin in range(len(split_2e)):
@@ -332,12 +336,10 @@ class FermiNetOneElectronLayer(Module):
                 # that order
                 concat_arrays = jnp.concatenate(split_arrays, axis=-1)
             concat_2e.append(concat_arrays)  # [i: (..., n[i], d * nspins)]
-
         # reconcatenate along the split axis to batch apply the same dense layer for all
         # i, then split over the spins again before returning
         all_spins = jnp.concatenate(concat_2e, axis=-2)
-        dense_2e = self._dense_2e(all_spins)
-        return jnp.split(dense_2e, self.spin_split, axis=-2)
+        return all_spins
 
     def __call__(  # type: ignore[override]
         self, in_1e: Array, in_2e: Array = None
@@ -391,9 +393,9 @@ class FermiNetOneElectronLayer(Module):
             ]
             list_in.extend(split_1e_means_repeated)
             if in_2e is not None:
-                split_2e = jnp.split(in_2e, self.spin_split, axis=-3)
-                split_2e_means = [jnp.mean(leaf_2e, axis=-3) for leaf_2e in split_2e]
-                list_in.extend(split_2e_means)
+                dense_in_2e = self.compute_2e_dense_in(in_2e)
+                list_in.extend([dense_in_2e])
+
             concat_in = jnp.concatenate(list_in, axis=-1)
 
             dense_out_concat = self._dense_op(concat_in)
