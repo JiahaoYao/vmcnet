@@ -5,6 +5,7 @@ import functools
 import logging
 import os
 from typing import Optional, Tuple
+import flax.core.frozen_dict as frozen_dict
 
 import flax
 import jax
@@ -314,6 +315,13 @@ def _setup_vmc(
         dtype=dtype,
         apply_pmap=apply_pmap,
     )
+    npz_data = np.load(
+        "/global/scratch/users/ggoldshlager/logs/jcp_updates/variance/ferminet/params_from_ferminet.npz",
+        allow_pickle=True,
+    )
+    params = frozen_dict.freeze(npz_data["p"].tolist())
+    if apply_pmap:
+        params = utils.distribute.replicate_all_local_devices(params)
 
     # Make initial data
     data = _make_initial_data(
