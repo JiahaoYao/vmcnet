@@ -238,12 +238,10 @@ class FermiNetOneElectronLayer(Module):
 
     spin_split: ParticleSplit
     ndense: int
-    kernel_initializer_transformer: WeightInitializer
     kernel_initializer_unmixed: WeightInitializer
     kernel_initializer_mixed: WeightInitializer
     kernel_initializer_2e: WeightInitializer
     bias_initializer: WeightInitializer
-    bias_initializer_transformer: WeightInitializer
     activation_fn: Activation
     use_bias: bool = True
     skip_connection: bool = True
