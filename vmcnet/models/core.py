@@ -101,6 +101,61 @@ def _sl_valid_skip(x: SLArray, y: SLArray):
     return x[0].shape[-1] == y[0].shape[-1]
 
 
+def constant():
+    """Builds an initializer that returns arrays with a constant ``value``.
+
+    Args:
+      value: the constant value with which to fill the initializer.
+      dtype: optional; the initializer's default dtype.
+    >>> import jax, jax.numpy as jnp
+    >>> initializer(jax.random.PRNGKey(42), vec / mat)
+    """
+
+    def init(key, value):
+        return value
+
+    return init
+
+
+class AttentionLayer(flax.linen.Module):
+    """Attention layer."""
+
+    query_init: Callable = constant()
+    key_init: Callable = flax.linen.initializers.lecun_normal()
+    value_init: Callable = constant()
+
+    @flax.linen.compact
+    def __call__(self, inputs):
+        """Apply attention layer."""
+        w_key = self.param(
+            "key",
+            self.key_init,  # Initialization function
+            (inputs.shape[-1], inputs.shape[-1]),
+        )  # shape info.
+
+        # these are trainable
+        w_query = self.param(
+            "query", self.query_init, jnp.zeros((inputs.shape[-1], inputs.shape[-1]))
+        )
+        w_value = self.param("value", self.value_init, jnp.eye(inputs.shape[-1]))
+
+        q = inputs @ w_query
+        k = inputs @ w_key
+        v = inputs @ w_value
+        return self.attention(q, k, v)
+
+    def attention(self, q, k, v):
+        """Apply attention."""
+        dim = q.shape[-1]
+        scale = 1 / jnp.sqrt(dim)
+
+        q = q * scale
+        sim = jnp.einsum("... i d, ... j d -> ... i j", q, k)
+
+        attn = flax.linen.softmax(sim, axis=-1)
+        return attn @ v
+
+
 class Module(flax.linen.Module):
     """Custom parent class for models to work around flax typing issues."""
 

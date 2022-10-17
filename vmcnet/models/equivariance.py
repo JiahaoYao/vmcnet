@@ -17,6 +17,7 @@ from .core import (
     _valid_skip,
     compute_ee_norm_with_safe_diag,
     get_nsplits,
+    AttentionLayer,
 )
 from flax.linen import SelfAttention  # noqa
 from .jastrow import _anisotropy_on_leaf, _isotropy_on_leaf
@@ -158,7 +159,8 @@ def compute_electron_electron(
 
 def _transformer_mix(
     x: Array,
-    self_attention_layer: Callable[[Array], Array],
+    self_attention_layer_up: Callable[[Array], Array],
+    self_attention_layer_down: Callable[[Array], Array],
     splits: ParticleSplit,
     axis: int = -2,
 ) -> ArrayList:
@@ -167,9 +169,15 @@ def _transformer_mix(
     # split_x has shape [i: (..., n[i], d_1e)]
 
     split_x = jnp.split(x, splits, axis=axis)
-    split_x_mix = jax.tree_map(self_attention_layer, split_x)
+    split_x_mix = [
+        self_attention_layer_up(split_x[0]),
+        self_attention_layer_down(split_x[1]),
+    ]
 
-    return split_x_mix
+    split_x_mean = jax.tree_map(
+        functools.partial(jnp.mean, axis=axis, keepdims=True), split_x_mix
+    )
+    return split_x_mean
 
 
 class FermiNetOneElectronLayer(Module):
@@ -261,12 +269,12 @@ class FermiNetOneElectronLayer(Module):
         )
 
         if self.use_transformer:
-            self._attention_1e = SelfAttention(
-                num_heads=self.num_heads,
-                qkv_features=self.ndense * self.num_heads,
-                out_features=self.ndense,
-                kernel_init=self.kernel_initializer_transformer,
-                bias_init=self.bias_initializer_transformer,
+            self._attention_mix_up_up = AttentionLayer()
+            self._attention_mix_down_up = AttentionLayer()
+            self._attention_mix_up_down = AttentionLayer()
+            self._attention_mix_down_down = AttentionLayer()
+            self._mixed_dense = Dense(
+                self.ndense, kernel_init=self.kernel_initializer_mixed, use_bias=False
             )
         else:
             self._mixed_dense = Dense(
@@ -344,9 +352,25 @@ class FermiNetOneElectronLayer(Module):
         # for each i, do a split and average along axis=-2, then concatenate
         concat_2e = []
         for spin in range(len(split_2e)):
-            split_arrays = _split_mean(
-                split_2e[spin], self.spin_split, axis=-2, keepdims=False
-            )  # [j: (..., n[i], d)]
+            split_split_2e = jnp.split(split_2e[spin], self.spin_split, axis=-2)
+            if spin == 0:
+                # this is the spin up
+                new_split_2e = [
+                    self._attention_mix_up_up(split_split_2e[0]),
+                    self._attention_mix_up_down(split_split_2e[1]),
+                ]
+                # ic([i.shape for i in new_split_2e], [i.shape for i in split_split_2e])
+            else:
+                # this is the spin down
+                new_split_2e = [
+                    self._attention_mix_down_up(split_split_2e[0]),
+                    self._attention_mix_down_down(split_split_2e[1]),
+                ]
+
+            split_arrays = jax.tree_map(
+                functools.partial(jnp.mean, axis=-2, keepdims=False), new_split_2e
+            )
+
             if self.cyclic_spins:
                 # for the ith spin, concatenate as [i, ..., n, 1, ..., i-1] along the
                 # last axis
@@ -370,7 +394,8 @@ class FermiNetOneElectronLayer(Module):
         Else, the mixed is computed using the dense layer with the reduce-mean layer.
         """
         if self.use_transformer:
-            return _transformer_mix(in_1e, self._attention_1e, self.spin_split, axis=-2)
+            split_1e_means = _split_mean(in_1e, self.spin_split, axis=-2, keepdims=True)
+            return self._compute_transformed_1e_means(split_1e_means)
         else:
             split_1e_means = _split_mean(in_1e, self.spin_split, axis=-2, keepdims=True)
             return self._compute_transformed_1e_means(split_1e_means)
